@@ -31,6 +31,8 @@ class Lccc_Wp_Webtools_Activator {
 	 */
 	public static function activate() {
 
+
+  
 	}
 
 }
