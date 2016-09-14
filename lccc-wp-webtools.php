@@ -76,9 +76,17 @@ run_lccc_wp_webtools();
 
 function lorainccc_site_features_wp_admin_scripts() {
  wp_enqueue_style('lc_webtools_styles', plugin_dir_url( __FILE__ ) . 'css/lc_webtools_styles.css', 20);
+
+ if(current_user_can('publish')){
+ }else{
+  wp_enqueue_script('lc_capabilities_script', plugin_dir_url( __FILE__ ) . 'js/capabilities.js', array( 'jquery' ) );
+  wp_enqueue_style('lc_capabilities_styles', plugin_dir_url( __FILE__ ) . 'css/capabilities.css', 40);
+ }; 
 }
 
 add_action( 'admin_enqueue_scripts', 'lorainccc_site_features_wp_admin_scripts' );
 
 require_once( plugin_dir_path( __FILE__ ).'php/plugin-options.php');
 require_once( plugin_dir_path( __FILE__ ).'php/plugin-features-enable.php');
+
+
