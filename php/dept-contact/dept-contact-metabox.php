@@ -326,7 +326,7 @@ function lc_dept_contact_save_info( $post_id, $post ) {
 }
 
 
-function update_meta_values( $post_id, $meta_key, $new_meta_value, $meta_value ) {
+function update_dept_meta_values( $post_id, $meta_key, $new_meta_value, $meta_value ) {
 
   /* If a new meta value was added and there was no previous value, add it. */
  if ( $new_meta_value && '' == $meta_value )
