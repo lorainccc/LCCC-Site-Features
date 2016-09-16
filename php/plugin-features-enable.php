@@ -31,6 +31,7 @@
  // Check for Department Contact Feature
  if ($webtools['lc_enable_program_pathways_field'] == 1) {
   require_once( plugin_dir_path( __FILE__ ).'program-paths/programpath-cpt.php' );
+  require_once( plugin_dir_path( __FILE__ ).'program-paths/programpath-metabox.php' );
  }
 
  // Default features that are always loaded when the webtools plugin is activated.

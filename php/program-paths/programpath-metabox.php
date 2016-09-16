@@ -21,10 +21,10 @@ function lc_program_path_info_meta_boxes_setup() {
 /* Create one or meta boxes to be displayed on the post editor screen */
 function lc_add_program_path_info_meta_box() {
  add_meta_box(
-  'lc_program_path_info_metabox',                                 // Unique ID (ID of Div Tag ** Note: DO NOT NAME same as field(s) below **)
+  'lc_add_program_path_info_meta_box',                                 // Unique ID (ID of Div Tag ** Note: DO NOT NAME same as field(s) below **)
   esc_html__( 'Program Path Info', 'lorainccc' ),                 // Title & Text Domain
   'lc_show_program_path_info_meta_box',                           // Callback function
-  'lc_program_path_info',                                         // Admin Page or Post Type
+  'lc_program_paths',                                             // Admin Page or Post Type
   'normal',                                                       // Context (Position)
   'default'                                                       // Priority
  );
@@ -70,11 +70,11 @@ function lc_program_path_save_info( $post_id, $post ) {
  $meta_value = get_post_meta ($post_id, $meta_key, true );
 
  update_post_meta( $post_id, $meta_key, $new_meta_value, $meta_value );
- 
+
 }
 
 
-function update_meta_values( $post_id, $meta_key, $new_meta_value, $meta_value ) {
+function update_program_path_meta_values( $post_id, $meta_key, $new_meta_value, $meta_value ) {
 
   /* If a new meta value was added and there was no previous value, add it. */
  if ( $new_meta_value && '' == $meta_value )
