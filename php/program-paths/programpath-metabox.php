@@ -47,6 +47,7 @@ function lc_show_program_path_info_meta_box( $object, $box ) { ?>
     <?php _e( "Program Path More Information Link: ", "lorainccc" ); ?>
    </label>
    <input type="text" name="lc_program_path_link_field" id="lc_program_path_link_field" value="<?php echo esc_attr( get_post_meta ( $object->ID, 'lc_program_path_link_field', true ) ); ?>" size="30" />
+   <br/><blockquote><i>The link does not need to contain the domain name, unless linking to an website.  If linking internally the path can exclude https://www.lorainccc.edu. </i><br/><strong>Example: /student-resources/</strong></blockquote>
   </p>
 
  <?php
@@ -89,7 +90,7 @@ function lc_program_path_save_info( $post_id, $post ) {
  $meta_value = get_post_meta ($post_id, $meta_key, true );
 
  update_post_meta( $post_id, $meta_key, $new_meta_value, $meta_value );
- 
+
 }
 
 
