@@ -36,6 +36,13 @@ function lc_show_program_path_info_meta_box( $object, $box ) { ?>
  <?php wp_nonce_field( basename( __FILE__ ), 'lc_program_path_post_nonce' ); ?>
 
   <p>
+   <label for="lc_program_path_link_label_field">
+    <?php _e( "Program Path More Information Link Label: ", "lorainccc" ); ?>
+   </label>
+   <input type="text" name="lc_program_path_link_label_field" id="lc_program_path_link_label_field" value="<?php echo esc_attr( get_post_meta ( $object->ID, 'lc_program_path_link_label_field', true ) ); ?>" size="30" />
+  </p>
+
+  <p>
    <label for="lc_program_path_link_field">
     <?php _e( "Program Path More Information Link: ", "lorainccc" ); ?>
    </label>
@@ -59,7 +66,7 @@ function lc_program_path_save_info( $post_id, $post ) {
  if ( !current_user_can( $post_type->cap->edit_post, $post_id ) )
   return $post_id;
 
- /* Extension Field */
+ /* Path Link Field */
  /* Get the posted data and sanitize it for use as a date value. */
  $new_meta_value = ( isset( $_POST['lc_program_path_link_field'] ) ? sanitize_text_field($_POST['lc_program_path_link_field'] ) : '' );
 
@@ -71,6 +78,18 @@ function lc_program_path_save_info( $post_id, $post ) {
 
  update_post_meta( $post_id, $meta_key, $new_meta_value, $meta_value );
 
+  /* Path Link Label Field */
+ /* Get the posted data and sanitize it for use as a date value. */
+ $new_meta_value = ( isset( $_POST['lc_program_path_link_label_field'] ) ? sanitize_text_field($_POST['lc_program_path_link_label_field'] ) : '' );
+
+ /* Get the meta key. */
+ $meta_key = 'lc_program_path_link_label_field';
+
+  /* Get the meta value of the custom field key. */
+ $meta_value = get_post_meta ($post_id, $meta_key, true );
+
+ update_post_meta( $post_id, $meta_key, $new_meta_value, $meta_value );
+ 
 }
 
 

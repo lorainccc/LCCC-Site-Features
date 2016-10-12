@@ -28,7 +28,7 @@
   require_once( plugin_dir_path( __FILE__ ).'dept-contact/dept-contact-metabox.php' );
  }
 
- // Check for Department Contact Feature
+ // Check for Program Path Feature
  if ($webtools['lc_enable_program_pathways_field'] == 1) {
   require_once( plugin_dir_path( __FILE__ ).'program-paths/programpath-cpt.php' );
   require_once( plugin_dir_path( __FILE__ ).'program-paths/programpath-metabox.php' );
