@@ -39,7 +39,7 @@ class new_lccc_base_path_setting {
   $value = get_option( 'lccc_base_path', '' );
   echo '<input type="text" id="lccc_base_path" name="lccc_base_path" value="' . $value . '" size="75" />';
   echo '<p class="description" id="tagline-description">Enter the URL path <strong>(without starting or trailing /)</strong> to represent where this site exists in the website.</p>';
-  echo '<p class="description" id="tagline-description"><strong>Example: student-resources/academic-resources/academic-divisions</strong></p>';
+  echo '<p class="description" id="basepath-description"><strong>Example: student-resources/academic-resources/academic-divisions</strong></p>';
  }
 
 
