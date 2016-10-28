@@ -39,11 +39,11 @@ li#toplevel_page_lccc-wp-webtools{
 }
 
 input:checked + .slider {
-  background-color: #6DB400;
+  background-color: #0085BA;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #6DB400;
+  box-shadow: 0 0 1px #0085BA;
 }
 
 input:checked + .slider:before {
@@ -59,4 +59,15 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+#lc_dept_directory_metabox .inside label{
+ display: block;
+ width: 150px;
+ float: left;
+}
+
+p.description{
+ color: #636363;
+ font-style:italic;
 }
