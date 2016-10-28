@@ -36,8 +36,8 @@
 
  // Check for Department Directory Feature
  if ($webtools['lc_enable_department_directories_field'] == 1) {
-  require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-cpt.php' );
-  require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-metabox.php' );
+  //require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-cpt.php' );
+  //require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-metabox.php' );
  }
 
  // Check for Department Directory Display Feature
@@ -48,8 +48,8 @@
 
  // Check for Department Directory Display Feature
  if ($webtools['lc_enable_shared_content_display_field'] == 1) {
-  //require_once( plugin_dir_path( __FILE__ ).'shared-content/lc-shared-content-metabox.php' );
-  //require_once( plugin_dir_path( __FILE__ ).'shared-content/lc-rest-api-fetch.php' );
+  require_once( plugin_dir_path( __FILE__ ).'shared-content/lc-shared-content-metabox.php' );
+  require_once( plugin_dir_path( __FILE__ ).'shared-content/lc-rest-api-fetch.php' );
  }
 
  // Default features that are always loaded when the webtools plugin is activated.
