@@ -34,9 +34,28 @@
   require_once( plugin_dir_path( __FILE__ ).'program-paths/programpath-metabox.php' );
  }
 
+ // Check for Department Directory Feature
+ if ($webtools['lc_enable_department_directories_field'] == 1) {
+  require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-cpt.php' );
+  require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-metabox.php' );
+ }
+
+ // Check for Department Directory Display Feature
+ if ($webtools['lc_enable_department_directories_display_field'] == 1) {
+  //require_once( plugin_dir_path( __FILE__ ).'dept-directory/programpath-cpt.php' );
+  //require_once( plugin_dir_path( __FILE__ ).'dept-directory/programpath-metabox.php' );
+ }
+
+ // Check for Department Directory Display Feature
+ if ($webtools['lc_enable_shared_content_display_field'] == 1) {
+  //require_once( plugin_dir_path( __FILE__ ).'shared-content/lc-shared-content-metabox.php' );
+  //require_once( plugin_dir_path( __FILE__ ).'shared-content/lc-rest-api-fetch.php' );
+ }
+
  // Default features that are always loaded when the webtools plugin is activated.
  require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-site-options.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/breadcrumb-trail.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-edit-role.php' );
+require_once( plugin_dir_path( __FILE__ ).'default-features/tiny-mce-add-styles.php' );
 
 ?>
