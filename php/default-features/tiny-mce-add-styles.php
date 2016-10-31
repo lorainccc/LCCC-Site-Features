@@ -19,7 +19,28 @@ function lc_mce_editor_style($url) {
 
     // Retrieves the plugin directory URL and adds editor stylesheet
     // Change the path here if using different directories
-    $url .= trailingslashit( plugin_dir_url(__FILE__) ) . '/css/editor-styles.css';
+
+    //$url .= trailingslashit( plugin_dir_url(__FILE__) ) . '/css/editor-styles.css';
+
+    // Change URL for CSS to theme
+    $url .= '//' . $_SERVER['SERVER_NAME'] . '/wp-content/themes/lorainccc-subsite/css/editor-styles.css';
+
+    return $url;
+}
+
+add_filter('mce_css', 'lc_mce_icon_style');
+function lc_mce_icon_style($url) {
+
+    if ( !empty($url) )
+        $url .= ',';
+
+    // Retrieves the plugin directory URL and adds editor stylesheet
+    // Change the path here if using different directories
+
+    //$url .= trailingslashit( plugin_dir_url(__FILE__) ) . '/css/editor-styles.css';
+
+    // Change URL for CSS to theme
+    $url .= '//' . $_SERVER['SERVER_NAME'] . '/wp-content/themes/lorainccc-subsite/genericons/genericons.css';
 
     return $url;
 }
@@ -49,6 +70,11 @@ function lc_mce_add_styles_editor_settings( $settings ) {
          'selector' => 'ul',
          'classes' => 'bullet-clipboard'
         ),
+        array(
+         'title' => 'Arrow Bullets',
+         'selector' => 'ul',
+         'classes' => 'bullet-arrow'
+        ),
     );
 
  $settings['style_formats'] = json_encode( $style_formats );
@@ -57,14 +83,27 @@ function lc_mce_add_styles_editor_settings( $settings ) {
 }
 
 
+
+
 /*
- * Add custom stylesheet to the website front-end with hook 'wp_enqueue_scripts'
- * Enqueue the custom stylesheet in the front-end
+ * Check and see if the Genericons Library is enqueued.
+ * The library should be since Jetpack should be enabled.
+ * Mostly used in dev where Jetpack isn't usually enabled.
+ *
  */
-add_action('wp_enqueue_scripts', 'lc_mce_editor_styles_enqueue');
-function lc_mce_editor_styles_enqueue() {
-  $StyleUrl = plugin_dir_url(__FILE__).'css/editor-styles.css';
-  wp_enqueue_style( 'myCustomStyles', $StyleUrl );
-}
+add_action('admin_enqueue_scripts', 'lc_check_for_icons');
+ function lc_check_for_icons(){
+  
+  $handle = 'genericons';
+  $list = 'enqueued';
+  if ( wp_style_is( $handle, $list ) ){
+   return;
+  } else {
+   wp_register_style( 'genericons', '//' . $_SERVER['SERVER_NAME'] . '/wp-content/themes/lorainccc-subsite/css/genericons/genericons.css' );
+   wp_enqueue_style( 'genericons' );
+  }
+   
+ }
+
 
 ?>
