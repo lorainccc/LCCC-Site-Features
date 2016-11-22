@@ -57,5 +57,6 @@
  require_once( plugin_dir_path( __FILE__ ).'default-features/breadcrumb-trail.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-edit-role.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/tiny-mce-add-styles.php' );
+ require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-error.php' );
 
 ?>
