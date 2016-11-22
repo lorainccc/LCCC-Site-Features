@@ -71,3 +71,8 @@ p.description{
  color: #636363;
  font-style:italic;
 }
+
+#lc_dept_directory_metabox div.inside > h2{
+ font-size: 1.3rem;
+ padding: 5px 0;
+}
