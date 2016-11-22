@@ -36,14 +36,14 @@
 
  // Check for Department Directory Feature
  if ($webtools['lc_enable_department_directories_field'] == 1) {
-  //require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-cpt.php' );
-  //require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-metabox.php' );
+  require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-cpt.php' );
+  require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-metabox.php' );
  }
 
  // Check for Department Directory Display Feature
  if ($webtools['lc_enable_department_directories_display_field'] == 1) {
-  //require_once( plugin_dir_path( __FILE__ ).'dept-directory/programpath-cpt.php' );
-  //require_once( plugin_dir_path( __FILE__ ).'dept-directory/programpath-metabox.php' );
+  require_once( plugin_dir_path( __FILE__ ).'dept-directory/programpath-cpt.php' );
+  require_once( plugin_dir_path( __FILE__ ).'dept-directory/programpath-metabox.php' );
  }
 
  // Check for Department Directory Display Feature

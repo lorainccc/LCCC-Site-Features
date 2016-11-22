@@ -62,23 +62,23 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
    'lc_wp_webtools_options',                                                  // Page
    'lc_webtools_settings_section'                                             // Section
   );
-  
-/*  add_settings_field(
+
+  add_settings_field(
    'lc_enable_department_directories_field',                                  // Field ID
    __('Enable LCCC Department Directories:' , 'lorainccc'),                   // Title
    'lc_department_directory_display_render',                                  // Callback
    'lc_wp_webtools_options',                                                  // Page
    'lc_webtools_settings_section'                                             // Section
   );
-  
+
   add_settings_field(
    'lc_enable_department_directories_display_field',                          // Field ID
    __('Enable LCCC Department Directories Display Options:' , 'lorainccc'),   // Title
    'lc_department_directory_display_options_render',                          // Callback
    'lc_wp_webtools_options',                                                  // Page
    'lc_webtools_settings_section'                                             // Section
-  );*/
-  
+  );
+
   add_settings_field(
    'lc_enable_shared_content_display_field',                                  // Field ID
    __('Enable LCCC Shared Content:' , 'lorainccc'),                           // Title
@@ -158,7 +158,7 @@ function lc_program_pathways_render() {
   <?php
  }
 
-/*function lc_department_directory_display_render() {
+function lc_department_directory_display_render() {
   $options = get_option( 'lc_webtools_settings' );
   ?>
 
@@ -180,7 +180,7 @@ function lc_department_directory_display_options_render() {
  </label>
  <p class="description" id="tagline-description">Enables Display options in General Setting section (used to display feed from main department directory).</p>
   <?php
- }*/
+ }
 
 function lc_shared_content_render() {
   $options = get_option( 'lc_webtools_settings' );
