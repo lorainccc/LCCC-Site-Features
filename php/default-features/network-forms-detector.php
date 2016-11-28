@@ -22,6 +22,8 @@
   $countForms = 0;
   
   $sites = get_sites();
+  $page_links = '';
+  $form_links = '';
 
    foreach ( $sites as $site ){
     switch_to_blog( $site->blog_id );
@@ -40,7 +42,9 @@
        echo '<li><a href="'. admin_url() .'post.php?post=' . $page . '&action=edit" target="_blank">'  . get_the_title( $page ) . '</a> - <a href="' . get_permalink( $page ) . '" target="_blank">View Page</a> - <a href="http://lorainccc.firmstep.com/default.aspx' . $form . '" target="_blank">View Form at Firmstep</a></li>';
       $countForms++;
       $form_content = true;
-      } 
+      $page_links = get_permalink( $page ) . "<br />";
+      $form_links = "http://lorainccc.firmstep.com/default.aspx" . $form . "<br/>";
+     } 
     }
     if($form_content == false){
      echo '<li>No Forms Found</li>';
@@ -51,6 +55,11 @@
    }
 
    echo 'Current Number of Forms: ' . $countForms;
+  
+  echo '<h2>Page Links</h2>';
+  echo $page_links;
+  echo '<h2>Form Links</h2>';
+  echo $form_links;
 
  }
 
