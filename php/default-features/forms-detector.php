@@ -35,7 +35,7 @@ function lc_admin_dashboard_widgets() {
 }
 
 function lc_form_detector_render_admin_widget() {
- echo '<h1>List of forms on this site.</h1>';
+ echo '<h1>List of forms on this site</h1>';
  echo '<p>Below is a list of all pages, in this site, with a link to the form at Firmstep.  The page name is also linked to the page editor.</p>';
  $page_ids = get_all_page_ids();
   echo '<ul style="list-style: disc; margin: 0 0 0 25px;">';
