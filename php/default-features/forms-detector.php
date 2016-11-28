@@ -43,7 +43,7 @@ function lc_form_detector_render_admin_widget() {
   $form = get_post_meta( $page, '_FirmstepRRCUrl', true );
 
   if ($form != ''){
-    echo '<li><a href="post.php?post=' . $page . '&action=edit" target="_blank">'  . get_the_title( $page ) . '</a> - <a href="http://lorainccc.firmstep.com/default.aspx' . $form . '" target="_blank">View Form at Firmstep</a></li>';
+    echo '<li><a href="post.php?post=' . $page . '&action=edit" target="_blank">'  . get_the_title( $page ) . '</a> - <a href="' . get_permalink( $page ) . '" target="_blank">View Page</a> - <a href="http://lorainccc.firmstep.com/default.aspx' . $form . '" target="_blank">View Form at Firmstep</a></li>';
    }
 
  }
