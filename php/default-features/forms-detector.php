@@ -1,6 +1,6 @@
 <?php
 
-// LCCC Forms Detector Widgt
+// LCCC Forms Detector Widget
 
 add_action( 'wp_dashboard_setup', 'lc_admin_dashboard_widgets' );
 
