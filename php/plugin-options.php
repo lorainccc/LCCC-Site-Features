@@ -112,10 +112,11 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
 
  function lc_gateway_menu_render() {
   $options = get_option( 'lc_webtools_settings' );
-  ?>
+  $gateway = isset($options['lc_enable_gateway_menu_field']) ? $options['lc_enable_gateway_menu_field'] : '';
+?>
 
  <label class="switch">
-  <input type="checkbox" name='lc_webtools_settings[lc_enable_gateway_menu_field]' <?php checked( $options['lc_enable_gateway_menu_field'], 1); ?> value='1' style="display:none;">
+  <input type="checkbox" name='lc_webtools_settings[lc_enable_gateway_menu_field]' <?php checked( $gateway, 1); ?> value='1' style="display:none;">
   <div class="slider round"></div>
  </label>
  <p class="description" id="tagline-description">Provides a thumbnail and list of links for a site section.</p>
@@ -124,10 +125,11 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
 
 function lc_badges_render() {
   $options = get_option( 'lc_webtools_settings' );
+  $badge = isset($options['lc_enable_badge_field']) ? $options['lc_enable_badge_field'] : ''; 
   ?>
 
  <label class="switch">
-  <input type="checkbox" name='lc_webtools_settings[lc_enable_badge_field]' <?php checked( $options['lc_enable_badge_field'], 1); ?> value='1' style="display:none;">
+  <input type="checkbox" name='lc_webtools_settings[lc_enable_badge_field]' <?php checked( $badge, 1); ?> value='1' style="display:none;">
   <div class="slider round"></div>
  </label>
  <p class="description" id="tagline-description">Provides badges for special announcements.</p>
@@ -136,10 +138,11 @@ function lc_badges_render() {
 
 function lc_dept_contact_render() {
   $options = get_option( 'lc_webtools_settings' );
+  $dept = isset($options['lc_enable_badge_field']) ? $options['lc_enable_badge_field'] : ''; 
   ?>
 
  <label class="switch">
-  <input type="checkbox" name='lc_webtools_settings[lc_enable_dept_contact_field]' <?php checked( $options['lc_enable_dept_contact_field'], 1); ?> value='1' style="display:none;">
+  <input type="checkbox" name='lc_webtools_settings[lc_enable_dept_contact_field]' <?php checked( $dept, 1); ?> value='1' style="display:none;">
   <div class="slider round"></div>
  </label>
  <p class="description" id="tagline-description">Provides Department Contact box on Department Home Page.</p>
@@ -148,10 +151,11 @@ function lc_dept_contact_render() {
 
 function lc_program_pathways_render() {
   $options = get_option( 'lc_webtools_settings' );
+  $program = isset($options['lc_enable_program_pathways_field']) ? $options['lc_enable_program_pathways_field'] : '';
   ?>
 
  <label class="switch">
-  <input type="checkbox" name='lc_webtools_settings[lc_enable_program_pathways_field]' <?php checked( $options['lc_enable_program_pathways_field'], 1); ?> value='1' style="display:none;">
+  <input type="checkbox" name='lc_webtools_settings[lc_enable_program_pathways_field]' <?php  checked( $program, 1); ?> value='1' style="display:none;">
   <div class="slider round"></div>
  </label>
  <p class="description" id="tagline-description">Provides Program Pathways Menu on Program Template.</p>
@@ -160,10 +164,11 @@ function lc_program_pathways_render() {
 
 function lc_department_directory_display_render() {
   $options = get_option( 'lc_webtools_settings' );
+  $dirdisplay = isset($options['lc_enable_department_directories_field']) ? $options['lc_enable_department_directories_field'] : '';
   ?>
 
  <label class="switch">
-  <input type="checkbox" name='lc_webtools_settings[lc_enable_department_directories_field]' <?php checked( $options['lc_enable_department_directories_field'], 1); ?> value='1' style="display:none;">
+  <input type="checkbox" name='lc_webtools_settings[lc_enable_department_directories_field]' <?php checked( $dirdisplay, 1); ?> value='1' style="display:none;">
   <div class="slider round"></div>
  </label>
  <p class="description" id="tagline-description">Enables Main Department Directory (only needs to be enabled in MyLCCC).</p>
@@ -172,10 +177,11 @@ function lc_department_directory_display_render() {
 
 function lc_department_directory_display_options_render() {
   $options = get_option( 'lc_webtools_settings' );
+  $dirdisplayopt = isset($options['lc_enable_department_directories_display_field']) ? $options['lc_enable_department_directories_display_field'] : '';
   ?>
 
  <label class="switch">
-  <input type="checkbox" name='lc_webtools_settings[lc_enable_department_directories_display_field]' <?php checked( $options['lc_enable_department_directories_display_field'], 1); ?> value='1' style="display:none;">
+  <input type="checkbox" name='lc_webtools_settings[lc_enable_department_directories_display_field]' <?php checked( $dirdisplayopt, 1); ?> value='1' style="display:none;">
   <div class="slider round"></div>
  </label>
  <p class="description" id="tagline-description">Enables Display options in General Setting section (used to display feed from main department directory).</p>
@@ -184,10 +190,11 @@ function lc_department_directory_display_options_render() {
 
 function lc_shared_content_render() {
   $options = get_option( 'lc_webtools_settings' );
+  $shared = isset($options['lc_enable_shared_content_display_field']) ? $options['lc_enable_shared_content_display_field'] : '';
   ?>
 
  <label class="switch">
-  <input type="checkbox" name='lc_webtools_settings[lc_enable_shared_content_display_field]' <?php checked( $options['lc_enable_shared_content_display_field'], 1); ?> value='1' style="display:none;">
+  <input type="checkbox" name='lc_webtools_settings[lc_enable_shared_content_display_field]' <?php checked( $shared, 1); ?> value='1' style="display:none;">
   <div class="slider round"></div>
  </label>
  <p class="description" id="tagline-description">Enables Shared Content field for Pages.  Allows a piece of content to be inserted at the bottom of each page the field is filled out for.</p>
