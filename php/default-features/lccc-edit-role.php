@@ -3,6 +3,8 @@
 function lccc_new_admin_menu(){
  $user = new WP_User(get_current_user_id());
 
+ $role = '';
+ 
 	if (!empty( $user->roles) && is_array($user->roles)) {
 		foreach ($user->roles as $role)
 		$role = $role;
