@@ -6,6 +6,8 @@
 				margin-left: 0.9375rem;
     width: 92%;
 	    margin-bottom: 30px;
+			padding-left: 0.45rem;
+    padding-right: 0.45rem;
 }
 .columns .gtwymenu-content ul{
 	list-style: none;
@@ -40,7 +42,7 @@
 	    background: #0055a5;
 }
 .columns .icon{height: 70px;width: 100%;}
-.columns .badge-text{padding-right: 0; padding-left: 0.7rem;}
+.columns .badge-text{padding-right: 0; padding-left: 0.4rem;}
 .columns .badge-text p{font-size: 1rem;}
 .badge-text h3{text-align: left;font-size: 1.4rem;margin-bottom: .15rem;color:#ffffff;font-weight: 700;}
 .trophy{
