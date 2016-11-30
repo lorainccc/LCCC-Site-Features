@@ -25,7 +25,7 @@
     margin-top: 5px;
 }
 .Green{
-	    background: #6db400;
+	    background: #2A8000;
 }
 .Purple{
 	    background: #67296e;
@@ -34,15 +34,15 @@
 	    background: #068795;
 }
 .Orange{
-	background: #e36000;
+	background: #C75300;
 }
 .Dark_Blue{
 	    background: #0055a5;
 }
 .columns .icon{height: 70px;width: 100%;}
-.columns .badge-text{padding-right: 0;}
-.columns .badge-text p{font-size: .75rem;}
-.badge-text h3{text-align: left;font-size: 1.2375rem;margin-bottom: .15rem;color:#ffffff;}
+.columns .badge-text{padding-right: 0; padding-left: 0.7rem;}
+.columns .badge-text p{font-size: 1rem;}
+.badge-text h3{text-align: left;font-size: 1.4rem;margin-bottom: .15rem;color:#ffffff;font-weight: 700;}
 .trophy{
 		background: url(../images/icons/trophy.png);
   background-image: url(../images/icons/trophy.svg), none;
