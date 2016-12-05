@@ -65,8 +65,8 @@
     restore_current_blog();
    }
 
-   echo 'Current Number of Forms: ' . $countForms;
-   echo 'Current Number of Media Items: ' . $media_items;
+   echo '<p>Current Number of Forms: ' . $countForms . '</p>';
+   echo '<p>Current Number of Media Items: ' . $media_items . '</p>';
   
   //echo '<h2>Page Links</h2>';
   //echo $page_links;
