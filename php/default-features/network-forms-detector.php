@@ -24,6 +24,8 @@
   $sites = get_sites();
   //$page_links = '';
   //$form_links = '';
+  
+  $media_items = 0;
 
    foreach ( $sites as $site ){
     switch_to_blog( $site->blog_id );
@@ -51,11 +53,20 @@
      echo '<li>No Forms Found</li>';
     }
      echo '</ul>';
+    
+    $query_img_args = array(
+      'post_type' => 'attachment',
+      'post_status' => 'inherit',
+      'posts_per_page' => -1,
+    );
+    $query_img = new WP_Query( $query_img_args );
+    $media_items = $media_items + $query_img->post_count;
 
     restore_current_blog();
    }
 
    echo 'Current Number of Forms: ' . $countForms;
+   echo 'Current Number of Media Items: ' . $media_items;
   
   //echo '<h2>Page Links</h2>';
   //echo $page_links;

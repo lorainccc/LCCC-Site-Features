@@ -48,6 +48,15 @@ function lc_form_detector_render_admin_widget() {
 
  }
   echo '</ul>';
+ 
+ $query_img_args = array(
+      'post_type' => 'attachment',
+      'post_status' => 'inherit',
+      'posts_per_page' => -1,
+    );
+    $query_img = new WP_Query( $query_img_args );
+    echo 'Total Media Items: ' . $query_img->post_count;
+ 
 }
 
 ?>
