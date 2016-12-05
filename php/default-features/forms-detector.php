@@ -55,7 +55,7 @@ function lc_form_detector_render_admin_widget() {
       'posts_per_page' => -1,
     );
     $query_img = new WP_Query( $query_img_args );
-    echo 'Total Media Items: ' . $query_img->post_count;
+    echo '<p>Total Media Items: ' . $query_img->post_count . '</p>';
  
 }
 
