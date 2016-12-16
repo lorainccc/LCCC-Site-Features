@@ -26,15 +26,16 @@ class LCCC_four_O_four_Widget extends WP_Widget {
      */
     public function widget( $args, $instance ) {
         // outputs the content of the widget
-        echo $args['before_widget'];
+        //echo $args['before_widget'];
 											//Grab posts (endpoints)
-  									$domain = 'http://' . $_SERVER['SERVER_NAME'];
-											$contentendpoint = new Endpoint( $domain . '/wp-json/wp/v2/pages/531' );
-											$pages = $contentendpoint->get_posts();
-										 foreach ( $pages as $page ){
-															echo $page->content->rendered;	
+  									//$domain = 'http://' . $_SERVER['SERVER_NAME'];
+											//$contentendpoint = new Endpoint( $domain . '/wp-json/wp/v2/pages/531' );
+											//$pages = $contentendpoint->get_posts();
+										 //foreach ( $pages as $page ){
+															//echo $page->content->rendered;
+														echo '<p>The page you have requested has moved or is no longer available on our website. Please use the site search below or visit our <a href="/about/a-z-index">A-Z Index</a> for a list of our most popular pages.</p>'
 														echo '<a class="button" href="https://test.lorainccc.edu/about/a-z-index/">A-Z Index</a>';
-											}
+											//}
         echo $args['after_widget'];
     }
 
