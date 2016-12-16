@@ -29,7 +29,7 @@ class LCCC_four_O_four_Widget extends WP_Widget {
         echo $args['before_widget'];
 											//Grab posts (endpoints)
   									$domain = 'http://' . $_SERVER['SERVER_NAME'];
-											$contentendpoint = new Endpoint( $domain . '/wp-json/wp/v2/pages?filter[pagename]=404-content' );
+											$contentendpoint = new Endpoint( $domain . '/wp-json/wp/v2/pages/531' );
 											$pages = $contentendpoint->get_posts();
 										 foreach ( $pages as $page ){
 															echo $page->content->rendered;	
