@@ -31,7 +31,17 @@ class Lccc_Wp_Webtools_Activator {
 	 */
 	public static function activate() {
 
-
+  $role = get_role( 'lccc_editor' );
+  $role = add_cap( 'gravityforms_edit_forms' );
+  $role = add_cap( 'gravityforms_create_form' );
+  $role = add_cap( 'gravityforms_view_entries' );
+  $role = add_cap( 'gravityforms_edit_entries' );
+  $role = add_cap( 'gravityforms_delete_entries' );
+  $role = add_cap( 'gravityforms_export_entries' );
+  $role = add_cap( 'gravityforms_view_entry_notes' );
+  $role = add_cap( 'gravityforms_edit_entry_notes' );
+  $role = add_cap( 'gravityforms_view_addons' );
+  $role = add_cap( 'gravityforms_preview_forms' );
   
 	}
 
