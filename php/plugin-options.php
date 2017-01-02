@@ -63,7 +63,7 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
    'lc_webtools_settings_section'                                             // Section
   );
 
-  add_settings_field(
+/*  add_settings_field(
    'lc_enable_department_directories_field',                                  // Field ID
    __('Enable LCCC Department Directories:' , 'lorainccc'),                   // Title
    'lc_department_directory_display_render',                                  // Callback
@@ -77,7 +77,7 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
    'lc_department_directory_display_options_render',                          // Callback
    'lc_wp_webtools_options',                                                  // Page
    'lc_webtools_settings_section'                                             // Section
-  );
+  );*/
 
   add_settings_field(
    'lc_enable_shared_content_display_field',                                  // Field ID

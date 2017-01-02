@@ -32,16 +32,16 @@ class Lccc_Wp_Webtools_Deactivator {
 	public static function deactivate() {
 
   $role = get_role( 'lccc_editor' );
-  $role = remove_cap( 'gravityforms_edit_forms' );
-  $role = remove_cap( 'gravityforms_create_form' );
-  $role = remove_cap( 'gravityforms_view_entries' );
-  $role = remove_cap( 'gravityforms_edit_entries' );
-  $role = remove_cap( 'gravityforms_delete_entries' );
-  $role = remove_cap( 'gravityforms_export_entries' );
-  $role = remove_cap( 'gravityforms_view_entry_notes' );
-  $role = remove_cap( 'gravityforms_edit_entry_notes' );
-  $role = remove_cap( 'gravityforms_view_addons' );
-  $role = remove_cap( 'gravityforms_preview_forms' );
+  $role->remove_cap( 'gravityforms_edit_forms' );
+  $role->remove_cap( 'gravityforms_create_form' );
+  $role->remove_cap( 'gravityforms_view_entries' );
+  $role->remove_cap( 'gravityforms_edit_entries' );
+  $role->remove_cap( 'gravityforms_delete_entries' );
+  $role->remove_cap( 'gravityforms_export_entries' );
+  $role->remove_cap( 'gravityforms_view_entry_notes' );
+  $role->remove_cap( 'gravityforms_edit_entry_notes' );
+  $role->remove_cap( 'gravityforms_view_addons' );
+  $role->remove_cap( 'gravityforms_preview_forms' );
 
 	}
 
