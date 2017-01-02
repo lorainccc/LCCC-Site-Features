@@ -35,18 +35,18 @@
  }
 
  // Check for Department Directory Feature
- if ($webtools['lc_enable_department_directories_field'] == 1) {
-  require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-cpt.php' );
-  require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-metabox.php' );
- }
+// if ($webtools['lc_enable_department_directories_field'] == 1) {
+//  require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-cpt.php' );
+//  require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-metabox.php' );
+// }
 
  // Check for Department Directory Display Feature
- if ($webtools['lc_enable_department_directories_display_field'] == 1) {
-  require_once( plugin_dir_path( __FILE__ ).'dept-directory/programpath-cpt.php' );
-  require_once( plugin_dir_path( __FILE__ ).'dept-directory/programpath-metabox.php' );
- }
+// if ($webtools['lc_enable_department_directories_display_field'] == 1) {
+//  require_once( plugin_dir_path( __FILE__ ).'dept-directory/programpath-cpt.php' );
+//  require_once( plugin_dir_path( __FILE__ ).'dept-directory/programpath-metabox.php' );
+// }
 
- // Check for Department Directory Display Feature
+ // Check for Shared Content Feature
  if ($webtools['lc_enable_shared_content_display_field'] == 1) {
   require_once( plugin_dir_path( __FILE__ ).'shared-content/lc-shared-content-metabox.php' );
   require_once( plugin_dir_path( __FILE__ ).'shared-content/lc-rest-api-fetch.php' );
@@ -60,5 +60,5 @@
  require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-error.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/forms-detector.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/network-forms-detector.php' );
-
+ require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-capabilities.php' );
 ?>

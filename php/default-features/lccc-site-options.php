@@ -25,12 +25,15 @@ class new_lccc_base_path_setting {
   */
  function lccc_register_fields() {
   register_setting( 'general', 'lccc_base_path', 'esc_attr' );
+
   add_settings_section( 'lccc-settings', 'LCCC Settings', '__return_false', 'general' );
   add_settings_field( 'lccc_base_url_path', '<label for="lccc_base_path">'.__('Base URL Path:' , 'lccc_base_path').'</label>', array(&$this, 'lccc_fields_html') , 'general', 'lccc-settings' );
 
   register_setting( 'general', 'lccc_footer_phone', 'esc_attr' );
   register_setting( 'general', 'lccc_footer_email', 'esc_attr' );
+
   add_settings_section( 'lccc-footer-settings', 'Footer Information', '__return_false', 'general' );
+
   add_settings_field( 'lccc_footer_phone', '<label for="lccc_footer_phone">'.__('Phone Number:' , 'lccc_footer_phone').'</label>', array(&$this, 'lccc_footer_phone_field_html') , 'general', 'lccc-footer-settings' );
   add_settings_field( 'lccc_footer_email', '<label for="lccc_footer_email">'.__('Email Address:' , 'lccc_footer_email').'</label>', array(&$this, 'lccc_footer_email_field_html') , 'general', 'lccc-footer-settings' );
  }
