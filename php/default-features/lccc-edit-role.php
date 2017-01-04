@@ -10,7 +10,7 @@ function lccc_new_admin_menu(){
 		$role = $role;
 	}
 
- if($role == "editor") {
+ if($role == "lccc_editor") {
   global $submenu;
 
   // Remove themes
@@ -41,7 +41,7 @@ function lccc_adminbar_link(){
 		$role = $role;
 	}
 
-	if($role == "editor") {
+	if($role == "lccc_editor") {
   global $wp_admin_bar;
 
 	 $wp_admin_bar->remove_menu('themes');
