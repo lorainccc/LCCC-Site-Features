@@ -31,8 +31,6 @@ function lc_pending_items_page() {
     // Print site name
     echo '<h2>' . $site->blogname . '</h2>';
 
-    $page_status = '';
-
     echo '<ul style="list-style: disc; margin: 0 0 0 25px;">';
 
     $pending_items = get_pages(
@@ -48,7 +46,6 @@ function lc_pending_items_page() {
     foreach($pending_items as $pending_item) {
      echo '<a href="' . admin_url() . 'post.php?post=' . $pending_item->ID . '&action=edit" target="_blank">' . $pending_item->post_title . '</a><br />';
     }
-    $page_status = true;
    }
 
    $pending_badges = get_posts(
@@ -65,7 +62,6 @@ function lc_pending_items_page() {
     foreach($pending_badges as $pending_badge) {
      echo '<a href="' . admin_url() . 'post.php?post=' . $pending_badge->ID . '&action=edit" target="_blank">' . $pending_badge->post_title . '</a><br />';
     }
-    $page_status = true;
    }
 
    $pending_announcements = get_posts(
@@ -82,13 +78,9 @@ function lc_pending_items_page() {
     foreach($pending_announcements as $pending_announcement) {
      echo '<a href="' . admin_url() . 'post.php?post=' . $pending_announcement->ID . '&action=edit" target="_blank">' . $pending_announcement->post_title . '</a><br />';
     }
-    $page_status = true;
    }
 
-   // If no pending items are found
-   if($page_status == false){
-     echo '<li>No Pending Items Found</li>';
-    }
+  
      echo '</ul>';
 
    // Switch back to root
