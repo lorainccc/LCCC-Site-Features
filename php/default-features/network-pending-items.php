@@ -8,10 +8,10 @@
   add_menu_page(
   "LCCC Pending Items",                                               // Page Title
   "Pending Items",                                                    // Menu Title
-  'manage_options',                                                   // Capabilities
+  'manage_network_options',                                           // Capabilities
   'lccc-pending-items',                                               // Menu Slug
   'lc_pending_items_page',                                            // Function
-  plugins_url( 'lccc-site-features/assets/images/lccc-block.png' ),  // Icon URL
+  plugins_url( 'lccc-site-features/assets/images/lccc-block.png' ),   // Icon URL
   2                                                                   // Position (2 = Dashboard)
  );
 
@@ -80,7 +80,7 @@ function lc_pending_items_page() {
     }
    }
 
-  
+
      echo '</ul>';
 
    // Switch back to root
