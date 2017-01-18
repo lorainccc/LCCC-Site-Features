@@ -30,5 +30,12 @@
 
   var_dump($role_caps);
 
+  
+  echo '<h1>LCCC Super Admin Role Capabilities</h1>';
+
+  $role_caps = get_role( 'administrator' );
+
+  var_dump($role_caps);
+  
  }
 ?>
