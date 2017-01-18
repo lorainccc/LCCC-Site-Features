@@ -26,12 +26,11 @@ function lc_pending_items_page() {
 
   // Iterate through each site and find all pages.
   foreach ( $sites as $site ){
-    switch_to_blog( $site->blog_id );
 
+    switch_to_blog( $site->blog_id );
+    echo '<div style="width: 520px; float:left; margin:10px; padding: 0 3px 0 3px; border-bottom: 1px solid #a0a0a0;">';
     // Print site name
     echo '<h2>' . $site->blogname . '</h2>';
-
-    echo '<ul style="list-style: disc; margin: 0 0 0 25px;">';
 
     // Get Pending Pages
     $pending_items = get_pages(
@@ -43,10 +42,12 @@ function lc_pending_items_page() {
    $pending_items_count = count($pending_items);
 
    if ($pending_items_count != 0){
-    echo '<p>Pending Pages:</p>';
+    echo '<p style="font-weight:600;">Pending Pages:</p>';
+    echo '<ul style="list-style:disc;margin: 0 0 0 30px;">';
     foreach($pending_items as $pending_item) {
-     echo '<a href="' . admin_url() . 'post.php?post=' . $pending_item->ID . '&action=edit" target="_blank">' . $pending_item->post_title . '</a><br />';
+     echo '<li><a href="' . admin_url() . 'post.php?post=' . $pending_item->ID . '&action=edit" target="_blank">' . $pending_item->post_title . '</a></li>';
     }
+    echo '</ul>';
    }
 
    // Get Pending Badges
@@ -60,10 +61,12 @@ function lc_pending_items_page() {
    $pending_badges_count = count($pending_badges);
 
    if ($pending_badges_count != 0){
-    echo '<p>Pending Badges:</p>';
+    echo '<p style="font-weight:600;">Pending Badges:</p>';
+    echo '<ul style="list-style:disc;margin: 0 0 0 30px;">';
     foreach($pending_badges as $pending_badge) {
-     echo '<a href="' . admin_url() . 'post.php?post=' . $pending_badge->ID . '&action=edit" target="_blank">' . $pending_badge->post_title . '</a><br />';
+     echo '<li><a href="' . admin_url() . 'post.php?post=' . $pending_badge->ID . '&action=edit" target="_blank">' . $pending_badge->post_title . '</a></li>';
     }
+    echo '</ul>';
    }
 
    // Get Pending Announcements
@@ -77,10 +80,12 @@ function lc_pending_items_page() {
    $pending_announcements_count = count($pending_announcements);
 
    if ($pending_announcements_count != 0){
-    echo '<p>Pending Announcements:</p>';
+    echo '<p style="font-weight:600;">Pending Announcements:</p>';
+    echo '<ul style="list-style:disc;margin: 0 0 0 30px;">';
     foreach($pending_announcements as $pending_announcement) {
-     echo '<a href="' . admin_url() . 'post.php?post=' . $pending_announcement->ID . '&action=edit" target="_blank">' . $pending_announcement->post_title . '</a><br />';
+     echo '<li><a href="' . admin_url() . 'post.php?post=' . $pending_announcement->ID . '&action=edit" target="_blank">' . $pending_announcement->post_title . '</a></li>';
     }
+    echo '</ul>';
    }
 
    // Get Pending Revisions
@@ -94,17 +99,17 @@ function lc_pending_items_page() {
    $pending_revisions_count = count($pending_revisions);
 
    if ($pending_revisions_count != 0){
-    echo '<p>Pending Revisions:</p>';
+    echo '<p style="font-weight:600;">Pending Revisions:</p>';
+    echo '<ul style="list-style:disc;margin: 0 0 0 30px;">';
     foreach($pending_revisions as $pending_revision) {
-     echo '<a href="' . admin_url() . 'post.php?post=' . $pending_revision->ID . '&action=edit" target="_blank">' . $pending_revision->post_title . '</a><br />';
+     echo '<li><a href="' . admin_url() . 'post.php?post=' . $pending_revision->ID . '&action=edit" target="_blank">' . $pending_revision->post_title . '</a></li>';
     }
+    echo '</ul>';
    }
-
-     echo '</ul>';
 
    // Switch back to root
    restore_current_blog();
+   echo '</div>';
   }
-
 }
 ?>
