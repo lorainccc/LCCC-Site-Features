@@ -102,7 +102,7 @@ function lc_pending_items_page() {
     echo '<p style="font-weight:600;">Pending Revisions:</p>';
     echo '<ul style="list-style:disc;margin: 0 0 0 30px;">';
     foreach($pending_revisions as $pending_revision) {
-     echo '<li><a href="' . admin_url() . 'post.php?post=' . $pending_revision->ID . '&action=edit" target="_blank">' . $pending_revision->post_title . '</a></li>';
+     echo '<li><a href="' . admin_url() . 'admin.php?page=rvy-revisions&action=view&revision=' . $pending_revision->ID . '" target="_blank">' . $pending_revision->post_title . '</a></li>';
     }
     echo '</ul>';
    }
