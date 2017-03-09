@@ -42,7 +42,7 @@ function lc_show_shared_content_meta_box( $object, $box ) { ?>
    </label>
    <input type="text" name="lc_shared_content_site_url_field" id="lc_shared_content_site_url_field" value="<?php echo esc_attr( get_post_meta ( $object->ID, 'lc_shared_content_site_url_field', true ) ); ?>" size="90" />
   </p>
-  <p class="description">Site URL without the domain.  Example: <b>/program-pathways/</b> not <b>https://test.lorainccc.edu/program-pathways/</b>.</p>
+  <p class="description">Site URL without the domain.  Example: <b>/program-pathways/</b> not <b>https://www.lorainccc.edu/program-pathways/</b>.</p>
 
   <p>
    <label for="lc_shared_content_post_slug_field">
@@ -92,7 +92,7 @@ function lc_shared_content_save_info( $post_id, $post ) {
  $meta_value = get_post_meta ($post_id, $meta_key, true );
 
  update_post_meta( $post_id, $meta_key, $new_meta_value, $meta_value );
- 
+
 }
 
 

@@ -31,6 +31,7 @@ function lc_pending_items_page() {
     echo '<div style="width: 520px; float:left; margin:10px; padding: 0 3px 0 3px; border-bottom: 1px solid #a0a0a0;">';
     // Print site name
     echo '<h2>' . $site->blogname . '</h2>';
+   ;
 
     // Get Pending Pages
     $pending_items = get_pages(
@@ -107,6 +108,49 @@ function lc_pending_items_page() {
     echo '</ul>';
    }
 
+   if($site->path == '/athletics/'){
+    
+   // Get Pending Rosters
+   $pending_players = get_posts(
+    array(
+     'post_status' => 'pending',
+     'post_type'   => 'lccc_player',
+    )
+   );
+
+   $pending_players_count = count($pending_players);
+
+   if ($pending_players_count != 0){
+    echo '<p style="font-weight:600;">Pending Players:</p>';
+    echo '<ul style="list-style:disc;margin: 0 0 0 30px;">';
+    foreach($pending_players as $pending_player) {
+     echo '<li><a href="' . admin_url() . 'post.php?post=' . $pending_player->ID . '&action=edit" target="_blank">' . $pending_player->post_title . '</a></li>';
+    }
+    echo '</ul>';
+   }
+    
+    // Get Pending Sponsors
+   $pending_sponsors = get_posts(
+    array(
+     'post_status' => 'pending',
+     'post_type'   => 'sponsor',
+    )
+   );
+
+   $pending_sponsors_count = count($pending_sponsors);
+
+   if ($pending_sponsors_count != 0){
+    echo '<p style="font-weight:600;">Pending Sponsors:</p>';
+    echo '<ul style="list-style:disc;margin: 0 0 0 30px;">';
+    foreach($pending_sponsors as $pending_sponsor) {
+     echo '<li><a href="' . admin_url() . 'post.php?post=' . $pending_sponsor->ID . '&action=edit" target="_blank">' . $pending_sponsor->post_title . '</a></li>';
+    }
+    echo '</ul>';
+   }
+    
+    
+   }
+   
    // Switch back to root
    restore_current_blog();
    echo '</div>';

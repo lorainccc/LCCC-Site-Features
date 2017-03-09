@@ -58,7 +58,7 @@
  require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-edit-role.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/tiny-mce-add-styles.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-error.php' );
- require_once( plugin_dir_path( __FILE__ ).'default-features/forms-detector.php' );
+ //require_once( plugin_dir_path( __FILE__ ).'default-features/forms-detector.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/network-forms-detector.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-capabilities.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/network-pending-items.php' );
