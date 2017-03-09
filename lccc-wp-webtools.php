@@ -78,7 +78,7 @@ function lorainccc_site_features_styles() {
  wp_enqueue_style('lc_badges_styles', plugin_dir_url( __FILE__ ) . 'css/badges.css', 20);
 }
 
-add_action( 'wp_enqueue_scripts', 'lorainccc_site_features_styles' );
+add_action( 'wp_enqueue_styles', 'lorainccc_site_features_styles' );
 
 function lorainccc_site_features_wp_admin_scripts() {
  wp_enqueue_style('lc_webtools_styles', plugin_dir_url( __FILE__ ) . 'css/lc_webtools_styles.css', 20);
