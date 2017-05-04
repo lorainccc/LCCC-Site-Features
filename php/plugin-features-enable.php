@@ -9,27 +9,36 @@
  $webtools = get_option( 'lc_webtools_settings' );
 
  // Check for Gateway Menu Feature
- if ($webtools['lc_enable_gateway_menu_field'] == 1) {
+
+  // check if field is set to true or false.  Removes undefined index warning.
+  $gateway = isset($webtools['lc_enable_gateway_menu_field']) ? $webtools['lc_enable_gateway_menu_field'] : '';
+
+ if ($gateway == 1) {
   require_once( plugin_dir_path( __FILE__ ).'gateway/widget-gateway-cpt.php');
   require_once( plugin_dir_path( __FILE__ ).'gateway/widget-gateway-menu.php');
  }
 
-
+  $badge = isset($webtools['lc_enable_badge_field']) ? $webtools['lc_enable_badge_field'] : '';
+  
  // Check for Badge Feature
- if ($webtools['lc_enable_badge_field'] == 1) {
+ if ($badge == 1) {
   require_once( plugin_dir_path( __FILE__ ).'badges/badge-metabox.php');
   require_once( plugin_dir_path( __FILE__ ).'badges/badge-widget.php');
   require_once( plugin_dir_path( __FILE__ ).'badges/badge-post-type.php');
  }
 
+  $dept = isset($webtools['lc_enable_dept_contact_field']) ? $webtools['lc_enable_dept_contact_field'] : '';
+
  // Check for Department Contact Feature
- if ($webtools['lc_enable_dept_contact_field'] == 1) {
+ if ($dept == 1) {
   require_once( plugin_dir_path( __FILE__ ).'dept-contact/dept-contact-cpt.php' );
   require_once( plugin_dir_path( __FILE__ ).'dept-contact/dept-contact-metabox.php' );
  }
 
+  $programpath = isset($webtools['lc_enable_program_pathways_field']) ? $webtools['lc_enable_program_pathways_field'] : '';
+
  // Check for Program Path Feature
- if ($webtools['lc_enable_program_pathways_field'] == 1) {
+ if ($programpath == 1) {
   require_once( plugin_dir_path( __FILE__ ).'program-paths/programpath-cpt.php' );
   require_once( plugin_dir_path( __FILE__ ).'program-paths/programpath-metabox.php' );
  }
@@ -46,8 +55,10 @@
 //  require_once( plugin_dir_path( __FILE__ ).'dept-directory/programpath-metabox.php' );
 // }
 
+  $sharedcontent = isset($webtools['lc_enable_shared_content_display_field']) ? $webtools['lc_enable_shared_content_display_field'] : '';
+
  // Check for Shared Content Feature
- if ($webtools['lc_enable_shared_content_display_field'] == 1) {
+ if ($sharedcontent == 1) {
   require_once( plugin_dir_path( __FILE__ ).'shared-content/lc-shared-content-metabox.php' );
   require_once( plugin_dir_path( __FILE__ ).'shared-content/lc-rest-api-fetch.php' );
  }
@@ -62,4 +73,6 @@
  require_once( plugin_dir_path( __FILE__ ).'default-features/network-forms-detector.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-capabilities.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/network-pending-items.php' );
+// Content Approval Custom Workflow
+ require_once( plugin_dir_path( __FILE__ ).'default-features/content-approvals/content-approvals.php' );
 ?>
