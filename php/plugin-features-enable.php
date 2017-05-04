@@ -74,5 +74,5 @@
  require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-capabilities.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/network-pending-items.php' );
 // Content Approval Custom Workflow
- require_once( plugin_dir_path( __FILE__ ).'default-features/content-approvals/content-approvals.php' );
+ //require_once( plugin_dir_path( __FILE__ ).'default-features/content-approvals/content-approvals.php' );
 ?>
