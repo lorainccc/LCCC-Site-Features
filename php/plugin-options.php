@@ -125,7 +125,7 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
 
 function lc_badges_render() {
   $options = get_option( 'lc_webtools_settings' );
-  $badge = isset($options['lc_enable_badge_field']) ? $options['lc_enable_badge_field'] : ''; 
+  $badge = isset($options['lc_enable_badge_field']) ? $options['lc_enable_badge_field'] : '';
   ?>
 
  <label class="switch">
@@ -138,7 +138,7 @@ function lc_badges_render() {
 
 function lc_dept_contact_render() {
   $options = get_option( 'lc_webtools_settings' );
-  $dept = isset($options['lc_enable_badge_field']) ? $options['lc_enable_badge_field'] : ''; 
+  $dept = isset($options['lc_enable_dept_contact_field']) ? $options['lc_enable_dept_contact_field'] : '';
   ?>
 
  <label class="switch">

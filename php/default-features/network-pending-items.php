@@ -88,6 +88,25 @@ function lc_pending_items_page() {
     }
     echo '</ul>';
    }
+   
+   // Get Pending Events
+   $pending_events = get_posts(
+    array(
+     'post_status' => 'pending',
+     'post_type'   => 'lccc_events',
+    )
+   );
+
+   $pending_events_count = count($pending_events);
+
+   if ($pending_events_count != 0){
+    echo '<p style="font-weight:600;">Pending Events:</p>';
+    echo '<ul style="list-style:disc;margin: 0 0 0 30px;">';
+    foreach($pending_events as $pending_event) {
+     echo '<li><a href="' . admin_url() . 'post.php?post=' . $pending_event->ID . '&action=edit" target="_blank">' . $pending_event->post_title . '</a></li>';
+    }
+    echo '</ul>';
+   }
 
    // Get Pending Revisions
    $pending_revisions = get_posts(
@@ -147,7 +166,26 @@ function lc_pending_items_page() {
     }
     echo '</ul>';
    }
+        
     
+      // Get Crime Log
+   $pending_crimelog = get_posts(
+    array(
+     'post_status' => 'pending',
+     'post_type'   => 'crime_log',
+    )
+   );
+
+   $pending_crimelog_count = count($pending_crimelog);
+
+   if ($pending_crimelog_count != 0){
+    echo '<p style="font-weight:600;">Pending Crime Logs:</p>';
+    echo '<ul style="list-style:disc;margin: 0 0 0 30px;">';
+    foreach($pending_crimelog as $pending_log) {
+     echo '<li><a href="' . admin_url() . 'post.php?post=' . $pending_log->ID . '&action=edit" target="_blank">' . $pending_log->post_title . '</a></li>';
+    }
+    echo '</ul>';
+   }
     
    }
    
