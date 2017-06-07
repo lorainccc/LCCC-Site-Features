@@ -7,7 +7,8 @@
   *  
   *  Example: "Home > Current Students Site > Test Web Site "
   *
-  *  Header.php then adds the current site either un-linked (if home or front-page), or linked with the page or post title unlinked after it.
+  *  The page template, utlizing a template part (content-breadcrumb.php), then adds the current site either un-linked (if home or front-page), 
+  *  or linked with the page/post title unlinked after it.  Support for categories and taxonomys also is available.
   *
   */
 

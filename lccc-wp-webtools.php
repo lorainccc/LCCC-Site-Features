@@ -84,9 +84,11 @@ function lorainccc_site_features_wp_admin_scripts() {
  wp_enqueue_style('lc_webtools_styles', plugin_dir_url( __FILE__ ) . 'css/lc_webtools_styles.css', 20);
 
  // Check and see if the user is and admin or editor.  Load the following js and css if user is lccc_editor.
- if(current_user_can('publish') == false){
-  wp_enqueue_script('lc_capabilities_script', plugin_dir_url( __FILE__ ) . 'js/capabilities.js', array( 'jquery' ) );
-  wp_enqueue_style('lc_capabilities_styles', plugin_dir_url( __FILE__ ) . 'css/capabilities.css', 40);
+ if( current_user_can('administrator') == false ){
+  if( current_user_can('editor') == false ){
+   wp_enqueue_script('lc_capabilities_script', plugin_dir_url( __FILE__ ) . 'js/capabilities.js', array( 'jquery' ) );
+   wp_enqueue_style('lc_capabilities_styles', plugin_dir_url( __FILE__ ) . 'css/capabilities.css', 40);
+  }
  };
 
 }
@@ -95,5 +97,3 @@ add_action( 'admin_enqueue_scripts', 'lorainccc_site_features_wp_admin_scripts' 
 
 require_once( plugin_dir_path( __FILE__ ).'php/plugin-options.php');
 require_once( plugin_dir_path( __FILE__ ).'php/plugin-features-enable.php');
-
-
