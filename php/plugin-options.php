@@ -55,7 +55,7 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
    'lc_webtools_settings_section'                                             // Section
   );
 
-  add_settings_field(
+/*  add_settings_field(
    'lc_enable_program_pathways_field',                                        // Field ID
    __('Enable LCCC Program Pathways Menus:' , 'lorainccc'),                   // Title
    'lc_program_pathways_render',                                              // Callback
@@ -63,6 +63,14 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
    'lc_webtools_settings_section'                                             // Section
   );
 
+  add_settings_field(
+   'lc_enable_program_pathway_chart_field',                                   // Field ID
+   __('Enable LCCC Program Pathways Charts:' , 'lorainccc'),                  // Title
+   'lc_program_pathway_chart_render',                                         // Callback
+   'lc_wp_webtools_options',                                                  // Page
+   'lc_webtools_settings_section'                                             // Section
+  );*/
+  
 /*  add_settings_field(
    'lc_enable_department_directories_field',                                  // Field ID
    __('Enable LCCC Department Directories:' , 'lorainccc'),                   // Title
@@ -83,6 +91,22 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
    'lc_enable_shared_content_display_field',                                  // Field ID
    __('Enable LCCC Shared Content:' , 'lorainccc'),                           // Title
    'lc_shared_content_render',                                                // Callback
+   'lc_wp_webtools_options',                                                  // Page
+   'lc_webtools_settings_section'                                             // Section
+  );
+  
+  add_settings_field(
+   'lc_enable_success_story_field',                                           // Field ID
+   __('Enable LCCC Student Success Story Repository:' , 'lorainccc'),         // Title
+   'lc_success_story_render',                                                // Callback
+   'lc_wp_webtools_options',                                                  // Page
+   'lc_webtools_settings_section'                                             // Section
+  );
+  
+  add_settings_field(
+   'lc_enable_success_story_widget',                                          // Field ID
+   __('Enable LCCC Student Success Story Widget:' , 'lorainccc'),             // Title
+   'lc_success_story_widget_render',                                          // Callback
    'lc_wp_webtools_options',                                                  // Page
    'lc_webtools_settings_section'                                             // Section
   );
@@ -162,6 +186,19 @@ function lc_program_pathways_render() {
   <?php
  }
 
+function lc_program_pathway_chart_render() {
+  $options = get_option( 'lc_webtools_settings' );
+  $program = isset($options['lc_enable_program_pathway_chart_field']) ? $options['lc_enable_program_pathway_chart_field'] : '';
+  ?>
+
+ <label class="switch">
+  <input type="checkbox" name='lc_webtools_settings[lc_enable_program_pathway_chart_field]' <?php  checked( $program, 1); ?> value='1' style="display:none;">
+  <div class="slider round"></div>
+ </label>
+ <p class="description" id="tagline-description">Provides Program Pathways Charts on Program Specific Page.</p>
+  <?php
+ }
+
 function lc_department_directory_display_render() {
   $options = get_option( 'lc_webtools_settings' );
   $dirdisplay = isset($options['lc_enable_department_directories_field']) ? $options['lc_enable_department_directories_field'] : '';
@@ -198,6 +235,32 @@ function lc_shared_content_render() {
   <div class="slider round"></div>
  </label>
  <p class="description" id="tagline-description">Enables Shared Content field for Pages.  Allows a piece of content to be inserted at the bottom of each page the field is filled out for.</p>
+  <?php
+ }
+
+function lc_success_story_render() {
+  $options = get_option( 'lc_webtools_settings' );
+  $shared = isset($options['lc_enable_success_story_field']) ? $options['lc_enable_success_story_field'] : '';
+  ?>
+
+ <label class="switch">
+  <input type="checkbox" name='lc_webtools_settings[lc_enable_success_story_field]' <?php checked( $shared, 1); ?> value='1' style="display:none;">
+  <div class="slider round"></div>
+ </label>
+ <p class="description" id="tagline-description">Enables Student Success Story Repository.  Creates Custom Post Type that allows a list of stories to be generated.</p>
+  <?php
+ }
+
+function lc_success_story_widget_render() {
+  $options = get_option( 'lc_webtools_settings' );
+  $shared = isset($options['lc_enable_success_story_widget']) ? $options['lc_enable_success_story_widget'] : '';
+  ?>
+
+ <label class="switch">
+  <input type="checkbox" name='lc_webtools_settings[lc_enable_success_story_widget]' <?php checked( $shared, 1); ?> value='1' style="display:none;">
+  <div class="slider round"></div>
+ </label>
+ <p class="description" id="tagline-description">Enables Student Success Story Widget.  Allows selected success story to be displayed from other site.</p>
   <?php
  }
 

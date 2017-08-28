@@ -43,6 +43,13 @@
   require_once( plugin_dir_path( __FILE__ ).'program-paths/programpath-metabox.php' );
  }
 
+/* $programpathchart = isset($webtools['lc_enable_program_pathway_chart_field']) ? $webtools['lc_enable_program_pathway_chart_field'] : '';
+
+ // Check for Program Path Feature
+ if ($programpathchart == 1) {
+  require_once( plugin_dir_path( __FILE__ ).'program-path-charts/program-chart-cpt.php' );
+ }*/
+
 //  $department_directories = isset($webtools['lc_enable_department_directories_field']) ? $webtools['lc_enable_department_directories_field'] : '';
 
  // Check for Department Directory Feature
@@ -67,6 +74,21 @@
   require_once( plugin_dir_path( __FILE__ ).'shared-content/lc-rest-api-fetch.php' );
  }
 
+  $successstories = isset($webtools['lc_enable_success_story_field']) ? $webtools['lc_enable_success_story_field'] : '';
+
+ // Check for Success Story Feature
+ if ($successstories == 1) {
+  require_once( plugin_dir_path( __FILE__ ).'success-stories/lc-success-story-cpt.php' );
+  require_once( plugin_dir_path( __FILE__ ).'success-stories/lc-success-story-metabox.php' );
+  require_once( plugin_dir_path( __FILE__ ).'success-stories/lc-success-restapi-fields.php' );
+ }
+
+ $successwidget = isset($webtools['lc_enable_success_story_widget']) ? $webtools['lc_enable_success_story_widget'] : '';
+  // Check for Success Story Widget Feature
+ if ($successstories == 1) {
+  require_once( plugin_dir_path( __FILE__ ).'success-stories/lc-success-story-widget.php' );
+ }
+
  // Default features that are always loaded when the webtools plugin is activated.
  require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-site-options.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/breadcrumb-trail.php' );
@@ -78,5 +100,6 @@
  require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-capabilities.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/network-pending-items.php' );
 // Content Approval Custom Workflow
- //require_once( plugin_dir_path( __FILE__ ).'default-features/content-approvals/content-approvals.php' );
+// require_once( plugin_dir_path( __FILE__ ).'default-features/content-approvals/draft-button.php' ); 
+// require_once( plugin_dir_path( __FILE__ ).'default-features/content-approvals/content-approvals.php' );
 ?>
