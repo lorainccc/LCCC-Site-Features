@@ -48,10 +48,10 @@ class LCCC_Success_Story_Widget extends WP_Widget {
     echo ' <div class="small-12 columns">';
     echo '<h2>' . $content[0]->title->rendered . '</h2>';
     echo ' </div>';
-    echo ' <div class="small-12 medium-5 columns">';
-    echo '   <img src="' . $content[0]->better_featured_image->media_details->sizes->medium->source_url .'" alt="' . $content[0]->title->rendered . '" border="0">';
+    echo ' <div class="small-12 medium-3 columns">';
+    echo '   <img src="' . $content[0]->better_featured_image->media_details->sizes->thumbnail->source_url .'" class="float-center" alt="' . $content[0]->title->rendered . '" border="0">';
     echo ' </div>';
-    echo ' <div class="small-12 medium-7 columns">';
+    echo ' <div class="small-12 medium-9 columns">';
     echo $content[0]->excerpt->rendered;
     echo '  <p><a href="' . $content[0]->link . '">' . $content[0]->lc_success_story_url_label_field . '</a></p>';
     echo ' </div>';
