@@ -26,7 +26,7 @@
   require_once( plugin_dir_path( __FILE__ ).'badges/badge-widget.php');
   require_once( plugin_dir_path( __FILE__ ).'badges/badge-post-type.php');
  }
-
+/*
   $dept = isset($webtools['lc_enable_dept_contact_field']) ? $webtools['lc_enable_dept_contact_field'] : '';
 
  // Check for Department Contact Feature
@@ -43,25 +43,26 @@
   require_once( plugin_dir_path( __FILE__ ).'program-paths/programpath-metabox.php' );
  }
 
-/* $programpathchart = isset($webtools['lc_enable_program_pathway_chart_field']) ? $webtools['lc_enable_program_pathway_chart_field'] : '';
+ $programpathchart = isset($webtools['lc_enable_program_pathway_chart_field']) ? $webtools['lc_enable_program_pathway_chart_field'] : '';
 
  // Check for Program Path Feature
  if ($programpathchart == 1) {
   require_once( plugin_dir_path( __FILE__ ).'program-path-charts/program-chart-cpt.php' );
- }*/
+ }
 
-//  $department_directories = isset($webtools['lc_enable_department_directories_field']) ? $webtools['lc_enable_department_directories_field'] : '';
+  $department_directories = isset($webtools['lc_enable_department_directories_field']) ? $webtools['lc_enable_department_directories_field'] : '';
 
  // Check for Department Directory Feature
- /*if ($department_directories == 1) {
+ if ($department_directories == 1) {
   require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-cpt.php' );
   require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-metabox.php' );
+  require_once( plugin_dir_path( __FILE__ ).'dept-directory/lc-dept-directory-restapi-fields.php' );
  }
-*/
-//  $department_dir_display = isset($webtools['lc_enable_department_directories_display_field']) ? $webtools['lc_enable_department_directories_display_field'] : '';
+
+  $department_dir_display = isset($webtools['lc_enable_department_directories_display_field']) ? $webtools['lc_enable_department_directories_display_field'] : '';
 
  // Check for Department Directory Display Feature
- /*if ($department_dir_display == 1) {
+ if ($department_dir_display == 1) {
   require_once( plugin_dir_path( __FILE__ ).'dept-directory/programpath-cpt.php' );
   require_once( plugin_dir_path( __FILE__ ).'dept-directory/programpath-metabox.php' );
  }*/
@@ -89,6 +90,13 @@
   require_once( plugin_dir_path( __FILE__ ).'success-stories/lc-success-story-widget.php' );
  }
 
+ $socialmedia = isset($webtools['lc_enable_social_media_fields']) ? $webtools['lc_enable_social_media_fields'] : '';
+  // Check for Success Story Widget Feature
+ if ($socialmedia == 1) {
+  require_once( plugin_dir_path( __FILE__ ).'social-media/lc-social-media-links.php' );
+ }
+
+
  // Default features that are always loaded when the webtools plugin is activated.
  require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-site-options.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/breadcrumb-trail.php' );
@@ -99,6 +107,7 @@
  require_once( plugin_dir_path( __FILE__ ).'default-features/network-forms-detector.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-capabilities.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/network-pending-items.php' );
+
 // Content Approval Custom Workflow
 // require_once( plugin_dir_path( __FILE__ ).'default-features/content-approvals/draft-button.php' ); 
 // require_once( plugin_dir_path( __FILE__ ).'default-features/content-approvals/content-approvals.php' );

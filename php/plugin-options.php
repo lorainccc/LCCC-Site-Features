@@ -47,13 +47,13 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
    'lc_webtools_settings_section'                                             // Section
   );
 
-  add_settings_field(
+/*  add_settings_field(
    'lc_enable_dept_contact_field',                                            // Field ID
    __('Enable LCCC Department Contact Box:' , 'lorainccc'),                   // Title
    'lc_dept_contact_render',                                                  // Callback
    'lc_wp_webtools_options',                                                  // Page
    'lc_webtools_settings_section'                                             // Section
-  );
+  );*/
 
 /*  add_settings_field(
    'lc_enable_program_pathways_field',                                        // Field ID
@@ -110,6 +110,15 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
    'lc_wp_webtools_options',                                                  // Page
    'lc_webtools_settings_section'                                             // Section
   );
+  
+  add_settings_field(
+   'lc_enable_social_media_fields',                                           // Field ID
+   __('Enable Social Media Fields:' , 'lorainccc'),                           // Title
+   'lc_social_media_fields_render',                                           // Callback
+   'lc_wp_webtools_options',                                                  // Page
+   'lc_webtools_settings_section'                                             // Section
+  );
+  
  }
 
 
@@ -264,4 +273,16 @@ function lc_success_story_widget_render() {
   <?php
  }
 
+function lc_social_media_fields_render() {
+  $options = get_option( 'lc_webtools_settings' );
+  $shared = isset($options['lc_enable_social_media_fields']) ? $options['lc_enable_social_media_fields'] : '';
+  ?>
+ <label class="switch">
+  <input type="checkbox" name='lc_webtools_settings[lc_enable_social_media_fields]' <?php checked( $shared, 1); ?> value='1' style="display:none;">
+  <div class="slider round"></div>
+ </label>
+ <p class="description" id="tagline-description">Enables Social Media Fields on the General Settings page.  Allows the site to have social media account links available for use in the theme.</p>
+  <?php
+ }
+ 
 ?>
