@@ -29,6 +29,9 @@ class new_lccc_base_path_setting {
   add_settings_section( 'lccc-settings', 'LCCC Settings', '__return_false', 'general' );
   add_settings_field( 'lccc_base_url_path', '<label for="lccc_base_path">'.__('Base URL Path:' , 'lccc_base_path').'</label>', array(&$this, 'lccc_fields_html') , 'general', 'lccc-settings' );
 
+  register_setting( 'general', 'lc_blog_archive_title', 'esc_attr' );
+  add_settings_field( 'lc_blog_archive_title', '<label for="lc_blog_archive_title">' . __('Blog Archive Page Title:', 'lc_blog_archive_title').'</label>', array(&$this, 'lc_blog_archive_title_field_html'), 'general', 'lccc-settings');
+  
   register_setting( 'general', 'lccc_footer_phone', 'esc_attr' );
   register_setting( 'general', 'lccc_footer_email', 'esc_attr' );
 
@@ -36,6 +39,7 @@ class new_lccc_base_path_setting {
 
   add_settings_field( 'lccc_footer_phone', '<label for="lccc_footer_phone">'.__('Phone Number:' , 'lccc_footer_phone').'</label>', array(&$this, 'lccc_footer_phone_field_html') , 'general', 'lccc-footer-settings' );
   add_settings_field( 'lccc_footer_email', '<label for="lccc_footer_email">'.__('Email Address:' , 'lccc_footer_email').'</label>', array(&$this, 'lccc_footer_email_field_html') , 'general', 'lccc-footer-settings' );
+
  }
 
  function lccc_fields_html() {
@@ -44,7 +48,12 @@ class new_lccc_base_path_setting {
   echo '<p class="description" id="tagline-description">Enter the URL path <strong>(without starting or trailing /)</strong> to represent where this site exists in the website.</p>';
   echo '<p class="description" id="basepath-description"><strong>Example: student-resources/academic-resources/academic-divisions</strong></p>';
  }
-
+ 
+ function lc_blog_archive_title_field_html() {
+  $value = get_option( 'lc_blog_archive_title', '' );
+  echo '<input type="text" id="lc_blog_archive_title" name="lc_blog_archive_title" value="' . $value . '" size="75" />';
+  echo '<p class="description" id="tagline-description">Enter the title for the blog archive page.  This is the page that will display the list of blog posts. <i><b>Note:</b> The blog feature may not be enabled on all sites.</i></p>';
+ }
 
  function lccc_footer_phone_field_html() {
   $value = get_option( 'lccc_footer_phone', '' );
