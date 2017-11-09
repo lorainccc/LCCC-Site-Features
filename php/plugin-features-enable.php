@@ -34,7 +34,7 @@
   require_once( plugin_dir_path( __FILE__ ).'dept-contact/dept-contact-cpt.php' );
   require_once( plugin_dir_path( __FILE__ ).'dept-contact/dept-contact-metabox.php' );
  }
-
+*/
   $programpath = isset($webtools['lc_enable_program_pathways_field']) ? $webtools['lc_enable_program_pathways_field'] : '';
 
  // Check for Program Path Feature
@@ -48,8 +48,10 @@
  // Check for Program Path Feature
  if ($programpathchart == 1) {
   require_once( plugin_dir_path( __FILE__ ).'program-path-charts/program-chart-cpt.php' );
- }
-
+  require_once( plugin_dir_path( __FILE__ ).'program-path-charts/program-chart-metabox.php' );		
+  require_once( plugin_dir_path( __FILE__ ).'program-path-charts/program-chart-widget.php' );
+	}
+/*
   $department_directories = isset($webtools['lc_enable_department_directories_field']) ? $webtools['lc_enable_department_directories_field'] : '';
 
  // Check for Department Directory Feature
