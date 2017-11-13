@@ -48,6 +48,8 @@
  // Check for Program Path Feature
  if ($programpathchart == 1) {
   require_once( plugin_dir_path( __FILE__ ).'program-path-charts/program-chart-cpt.php' );
+  require_once( plugin_dir_path( __FILE__ ).'program-path-charts/program-chart-metabox.php' );
+  require_once( plugin_dir_path( __FILE__ ).'program-path-charts/program-chart-widget.php' );
  }
 
 /*  $department_directories = isset($webtools['lc_enable_department_directories_field']) ? $webtools['lc_enable_department_directories_field'] : '';
