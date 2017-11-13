@@ -75,13 +75,13 @@ function run_lccc_wp_webtools() {
 run_lccc_wp_webtools();
 
 function lorainccc_site_features_styles() {
- wp_enqueue_style('lc_badges_styles', plugin_dir_url( __FILE__ ) . 'css/badges.css', 20);
+ wp_enqueue_style('lc_site_features_styles', plugin_dir_url( __FILE__ ) . 'css/lc_site_features_styles.css', 20);
 }
 
 add_action( 'wp_enqueue_scripts', 'lorainccc_site_features_styles' );
 
 function lorainccc_site_features_wp_admin_scripts() {
- wp_enqueue_style('lc_webtools_styles', plugin_dir_url( __FILE__ ) . 'css/lc_webtools_styles.css', 20);
+ wp_enqueue_style('lc_admin_features_styles', plugin_dir_url( __FILE__ ) . 'css/lc_admin_styles.css', 20);
 
  // Check and see if the user is and admin or editor.  Load the following js and css if user is lccc_editor.
  if( current_user_can('administrator') == false ){

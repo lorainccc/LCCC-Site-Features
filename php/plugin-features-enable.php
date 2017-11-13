@@ -50,7 +50,7 @@
   require_once( plugin_dir_path( __FILE__ ).'program-path-charts/program-chart-cpt.php' );
  }
 
-  $department_directories = isset($webtools['lc_enable_department_directories_field']) ? $webtools['lc_enable_department_directories_field'] : '';
+/*  $department_directories = isset($webtools['lc_enable_department_directories_field']) ? $webtools['lc_enable_department_directories_field'] : '';
 
  // Check for Department Directory Feature
  if ($department_directories == 1) {
