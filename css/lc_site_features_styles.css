@@ -163,7 +163,7 @@
 /* Success Story Widget Styles */
 
 h3.success-story{
-	font-size: 1.225rem;
+	font-size: 1.225rem !important;
 }
 
 .rounded-drop{
