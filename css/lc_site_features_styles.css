@@ -157,3 +157,18 @@
 	text-transform: uppercase;
 	hyphens: auto;
 }
+
+/*  End Program Charts Styles */
+
+/* Success Story Widget Styles */
+
+.rounded-drop{
+	padding: 20px;
+	margin: 15px 0;
+	border-radius: 0 0 50px 0;
+	box-shadow: 10px 12px 28px -4px rgba(200,200,200,1);
+	-webkit-box-shadow: 10px 12px 28px -4px rgba(200,200,200,1);
+ -moz-box-shadow: 10px 12px 28px -4px rgba(200,200,200,1);
+}
+
+/* End Success Story Widget Styles */
