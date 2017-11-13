@@ -48,7 +48,7 @@ class LCCC_Success_Story_Widget extends WP_Widget {
 
     echo '<div class="row medium-collapse" data-equalizer style="border-bottom: 2px solid #ffc600;">';
 				echo '  <div class="small-12 medium-3 columns" data-equalizer-watch>';
-    echo '   <img src="' . $content[0]->better_featured_image->media_details->sizes->medium->source_url .'" style="width:100%;" class="float-right" alt="' . $content[0]->title->rendered . '" border="0">';
+    echo '   <img src="' . $content[0]->better_featured_image->media_details->sizes->medium->source_url .'" style="width:100%; height:100%;" class="float-right" alt="' . $content[0]->title->rendered . '" border="0">';
 				echo '  </div>';
 				echo '  <div class="small-12 medium-9 columns" data-equalizer-watch style="box-shadow:inset 0 0 10px #e3e3e3;">';
 				echo '    <div class="row" style="background: #0c3b78;">';
@@ -59,7 +59,7 @@ class LCCC_Success_Story_Widget extends WP_Widget {
 				echo '    </div>';
 				echo '    <div class="row">';
 				echo '      <div class="small-12 columns">';
-	   echo '			      <h3>' . $content[0]->title->rendered . '</h3>';	
+	   echo '			      <h3 class="success-story">' . $content[0]->title->rendered . '</h3>';	
 				echo $content[0]->excerpt->rendered;
 	   echo '         <p><a href="' . $content[0]->link . '">' . $content[0]->lc_success_story_url_label_field . '</a></p>';	
 		  echo '      </div>';
