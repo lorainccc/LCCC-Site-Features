@@ -162,6 +162,10 @@
 
 /* Success Story Widget Styles */
 
+h3.success-story{
+	font-size: 1.225rem;
+}
+
 .rounded-drop{
 	padding: 20px;
 	margin: 15px 0;
