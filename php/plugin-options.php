@@ -62,7 +62,7 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
    'lc_wp_webtools_options',                                                  // Page
    'lc_webtools_settings_section'                                             // Section
   );
-/* 
+ 
   add_settings_field(
    'lc_enable_program_pathway_chart_field',                                   // Field ID
    __('Enable LCCC Program Pathways Charts:' , 'lorainccc'),                  // Title
@@ -70,7 +70,7 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
    'lc_wp_webtools_options',                                                  // Page
    'lc_webtools_settings_section'                                             // Section
   );
-  
+ /* 
   add_settings_field(
    'lc_enable_department_directories_field',                                  // Field ID
    __('Enable LCCC Department Directories:' , 'lorainccc'),                   // Title
