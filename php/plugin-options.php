@@ -300,7 +300,7 @@ function lc_page_templates_list(){
 	 <div style="display:block; width:100%; float:left; border-bottom: 1px solid #696969; margin: 0 0 20px 0;">
   <img style="float:right;" src="<?php echo str_replace('/php/', '', plugin_dir_url( __FILE__ ))?>/assets/images/lccc-logo.png" border="0">
   <h1 style="float:left; padding: 20px 0 0 0;">List of Current Site Templates</h1>
-		<h4 style="float:left; margin:15px 0;">This list is determined by the design of the theme.  It <em><strong>will only be consistent</strong></em> with other sites utilizing the same theme.</h4>
+		<h4 style="float:left; margin:15px 0;">This list is determined by the theme.  It <em><strong>will only be consistent</strong></em> with other sites utilizing the same theme.</h4>
  </div>
 <?php
 		
