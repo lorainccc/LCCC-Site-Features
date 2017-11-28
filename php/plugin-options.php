@@ -16,6 +16,14 @@ function lc_add_wp_webtools_menu_page() {
   plugins_url( 'lccc-site-features/assets/images/lccc-block.png' ),     // Icon URL
   2                                                                   // Position (2 = Dashboard)
  );
+	 add_submenu_page(
+		'lccc-wp-webtools',																																																		  // Parent Slug (Page to nest under)
+  __( 'Current Site Page Templates', 'lorainccc' ),                      // Page Title
+  'Page Templates',                                                      // Menu Title
+  'manage_options',                                                      // Capabilities
+  'lc-page-templates',                                                   // Menu Slug
+  'lc_page_templates_list'                                               // Function
+ );
 }
 
 add_action( 'admin_menu', 'lc_add_wp_webtools_menu_page' );
@@ -62,7 +70,7 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
    'lc_wp_webtools_options',                                                  // Page
    'lc_webtools_settings_section'                                             // Section
   );
-
+ 
   add_settings_field(
    'lc_enable_program_pathway_chart_field',                                   // Field ID
    __('Enable LCCC Program Pathways Charts:' , 'lorainccc'),                  // Title
@@ -70,8 +78,8 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
    'lc_wp_webtools_options',                                                  // Page
    'lc_webtools_settings_section'                                             // Section
   );
-  
-/*  add_settings_field(
+ /* 
+  add_settings_field(
    'lc_enable_department_directories_field',                                  // Field ID
    __('Enable LCCC Department Directories:' , 'lorainccc'),                   // Title
    'lc_department_directory_display_render',                                  // Callback
@@ -285,4 +293,23 @@ function lc_social_media_fields_render() {
   <?php
  }
  
+// Render out Page Templates List
+
+function lc_page_templates_list(){
+	?>
+	 <div style="display:block; width:100%; float:left; border-bottom: 1px solid #696969; margin: 0 0 20px 0;">
+  <img style="float:right;" src="<?php echo str_replace('/php/', '', plugin_dir_url( __FILE__ ))?>/assets/images/lccc-logo.png" border="0">
+  <h1 style="float:left; padding: 20px 0 0 0;">List of Current Site Templates</h1>
+		<h4 style="float:left; margin:15px 0;">This list is determined by the design of the theme.  It <em><strong>will only be consistent</strong></em> with other sites utilizing the same theme.</h4>
+ </div>
+<?php
+		
+		// Retrive list of current page templates (based upon theme).
+		
+	$templates = get_page_templates();
+	foreach ( $templates as $template_name => $template_filename ) {
+		echo "<p style='width:350px; float:left; margin: 10px 15px;'>$template_name ($template_filename)</p>";
+	}
+}
+
 ?>
