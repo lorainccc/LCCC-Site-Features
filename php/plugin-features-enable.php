@@ -109,6 +109,7 @@
  require_once( plugin_dir_path( __FILE__ ).'default-features/network-forms-detector.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-capabilities.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/network-pending-items.php' );
+ require_once( plugin_dir_path( __FILE__ ).'default-features/lc-search-widget.php' );
 
 // Content Approval Custom Workflow
 // require_once( plugin_dir_path( __FILE__ ).'default-features/content-approvals/draft-button.php' ); 
