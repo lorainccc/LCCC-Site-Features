@@ -35,6 +35,19 @@ function lc_show_program_path_info_meta_box( $object, $box ) { ?>
 
  <?php wp_nonce_field( basename( __FILE__ ), 'lc_program_path_post_nonce' ); ?>
 
+	<script>
+jQuery(document).ready(function($){
+		    $('.icon-color-field').each(function(){
+        		$(this).wpColorPicker();
+    		    });
+		});
+ </script>
+<style>
+	.wp-picker-container{
+		margin: 15px 0 0 0;
+	}
+</style>
+
   <p>
    <label for="lc_program_path_link_label_field">
     <?php _e( "Program Path More Information Link Label: ", "lorainccc" ); ?>
@@ -47,8 +60,21 @@ function lc_show_program_path_info_meta_box( $object, $box ) { ?>
     <?php _e( "Program Path More Information Link: ", "lorainccc" ); ?>
    </label>
    <input type="text" name="lc_program_path_link_field" id="lc_program_path_link_field" value="<?php echo esc_attr( get_post_meta ( $object->ID, 'lc_program_path_link_field', true ) ); ?>" size="30" />
-   <br/><blockquote><i>The link does not need to contain the domain name, unless linking to an website.  If linking internally the path can exclude https://www.lorainccc.edu. </i><br/><strong>Example: /student-resources/</strong></blockquote>
-  </p>
+   <br/>
+		</p>
+   <blockquote><i>The link does not need to contain the domain name, unless linking to an website.  If linking internally the path can exclude https://www.lorainccc.edu. </i><br/><strong>Example: /student-resources/</strong></blockquote>
+
+			<div>
+				<label for="lc_progam_path_icon_color_field">
+					<?php _e( "Program Path Icon Background Color: ", "lorainccc" ); ?>
+				</label>
+			</div>
+			<div style="margin: 0 0 0 15px;">
+				<input class="icon-color-field" type="text" name="lc_progam_path_icon_color_field" value="<?php echo esc_attr( get_post_meta ( $object->ID, 'lc_progam_path_icon_color_field', true ) ); ?>"/>
+			</div>
+			<blockquote>If the featured image is an icon, use this field to create a filled background behind the icon.</blockquote>
+
+  
 
  <?php
 }
@@ -79,12 +105,24 @@ function lc_program_path_save_info( $post_id, $post ) {
 
  update_post_meta( $post_id, $meta_key, $new_meta_value, $meta_value );
 
-  /* Path Link Label Field */
+ /* Path Link Label Field */
  /* Get the posted data and sanitize it for use as a date value. */
  $new_meta_value = ( isset( $_POST['lc_program_path_link_label_field'] ) ? sanitize_text_field($_POST['lc_program_path_link_label_field'] ) : '' );
 
  /* Get the meta key. */
  $meta_key = 'lc_program_path_link_label_field';
+
+  /* Get the meta value of the custom field key. */
+ $meta_value = get_post_meta ($post_id, $meta_key, true );
+
+ update_post_meta( $post_id, $meta_key, $new_meta_value, $meta_value );
+	
+	/* Icon Color Background Field */
+ /* Get the posted data and sanitize it for use as a date value. */
+ $new_meta_value = ( isset( $_POST['lc_progam_path_icon_color_field'] ) ? sanitize_text_field($_POST['lc_progam_path_icon_color_field'] ) : '' );
+
+ /* Get the meta key. */
+ $meta_key = 'lc_progam_path_icon_color_field';
 
   /* Get the meta value of the custom field key. */
  $meta_value = get_post_meta ($post_id, $meta_key, true );
@@ -98,7 +136,7 @@ function update_program_path_meta_values( $post_id, $meta_key, $new_meta_value, 
 
   /* If a new meta value was added and there was no previous value, add it. */
  if ( $new_meta_value && '' == $meta_value )
-   add_post_meta( $post_id, $meta_key, $new_meta_value, true );
+  add_post_meta( $post_id, $meta_key, $new_meta_value, true );
 
  /* If the new meta value was added and there was no previous value, add it. */
  elseif ( $new_meta_value && $new_meta_value != $meta_value )

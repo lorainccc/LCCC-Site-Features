@@ -55,4 +55,44 @@ function lc_program_pathways() {
 }
 add_action( 'init', 'lc_program_pathways', 0 );
 
+// Register Custom Taxonomy
+function program_path_categories() {
+
+	$labels = array(
+		'name'                       => _x( 'Program Path Categories', 'Taxonomy General Name', 'lorainccc' ),
+		'singular_name'              => _x( 'Program Path Category', 'Taxonomy Singular Name', 'lorainccc' ),
+		'menu_name'                  => __( 'Program Path Category', 'lorainccc' ),
+		'all_items'                  => __( 'All Program Path Categories', 'lorainccc' ),
+		'parent_item'                => __( 'Program Path Category', 'lorainccc' ),
+		'parent_item_colon'          => __( 'Program Path Category Item:', 'lorainccc' ),
+		'new_item_name'              => __( 'New Program Path Category', 'lorainccc' ),
+		'add_new_item'               => __( 'Add New Program Path Category', 'lorainccc' ),
+		'edit_item'                  => __( 'Edit Program Path Category', 'lorainccc' ),
+		'update_item'                => __( 'Update Program Path Category', 'lorainccc' ),
+		'view_item'                  => __( 'View Program Path Category', 'lorainccc' ),
+		'separate_items_with_commas' => __( 'Separate items with commas', 'lorainccc' ),
+		'add_or_remove_items'        => __( 'Add or remove items', 'lorainccc' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'lorainccc' ),
+		'popular_items'              => __( 'Popular Items', 'lorainccc' ),
+		'search_items'               => __( 'Search Program Path Categories', 'lorainccc' ),
+		'not_found'                  => __( 'Not Found', 'lorainccc' ),
+		'no_terms'                   => __( 'No items', 'lorainccc' ),
+		'items_list'                 => __( 'Items list', 'lorainccc' ),
+		'items_list_navigation'      => __( 'Items list navigation', 'lorainccc' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+		'show_in_rest'               => true,
+	);
+	register_taxonomy( 'program_path', array( 'post' ), $args );
+
+}
+add_action( 'init', 'program_path_categories', 0 );
+
 ?>

@@ -82,7 +82,11 @@ add_action( 'wp_enqueue_scripts', 'lorainccc_site_features_styles' );
 
 function lorainccc_site_features_wp_admin_scripts() {
  wp_enqueue_style('lc_admin_features_styles', plugin_dir_url( __FILE__ ) . 'css/lc_admin_styles.css', 20);
-
+	
+	/* Adding in WordPress Color Picker API Support */
+	wp_enqueue_style( 'wp-color-picker' );
+	wp_enqueue_script( 'wp-color-picker' );
+	
  // Check and see if the user is and admin or editor.  Load the following js and css if user is lccc_editor.
  if( current_user_can('administrator') == false ){
   if( current_user_can('editor') == false ){
@@ -90,10 +94,11 @@ function lorainccc_site_features_wp_admin_scripts() {
    wp_enqueue_style('lc_capabilities_styles', plugin_dir_url( __FILE__ ) . 'css/capabilities.css', 40);
   }
  };
-
 }
 
 add_action( 'admin_enqueue_scripts', 'lorainccc_site_features_wp_admin_scripts' );
+
+
 
 require_once( plugin_dir_path( __FILE__ ).'php/plugin-options.php');
 require_once( plugin_dir_path( __FILE__ ).'php/plugin-features-enable.php');
