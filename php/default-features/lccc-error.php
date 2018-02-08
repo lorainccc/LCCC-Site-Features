@@ -34,7 +34,7 @@ class LCCC_four_O_four_Widget extends WP_Widget {
 										 //foreach ( $pages as $page ){
 															//echo $page->content->rendered;
 														echo '<p>The page you have requested has moved or is no longer available on our website. Please use the site search below or visit our <a href="/about/a-z-index">A-Z Index</a> for a list of our most popular pages.</p>';
-														echo '<a class="button" href="https://test.lorainccc.edu/about/a-z-index/">A-Z Index</a>';
+														echo '<a class="button" href="/about/a-z-index/">A-Z Index</a>';
 											//}
         echo $args['after_widget'];
     }
