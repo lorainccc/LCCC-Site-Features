@@ -26,7 +26,7 @@ function lc_add_wp_webtools_menu_page() {
  );
 	add_submenu_page(
 		'lccc-wp-webtools',																																																		  // Parent Slug (Page to nest under)
-  __( 'Current Site Page Templates', 'lorainccc' ),                      // Page Title
+  __( 'Current Site List of Files in Upload Directory', 'lorainccc' ),   // Page Title
   'Media Files',                                                         // Menu Title
   'manage_options',                                                      // Capabilities
   'lc-media-files',                                                   			// Menu Slug
@@ -348,7 +348,7 @@ function lc_media_files_list(){
 				
 				foreach($months as $month){
 					if( $month != '.' && $month != '..' ){
-						echo '<div style="width:350px; margin: 10px 5px; float:left; border-right: solid 1px #000;">' ;
+						echo '<div style="width:350px; margin: 10px 5px; float:left; border-right: solid 1px #000;">';
 						echo '<b>' . $month . '</b>';
 						$month_path = $year_path . '/' . $month;
 						
@@ -362,10 +362,10 @@ function lc_media_files_list(){
 								echo '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb';
 							}
 						}
-
+							echo '</div>';
 					}
 				}
-						echo '</div>';
+						
 			}	
 		}
 	}
