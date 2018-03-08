@@ -24,6 +24,14 @@ function lc_add_wp_webtools_menu_page() {
   'lc-page-templates',                                                   // Menu Slug
   'lc_page_templates_list'                                               // Function
  );
+	add_submenu_page(
+		'lccc-wp-webtools',																																																		  // Parent Slug (Page to nest under)
+  __( 'Current Site Page Templates', 'lorainccc' ),                      // Page Title
+  'Media Files',                                                         // Menu Title
+  'manage_options',                                                      // Capabilities
+  'lc-media-files',                                                   			// Menu Slug
+  'lc_media_files_list'                                                  // Function
+ );
 }
 
 add_action( 'admin_menu', 'lc_add_wp_webtools_menu_page' );
@@ -310,6 +318,58 @@ function lc_page_templates_list(){
 	foreach ( $templates as $template_name => $template_filename ) {
 		echo "<p style='width:350px; float:left; margin: 10px 15px;'>$template_name ($template_filename)</p>";
 	}
+}
+
+// Render out Media Files List
+function lc_media_files_list(){
+
+ echo '<h1>Media Files in this site</h1>';
+	echo '<p>File sizes are shown in kilobytes (kb)</p>';
+
+ $upload_dir = wp_upload_dir();
+	
+	$media_dir = ( $upload_dir['basedir'] );
+ 
+	$media_url = ( $upload_dir['baseurl'] );
+		
+	//echo  $media_dir;
+
+	$years = scandir($media_dir);
+	
+	foreach($years as $year){
+		$year_path = $media_dir . '/' . $year;
+	 if ($year != '.' && $year != '..' ){
+			if ( is_dir($year_path) ){
+				echo '<div style="width:100%; margin:10px 5px; clear:both;">';
+				echo '<h3>' . $year . '</h3>';
+				echo '</div>';
+				
+				$months = scandir($year_path)	;
+				
+				foreach($months as $month){
+					if( $month != '.' && $month != '..' ){
+						echo '<div style="width:275px; margin: 10px 5px; float:left; border-right: solid 1px #000;">' ;
+						echo '<b>' . $month . '</b>';
+						$month_path = $year_path . '/' . $month;
+						
+						$files = scandir($month_path);
+						
+						foreach($files as $file){
+							if( $file != '.' && $file != '..' ){
+								// Date Stamp
+								// | ' . date ( "n-j-Y g:i A", filemtime($media_dir . '/' . $year . '/' . $month . '/' . $file ) ) . ' 
+								
+								echo '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb';
+							}
+						}
+
+					}
+				}
+						echo '</div>';
+			}	
+		}
+	}
+
 }
 
 ?>
