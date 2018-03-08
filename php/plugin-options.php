@@ -359,7 +359,13 @@ function lc_media_files_list(){
 								// Date Stamp
 								// | ' . date ( "n-j-Y g:i A", filemtime($media_dir . '/' . $year . '/' . $month . '/' . $file ) ) . ' 
 								
-								echo '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb';
+								echo '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb | ';
+								$name = str_replace(' ', '-', str_replace('.pdf', '', str_replace('.gif', '', str_replace('.png', '', str_replace('.jpg', '', $file) ) ) ) );
+									if(lc_get_attachment_by_name( $name )){
+										echo 'Exists in Db.';
+									}else{
+										echo 'Not in Db.';
+									}
 							}
 						}
 							echo '</div>';
@@ -370,6 +376,23 @@ function lc_media_files_list(){
 		}
 	}
 
+}
+
+if( ! ( function_exists( 'lc_get_attachment_by_name' ) ) ) {
+    function lc_get_attachment_by_name( $post_name ) {
+        $args = array(
+            'posts_per_page' => 1,
+            'post_type'      => 'attachment',
+												'post_status'				=> 'inherit',
+            'post_name'      => trim ( $post_name ),
+        );
+        $get_attachment = new WP_Query( $args );
+
+        if ( $get_attachment->posts[0] )
+            return $get_attachment->posts[0];
+        else
+          return false;
+    }
 }
 
 ?>
