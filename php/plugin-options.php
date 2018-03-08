@@ -359,13 +359,8 @@ function lc_media_files_list(){
 								// Date Stamp
 								// | ' . date ( "n-j-Y g:i A", filemtime($media_dir . '/' . $year . '/' . $month . '/' . $file ) ) . ' 
 								
-								echo '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb | ';
-								$name = str_replace(' ', '-', str_replace('.pdf', '', str_replace('.gif', '', str_replace('.png', '', str_replace('.jpg', '', $file) ) ) ) );
-									if(lc_get_attachment_by_name( $name )){
-										echo 'Exists in Db.';
-									}else{
-										echo 'Not in Db.';
-									}
+								echo '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb ';
+
 							}
 						}
 							echo '</div>';
