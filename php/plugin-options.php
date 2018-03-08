@@ -348,7 +348,7 @@ function lc_media_files_list(){
 				
 				foreach($months as $month){
 					if( $month != '.' && $month != '..' ){
-						echo '<div style="width:275px; margin: 10px 5px; float:left; border-right: solid 1px #000;">' ;
+						echo '<div style="width:350px; margin: 10px 5px; float:left; border-right: solid 1px #000;">' ;
 						echo '<b>' . $month . '</b>';
 						$month_path = $year_path . '/' . $month;
 						
