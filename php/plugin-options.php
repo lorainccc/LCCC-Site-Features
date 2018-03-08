@@ -348,19 +348,29 @@ function lc_media_files_list(){
 				
 				foreach($months as $month){
 					if( $month != '.' && $month != '..' ){
-						echo '<div style="width:350px; margin: 10px 5px; float:left; border-right: solid 1px #000;">';
+						echo '<div style="width:375px; margin: 10px 5px; float:left; border-right: solid 1px #000;">';
 						echo '<b>' . $month . '</b>';
 						$month_path = $year_path . '/' . $month;
 						
 						$files = scandir($month_path);
+						
+						$file_counter = 0;
 						
 						foreach($files as $file){
 							if( $file != '.' && $file != '..' ){
 								// Date Stamp
 								// | ' . date ( "n-j-Y g:i A", filemtime($media_dir . '/' . $year . '/' . $month . '/' . $file ) ) . ' 
 								
-								echo '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb ';
-
+								if($file_counter % 2 == 0){
+									
+								echo '<p style="padding:3px; margin: 2px;"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</p>';
+								
+								}else{
+									
+								echo '<p style="background: #d3d3d3; padding:3px; margin: 2px;"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</p>';
+									
+								}
+								$file_counter++;
 							}
 						}
 							echo '</div>';
