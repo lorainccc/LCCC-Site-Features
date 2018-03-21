@@ -52,19 +52,19 @@
   require_once( plugin_dir_path( __FILE__ ).'program-path-charts/program-chart-widget.php' );
  }
 
-/*  $department_directories = isset($webtools['lc_enable_department_directories_field']) ? $webtools['lc_enable_department_directories_field'] : '';
+//  $department_directories = isset($webtools['lc_enable_department_directories_field']) ? $webtools['lc_enable_department_directories_field'] : '';
 
  // Check for Department Directory Feature
- if ($department_directories == 1) {
+/* if ($department_directories == 1) {
   require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-cpt.php' );
   require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-metabox.php' );
   require_once( plugin_dir_path( __FILE__ ).'dept-directory/lc-dept-directory-restapi-fields.php' );
  }
 
-  $department_dir_display = isset($webtools['lc_enable_department_directories_display_field']) ? $webtools['lc_enable_department_directories_display_field'] : '';
+  $department_dir_display = isset($webtools['lc_enable_department_directories_display_field']) ? $webtools['lc_enable_department_directories_display_field'] : '';*/
 
  // Check for Department Directory Display Feature
- if ($department_dir_display == 1) {
+/* if ($department_dir_display == 1) {
   require_once( plugin_dir_path( __FILE__ ).'dept-directory/programpath-cpt.php' );
   require_once( plugin_dir_path( __FILE__ ).'dept-directory/programpath-metabox.php' );
  }*/
