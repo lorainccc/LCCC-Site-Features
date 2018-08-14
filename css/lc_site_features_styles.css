@@ -41,7 +41,7 @@
 .Dark_Blue{
 	    background: #0055a5;
 }
-.cell .icon{height: 70px;width: 100%;}
+.icon-container .icon{height: 70px;width: 100%;}
 .cell .badge-text{padding-right: 0; padding-left: 0.4rem;}
 .cell .badge-text p{font-size: 1rem;}
 .badge-text h2{text-align: left;font-size: 1.4rem;margin-bottom: .15rem;color:#ffffff;font-weight: 700;}
