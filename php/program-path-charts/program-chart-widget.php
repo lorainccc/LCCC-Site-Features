@@ -30,12 +30,12 @@ class LCCC_Program_Path_Chart_Widget extends WP_Widget {
   extract( $args );
    // these are the widget options
    $lcprogram_category = $instance['lcprogram_category'];
-	
+
   $category_title = get_term_by('slug', $lcprogram_category, 'program_chart');
-  
-    
+
+
   // Query posts in Program Chart CPT for each Type of Chart Item
-  
+
   $args = array(
    'post_type'       => 'lc_program_chart',
    'post_status'     => 'publish',
@@ -47,117 +47,121 @@ class LCCC_Program_Path_Chart_Widget extends WP_Widget {
        )
    ),
   );
-  
+
   $paths = new WP_Query( $args );
 
-  echo '<div class="row">';
-  echo ' <div class="small-12 columns">';
+echo '<div class="grid-container">';
+  echo '<div class="grid-x grid-margin-x">';
+  echo ' <div class="small-12 cell">';
   echo '  <p class="chart-title">' . $category_title->name . '</p>';
   echo ' </div>';
   echo '</div>';
-  
-  echo '<div class="row chart-header">';
-  echo ' <div class="medium-4 show-for-medium columns chart-header-item">Short Term Certificate</div>';
-  echo ' <div class="medium-4 show-for-medium columns chart-header-item">One Year Certificate</div>';
-  echo ' <div class="medium-4 show-for-medium columns chart-header-item">Associate Degree</div>';
+
+  echo '<div class="grid-x grid-margin-x chart-header">';
+  echo ' <div class="medium-4 show-for-medium cell chart-header-item">Short Term Certificate</div>';
+  echo ' <div class="medium-4 show-for-medium cell chart-header-item">One Year Certificate</div>';
+  echo ' <div class="medium-4 show-for-medium cell chart-header-item">Associate Degree</div>';
   echo '</div>';
-  
+  echo '</div>';
   // Check for Short Term posts
   if ($paths->have_posts()){
 
 			$bol_short_term = false;
 			$bol_one_year = false;
 			$bol_associate = false;
-	
+
  		foreach($paths as $path){
+
+      echo '<div class="grid-container">';
     if($path->lc_prog_chart_short_term_link_label_field != '' || $path->lc_prog_chart_one_year_link_label_field != '' || $path->lc_prog_chart_assoc_degree_link_label_field != ''){
-				echo '<div class="row">';
+				echo '<div class="grid-x grid-margin-x">';
      if($path->lc_prog_chart_short_term_link_label_field != ''){
-      echo '<div class="medium-4 show-for-medium columns">';
+      echo '<div class="medium-4 show-for-medium cell">';
       echo '<p class="chart-item"><a href="' . $path->lc_prog_chart_short_term_link_field . '">' . $path->lc_prog_chart_short_term_link_label_field . '</a></p>';
       echo '</div>';
      } else {
-      echo '<div class="medium-4 show-for-medium columns">&nbsp;</div>';
+      echo '<div class="medium-4 show-for-medium cell">&nbsp;</div>';
      }
-					
+
      if($path->lc_prog_chart_one_year_link_label_field != ''){
-      echo '<div class="medium-4 show-for-medium columns">';
+      echo '<div class="medium-4 show-for-medium cell">';
       echo '<p class="chart-item"><a href="' . $path->lc_prog_chart_one_year_link_field . '">' . $path->lc_prog_chart_one_year_link_label_field . '</a></p>';
       echo '</div>';
      } else {
-      echo '<div class="medium-4 show-for-medium columns">&nbsp;</div>';
+      echo '<div class="medium-4 show-for-medium cell">&nbsp;</div>';
      }
-								
+
      if($path->lc_prog_chart_assoc_degree_link_label_field != ''){
-      echo '<div class="medium-4 show-for-medium columns">';
+      echo '<div class="medium-4 show-for-medium cell">';
       echo '<p class="chart-item"><a href="' . $path->lc_prog_chart_assoc_degree_link_field . '">' . $path->lc_prog_chart_assoc_degree_link_label_field . '</a></p>';
       echo '</div>';
      } else {
-      echo '<div class="medium-4 show-for-medium columns">&nbsp;</div>';
-     }    
+      echo '<div class="medium-4 show-for-medium cell">&nbsp;</div>';
+     }
 					echo '</div>';
-    }					
+    }
 					// begin small formatting
-				if($path->lc_prog_chart_short_term_link_label_field != '' || $path->lc_prog_chart_one_year_link_label_field != '' || $path->lc_prog_chart_assoc_degree_link_label_field != ''){				
+				if($path->lc_prog_chart_short_term_link_label_field != '' || $path->lc_prog_chart_one_year_link_label_field != '' || $path->lc_prog_chart_assoc_degree_link_label_field != ''){
 					if($bol_short_term == false){
-						echo '<div class="row show-for-small-only chart-header" style="margin: 10px 0;">';
-						echo ' <div class="small-12 show-for-small-only columns chart-header-item">Short Term Certificate</div>';
+						echo '<div class="grid-x grid-margin-x show-for-small-only chart-header" style="margin: 10px 0;">';
+						echo ' <div class="small-12 show-for-small-only cell chart-header-item">Short Term Certificate</div>';
 						echo '</div>';
 						$bol_short_term = true;
 					}
 
 
 					if($path->lc_prog_chart_short_term_link_label_field != ''){
-							echo '<div class="row">';
-							echo '		<div class="small-12 show-for-small-only columns">';
+							echo '<div class="grid-x grid-margin-x">';
+							echo '		<div class="small-12 show-for-small-only cell">';
 							echo '				<p class="chart-item"><a href="' . $path->lc_prog_chart_short_term_link_field . '">' . $path->lc_prog_chart_short_term_link_label_field . '</a></p>';
 							echo '		</div>';
 							echo '</div>';
 						} else {
-							echo '<div class="row">';
-							echo '	<div class="small-12 show-for-small-only columns">&nbsp;</div>';
+							echo '<div class="grid-x grid-margin-x">';
+							echo '	<div class="small-12 show-for-small-only cell">&nbsp;</div>';
 							echo '</div>';
 						}
 
 
 					if($bol_one_year == false){
-							echo '<div class="row show-for-small-only chart-header" style="margin: 10px 0;">';				
-							echo ' <div class="small-12 show-for-small-only columns chart-header-item">One Year Certificate</div>';
+							echo '<div class="grid-x grid-margin-x show-for-small-only chart-header" style="margin: 10px 0;">';
+							echo ' <div class="small-12 show-for-small-only cell chart-header-item">One Year Certificate</div>';
 							echo '</div>';
 						$bol_one_year = true;
 					}
-					
+
 					if($path->lc_prog_chart_one_year_link_label_field != ''){
-						echo '<div class="row">';
-      echo '		<div class="small-12 show-for-small-only columns">';
+						echo '<div class="grid-x grid-margin-x">';
+      echo '		<div class="small-12 show-for-small-only cell">';
       echo '				<p class="chart-item"><a href="' . $path->lc_prog_chart_one_year_link_field . '">' . $path->lc_prog_chart_one_year_link_label_field . '</a></p>';
       echo '		</div>';
 						echo '</div>';
      } else {
-						echo '<div class="row">';
-      echo '		<div class="small-12 show-for-small-only columns">&nbsp;</div>';
+						echo '<div class="grid-x grid-margin-x">';
+      echo '		<div class="small-12 show-for-small-only cell">&nbsp;</div>';
 						echo '</div>';
      }
 
-					if($bol_associate == false){				
-						echo '<div class="row show-for-small-only chart-header" style="margin: 10px 0;">';
-						echo ' <div class="small-12 show-for-small-only columns chart-header-item">Associate Degree</div>';
+					if($bol_associate == false){
+						echo '<div class="grid-x grid-margin-x show-for-small-only chart-header" style="margin: 10px 0;">';
+						echo ' <div class="small-12 show-for-small-only cell chart-header-item">Associate Degree</div>';
 						echo '</div>';
 						$bol_associate = true;
 					}
-					
+
 					if($path->lc_prog_chart_assoc_degree_link_label_field != ''){
-						echo '<div class="row">';
-      echo '		<div class="small-12 show-for-small-only columns">';
+						echo '<div class="grid-x grid-margin-x">';
+      echo '		<div class="small-12 show-for-small-only cell">';
       echo '				<p class="chart-item"><a href="' . $path->lc_prog_chart_assoc_degree_link_field . '">' . $path->lc_prog_chart_assoc_degree_link_label_field . '</a></p>';
       echo '		</div>';
 						echo '</div>';
      } else {
-						echo '<div class="row">';
-      echo '  <div class="medium-4 show-for-medium columns">&nbsp;</div>';
+						echo '<div class="grid-x grid-margin-x">';
+      echo '  <div class="medium-4 show-for-medium cell">&nbsp;</div>';
 						echo '</div>';
      }
 				}
+        echo '</div>';
    }
   }
  }
@@ -168,16 +172,16 @@ class LCCC_Program_Path_Chart_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 		// outputs the options form on admin
-  
+
   // Check values
 if( $instance) {
      $lcprogram_category = esc_attr($instance['lcprogram_category']);
 } else {
      $lcprogram_category = '';
 }
-  
+
    $taxonomy = 'program_chart';
-  
+
   $programchart_cats = get_terms($taxonomy);
 
 ?>
@@ -186,17 +190,17 @@ if( $instance) {
  <label for="<?php echo $this->get_field_id('lcprogram_category'); ?>"><?php _e('Program Chart:', 'lorainccc'); ?></label>
  <select name="<?php echo $this->get_field_name('lcprogram_category'); ?>" id="<?php echo $this->get_field_id('lcprogram_category'); ?>">
  <?php
-    
+
  foreach ($programchart_cats as $chart) {
  echo '<option value="' . $chart->slug . '" id="' . $chart->slug . '"', $lcprogram_category == $chart->name ? ' selected="selected"' : '', '>', $chart->name, '</option>';
  }
  ?>
  </select>
-</p> 
+</p>
 
 <?php
  }
- 
+
  	/**
 	 * Processing widget options on save
 	 *
@@ -208,10 +212,10 @@ if( $instance) {
 		       $instance = $old_instance;
       // Fields
      		$instance['lcprogram_category'] = strip_tags($new_instance['lcprogram_category']);
-  
+
 		return $instance;
 	}
- 
+
 }
 add_action( 'widgets_init', function(){
 	register_widget( 'LCCC_Program_Path_Chart_Widget' );

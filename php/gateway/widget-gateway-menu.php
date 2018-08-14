@@ -10,7 +10,7 @@
  * @link      http://www.lorainccc.edu
  * @copyright 2016 Lorain County Community College
  */
- 
+
  // Prevent direct file access
 if ( ! defined ( 'ABSPATH' ) ) {
 	exit;
@@ -82,27 +82,29 @@ class Gateway_Menu_Widget extends WP_Widget {
 					'post_status' => 'publish',
 					 'orderby'=> 'title',
 					'order' =>'asc',
-					);	
+					);
 					$newgtwymenu = new WP_Query($gtwymenuargs);
 					if ( $newgtwymenu->have_posts() ) :
 							while ( $newgtwymenu->have_posts() ) : $newgtwymenu->the_post();
 						?>
-								<section class="row gateway-links">
-											<div class="small-12 medium-3 large-3 columns">
-														<?php the_post_thumbnail(); ?>		
+            <div class="grid-container">
+								<section class="grid-x grid-margin-x gateway-links">
+											<div class="small-12 medium-3 large-3 cell">
+														<?php the_post_thumbnail(); ?>
 											</div>
-											<div class="small-12 medium-9 large-9 columns gtwymenu-content">
+											<div class="small-12 medium-9 large-9 cell gtwymenu-content">
 													<?php the_title('<h2>','</h2>' );?>
 													<?php the_content('<p>','</p>'); ?>
 									</div>
 								</section>
-						<?php							
+              </div>
+						<?php
 							endwhile;
 					endif;
 	} // end widget
-	
-	
-	public function flush_widget_cache() 
+
+
+	public function flush_widget_cache()
 	{
     	wp_cache_delete( $this->get_widget_slug(), 'widget' );
 	}

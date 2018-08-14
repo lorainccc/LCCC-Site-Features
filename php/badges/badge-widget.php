@@ -7,7 +7,7 @@
  * @link      http://www.lorainccc.edu
  * @copyright 2016 Lorain County Community College
  */
- 
+
  // Prevent direct file access
 if ( ! defined ( 'ABSPATH' ) ) {
 	exit;
@@ -76,20 +76,21 @@ class Badge_Widget extends WP_Widget {
 	 * @param array instance The current instance of the widget
 	 */
 	public function widget( $args, $instance ) {
-		
+
 		$numberofposts = $instance['numberofposts'];
 		$mediumdisplay= round($numberofposts/2, 0, PHP_ROUND_HALF_DOWN);
 		$widgetcategory = $instance['category'];
-			$badge_orientation = $instance['badge-orientation'];	
-	
+			$badge_orientation = $instance['badge-orientation'];
+
 		if(	$badge_orientation == 'horizontal'){?>
-			<div class="row small-up-1 medium-up-<?php echo $mediumdisplay ?> large-up-<?php echo $numberofposts ?>">
+      <div class="grid-container">
+			<div class="grid-x grid-margin-x small-up-1 medium-up-<?php echo $mediumdisplay ?> large-up-<?php echo $numberofposts ?>">
   <?php
 				$badgeargs=array(
 					'post_type' => 'badges',
 					'post_status' => 'publish',
   			'posts_per_page' => $numberofposts,
-					);	
+					);
 					$newbadges = new WP_Query($badgeargs);
 					if ( $newbadges->have_posts() ) :
 							while ( $newbadges->have_posts() ) : $newbadges->the_post();
@@ -98,32 +99,34 @@ class Badge_Widget extends WP_Widget {
 					$redirectlink= badge_metabox_get_meta('badge_metabox_redirect_link');
 				?>
 						<a href="<?php echo $redirectlink; ?>">
-								<div class="column lccc-badge  <?php echo $bgcolor; ?>">
-								  		<div class="small-3 columns medium-3 large-3 columns icon-container">
-												<div class="small-3 columns medium-3 large-3 columns icon <?php echo $icon; ?>">
-									
+								<div class="cell lccc-badge  <?php echo $bgcolor; ?>">
+								  		<div class="small-3 cell medium-3 large-3 cell icon-container">
+												<div class="small-3 cell medium-3 large-3 cell icon <?php echo $icon; ?>">
+
 									 		</div>
 									 </div>
-										<div class="small-9 columns medium-9 large-9 columns icon">
+										<div class="small-9 cell medium-9 large-9 cell icon">
 															<?php echo 'hello'; ?>
 									 </div>
 								</div>
 							</a>
 							<?php
 							endwhile;
-					endif;																																					
+					endif;
 				?>
 
 </div>
+</div>
 		<?php }
 		if(	$badge_orientation == 'vertical'){?>
-			<div class="row small-up-1 medium-up-1 large-up-1">
+      <div class="grid-container">
+			<div class="grid-x grid-margin-x small-up-1 medium-up-1 large-up-1">
   			  <?php
 				$badgeargs=array(
 					'post_type' => 'badges',
 					'post_status' => 'publish',
   			'posts_per_page' => $numberofposts,
-					);	
+					);
 					$newbadges = new WP_Query($badgeargs);
 					if ( $newbadges->have_posts() ) :
 							while ( $newbadges->have_posts() ) : $newbadges->the_post();
@@ -132,13 +135,13 @@ class Badge_Widget extends WP_Widget {
 				$redirectlink= badge_metabox_get_meta('badge_metabox_redirect_link');
 				?>
 				<a href="<?php echo $redirectlink; ?>">
-								<div class="column lccc-badge <?php echo $bgcolor; ?>">
-										<div class="small-3 columns medium-3 large-3 columns icon-container">
-												<div class="small-3 columns medium-3 large-3 columns icon <?php echo $icon; ?>">
-									
+								<div class="cell lccc-badge <?php echo $bgcolor; ?>">
+										<div class="small-3 cell medium-3 large-3 cell icon-container">
+												<div class="small-3 cell medium-3 large-3 cell icon <?php echo $icon; ?>">
+
 									 		</div>
 									 </div>
-										<div class="small-9 columns medium-9 large-9 columns badge-text">
+										<div class="small-9 cell medium-9 large-9 cell badge-text">
 															<?php the_title('<h2>','</h2>'); ?>
 															<?php the_content('<p>','</p>'); ?>
 									 </div>
@@ -146,15 +149,16 @@ class Badge_Widget extends WP_Widget {
 					</a>
 							<?php
 							endwhile;
-					endif;																																					
+					endif;
 				?>
 			</div>
+    </div>
 	<?php	}
 
 	} // end widget
-	
-	
-	public function flush_widget_cache() 
+
+
+	public function flush_widget_cache()
 	{
     	wp_cache_delete( $this->get_widget_slug(), 'widget' );
 	}
@@ -179,7 +183,7 @@ class Badge_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 	// outputs the options form on admin
-		
+
 // Check values
 if( $instance) {
 					$numberofposts = esc_attr($instance['numberofposts']);
@@ -216,7 +220,7 @@ echo '<option value="' . $option . '" id="' . $option . '"', $badgeorientation =
 </p>
 
 <?php
-	
+
 	} // end form
 	/*--------------------------------------------------*/
 	/* Public Functions
@@ -244,7 +248,7 @@ echo '<option value="' . $option . '" id="' . $option . '"', $badgeorientation =
 	public function deactivate( $network_wide ) {
 		// TODO define deactivation functionality here
 	} // end deactivate
-	
+
 } // end class
 add_action( 'widgets_init', create_function( '', 'register_widget("Badge_Widget");' ) );
 ?>

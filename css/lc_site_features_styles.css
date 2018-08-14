@@ -1,4 +1,4 @@
-.row .column.lccc-badge {
+.grid-x.grid-margin-x .cell.lccc-badge {
     padding-top: 0.55rem;
     padding-bottom: .35rem;
     font-size: .75rem;
@@ -9,18 +9,18 @@
 			padding-left: 0.45rem;
     padding-right: 0.45rem;
 }
-.columns .gtwymenu-content ul{
+.cell .gtwymenu-content ul{
 	list-style: none;
 	margin-left: 0;
 }
-.columns .gtwymenu-content ul li > a {
+.cell .gtwymenu-content ul li > a {
     font-size: .75rem;
     color: #5593db;
     text-decoration: underline;
     padding: .5rem 0;
 				line-height: 2;
 }
-.columns .icon-container{
+.cell .icon-container {
 	padding: 0;
     margin-left: 6px;
     width: 21%;
@@ -41,9 +41,9 @@
 .Dark_Blue{
 	    background: #0055a5;
 }
-.columns .icon{height: 70px;width: 100%;}
-.columns .badge-text{padding-right: 0; padding-left: 0.4rem;}
-.columns .badge-text p{font-size: 1rem;}
+.cell .icon{height: 70px;width: 100%;}
+.cell .badge-text{padding-right: 0; padding-left: 0.4rem;}
+.cell .badge-text p{font-size: 1rem;}
 .badge-text h2{text-align: left;font-size: 1.4rem;margin-bottom: .15rem;color:#ffffff;font-weight: 700;}
 .trophy{
 		background: url(../images/icons/trophy.png);
@@ -52,77 +52,77 @@
 }
 .beautiful-campus{
 		background: url(../images/icons/beautiful-campus.png);
-  background-image: url(../images/icons/beautiful-campus.svg), none;	
+  background-image: url(../images/icons/beautiful-campus.svg), none;
 	background-repeat: no-repeat;
 }
 .campus-map{
 		background: url(../images/icons/campus-map.png);
-  background-image: url(../images/icons/campus-map.svg), none;	
+  background-image: url(../images/icons/campus-map.svg), none;
 		background-repeat: no-repeat;
 }
 .catalog{
 		background: url(../images/icons/catalog.png);
-  background-image: url(../images/icons/catalog.svg), none;	
+  background-image: url(../images/icons/catalog.svg), none;
 		background-repeat: no-repeat;
 }
 .collegian{
 		background: url(../images/icons/collegian.png);
-  background-image: url(../images/icons/collegian.svg), none;	
+  background-image: url(../images/icons/collegian.svg), none;
 		background-repeat: no-repeat;
 }
 .lccc-block{
 		background: url(../images/icons/lccc-block.png);
-  background-image: url(../images/icons/lccc-block.svg), none;	
+  background-image: url(../images/icons/lccc-block.svg), none;
 		background-repeat: no-repeat;
 }
 .magnifying-glass{
 		background: url(../images/icons/magnifying-glass.png);
-  background-image: url(../images/icons/magnifying-glass.svg), none;	
+  background-image: url(../images/icons/magnifying-glass.svg), none;
 	background-repeat: no-repeat;
 }
 .theater-tickets{
 	background: url(../images/icons/theater-tickets.png);
-  background-image: url(../images/icons/theater-tickets.svg), none;	
+  background-image: url(../images/icons/theater-tickets.svg), none;
 		background-repeat: no-repeat;
 }
 .stage{
 	background: url(../images/icons/stage.png);
-  background-image: url(../images/icons/stage.svg), none;	
+  background-image: url(../images/icons/stage.svg), none;
 		background-repeat: no-repeat;
 }
 .parking{
 		background: url(../images/icons/parking.png);
-  background-image: url(../images/icons/parking.svg), none;	
+  background-image: url(../images/icons/parking.svg), none;
 		background-repeat: no-repeat;
 }
 .radio{
 		background: url(../images/icons/radio.png);
-  background-image: url(../images/icons/radio.svg), none;	
+  background-image: url(../images/icons/radio.svg), none;
 		background-repeat: no-repeat;
 }
 .sustainability{
 		background: url(../images/icons/sustainability.png);
-  background-image: url(../images/icons/sustainability.svg), none;	
+  background-image: url(../images/icons/sustainability.svg), none;
 		background-repeat: no-repeat;
 }
 .thumbs-up{
 		background: url(../images/icons/thumbs-up.png);
-  background-image: url(../images/icons/thumbs-up.svg), none;	
+  background-image: url(../images/icons/thumbs-up.svg), none;
 		background-repeat: no-repeat;
 }
 .transfer-students{
 		background: url(../images/icons/transfer-students.png);
-  background-image: url(../images/icons/transfer-students.svg), none;	
+  background-image: url(../images/icons/transfer-students.svg), none;
 		background-repeat: no-repeat;
 }
 .undecided-student{
 		background: url(../images/icons/undecided-student.png);
-  background-image: url(../images/icons/undecided-student.svg), none;	
+  background-image: url(../images/icons/undecided-student.svg), none;
 		background-repeat: no-repeat;
 }
 .video{
 		background: url(../images/icons/video.png);
-  background-image: url(../images/icons/video.svg), none;	
+  background-image: url(../images/icons/video.svg), none;
 		background-repeat: no-repeat;
 }
 
