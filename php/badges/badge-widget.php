@@ -117,7 +117,6 @@ class Badge_Widget extends WP_Widget {
 </div>
 		<?php }
 		if(	$badge_orientation == 'vertical'){?>
-			<div style="margin-top: 20px;">&nbsp;</div>
 			<div class="row small-up-1 medium-up-1 large-up-1">
   			  <?php
 				$badgeargs=array(
