@@ -437,8 +437,9 @@ function lc_site_featured_featured_field(){
 			<img id='image-preview' src='<?php echo wp_get_attachment_url( get_option( 'lc_site_featured_image_id' ) ); ?>' height='100'>
 		</div>
 		<input id="upload_image_button" type="button" class="button" value="<?php _e( 'Upload image' ); ?>" />
-		<input type='hidden' name='image_attachment_id' id='image_attachment_id' value='<?php echo get_option( 'lc_site_featured_image_id' ); ?>'>
-		<input type="submit" name="submit_image_selector" value="Save" class="button-primary">
+		<!--<input type='hidden' name='image_attachment_id' id='image_attachment_id' value='<?php //echo get_option( 'lc_site_featured_image_id' ); ?>'>	-->
+	 <input type='text'	name='image_attachment_id' id='image_attachment_id' value='<?php echo get_option( 'lc_site_featured_image_id');?>'>
+	<input type="submit" name="submit_image_selector" value="Save" class="button-primary">
 	</form><?php
 
 
