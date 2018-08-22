@@ -411,6 +411,9 @@ if( ! ( function_exists( 'lc_get_attachment_by_name' ) ) ) {
 //Site Featured Image Field
 
 function lc_site_featured_featured_field(){
+	$screen = get_current_screen();
+	if ($screen->id === 'site-features_page_lc-site-featured-image') {
+	
 	?>
 
 <h1>Site Featured Image</h1>
@@ -418,13 +421,16 @@ function lc_site_featured_featured_field(){
 <p>Use the upload image button at the bottom to select an image from the Media Gallery or upload a new image to the Gallery.  After selecting, click the save button to save your selection.</p>
 
 <?php
-	
+		
 	// Save attachment ID
 	if ( isset( $_POST['submit_image_selector'] ) && isset( $_POST['image_attachment_id'] ) ) :
 		update_option( 'lc_site_featured_image_id', absint( $_POST['image_attachment_id'] ) );
 	endif;
 
-	wp_enqueue_media();
+
+	
+	
+		wp_enqueue_media();
 
 	?><form method='post'>
 		<div class='image-preview-wrapper'>
@@ -503,4 +509,7 @@ function media_selector_print_scripts() {
 
 	</script><?php
 
-} ?>
+} 
+
+	}
+?>
