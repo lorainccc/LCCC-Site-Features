@@ -7,14 +7,14 @@
    
 			// Admin head
 			add_action('admin_head-post.php', array($this, 'adminHead'));
-  
+
   }
   
   function adminHead () {
 			global $post;
 
 			// Only show on published pages
-			if (in_array($post->post_type, array('post', 'page')) && $post->post_status == 'publish') {
+			if (in_array($post->post_type, array('post', 'page', 'lccc_announcement', 'lccc_events')) && $post->post_status == 'publish') {
 				?>
 				<script type="text/javascript">
 
@@ -30,7 +30,7 @@
 			}
 
 		}
-  
+				
  }
 
 add_action('init', create_function('', 'global $lc_contentdrafts; $lc_contentdrafts = new lc_contentdrafts();'));

@@ -112,6 +112,5 @@
  require_once( plugin_dir_path( __FILE__ ).'default-features/lc-search-widget.php' );
 
 // Content Approval Custom Workflow
- require_once( plugin_dir_path( __FILE__ ).'default-features/content-approvals/draft-button.php' ); 
- require_once( plugin_dir_path( __FILE__ ).'default-features/content-approvals/content-approvals.php' );
+require_once( plugin_dir_path( __FILE__ ).'default-features/content-approvals/content-approvals.php' );
 ?>

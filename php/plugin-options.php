@@ -34,11 +34,19 @@ function lc_add_wp_webtools_menu_page() {
  );
 		add_submenu_page(
 		'lccc-wp-webtools',																																																		  // Parent Slug (Page to nest under)
-  __( 'Site Featured Image', 'lorainccc' ),   // Page Title
+  __( 'Site Featured Image', 'lorainccc' ),   																											// Page Title
   'Site Featured Image',                                                 // Menu Title
   'manage_options',                                                      // Capabilities
   'lc-site-featured-image',                                              // Menu Slug
   'lc_site_featured_featured_field'                                      // Function
+ );
+	 add_submenu_page(
+		'lccc-wp-webtools',																																																		  // Parent Slug (Page to nest under)
+  __( 'Content Age', 'lorainccc' ),   																																			// Page Title
+  'Site Content Age',                                                 			// Menu Title
+  'manage_options',                                                      // Capabilities
+  'lc-site-content-age',                                              			// Menu Slug
+  'lc_site_content_age_list'                                     							 // Function
  );
 }
 
@@ -513,4 +521,46 @@ function media_selector_print_scripts() {
 } 
 
 	}
+
+	//Site Content Age
+
+function lc_site_content_age_list(){
+	
+	echo '<h1>Oldest Content to Newest</h1>';
+	
+	$last_modified = get_posts(
+    array(
+     'post_status' 			=> 'publish',
+     'post_type'  			 => 'page',
+					'posts_per_page' => -1,
+					'orderby'								=> 'modified',
+					'order'										=>	'ASC',
+    )
+   );
+	
+	$last_modified_count = count($last_modified);
+	?>
+
+		<div class="modified-row">
+			<div style="width:20%;float:left;font-weight:bold;">Page Title</div>
+			<div style="width:60%;float:left;font-weight:bold;">URL</div>
+			<div style="width:20%;float:left;font-weight:bold;">Last Modified</div>	
+</div>
+
+<?php
+   if ($last_modified_count != 0){
+    foreach($last_modified as $last_modified) {
+					echo '<div class="modified-row">';
+					echo '<div style="width:20%;float:left;">' . $last_modified->post_title . '</div>';
+					echo '<div style="width:60%;float:left;">' . get_permalink($last_modified->ID) . ' - <a href="' . admin_url() . 'post.php?post=' . $last_modified->ID . '&action=edit" target="_blank">Edit</a></div>';
+					$modified_date = date_create($last_modified->post_modified);
+					echo '<div style="width:20%;float:left;">' . date_format($modified_date, "m/d/Y") . '</div>';
+					echo '</div>';
+    }
+   }
+	
+	
+}
+
 ?>
+

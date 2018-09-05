@@ -14,7 +14,14 @@
   plugins_url( 'lccc-site-features/assets/images/lccc-block.png' ),   // Icon URL
   2                                                                   // Position (2 = Dashboard)
  );
-
+	 add_submenu_page(
+		'lccc-pending-items',																																															// Parent Slug (Page to nest under)
+  __( 'Content Age', 'lorainccc' ),   																																// Page Title
+  'Page Content Age',                                                 // Menu Title
+  'manage_network_options',                                           // Capabilities
+  'lc-network-content-age',                                           // Menu Slug
+  'lc_network_content_age_list'                                     		// Function
+ );
  }
 
 function lc_pending_items_page() {
@@ -196,4 +203,82 @@ function lc_pending_items_page() {
    echo '</div>';
   }
 }
+
+	//Site Content Age
+
+function lc_network_content_age_list(){
+
+	$count = 0;
+	
+	 // Get a list of all sites in the network
+ $sites = get_sites([ 'orderby' => 'path', 'order' => 'ASC', ]);
+
+  // Iterate through each site and find all pages.
+  foreach ( $sites as $site ){
+
+    switch_to_blog( $site->blog_id );
+	   echo '<div style="width: 960px; margin:10px 20px 0 0; padding: 0 3px 0 3px;">';
+    // Print site name
+    echo '<h2>' . $site->blogname . '</h2>';
+   
+			
+	$last_modified = get_posts(
+    array(
+     'post_status' 			=> 'publish',
+     'post_type'  			 => 'page',
+					'posts_per_page' => -1,
+					'orderby'								=> 'modified',
+					'order'										=>	'ASC',
+    )
+   );
+	
+	$last_modified_count = count($last_modified);
+	?>
+
+		<div class="modified-row">
+			<div style="width:20%;float:left;font-weight:bold;">Page Title</div>
+			<div style="width:50%;float:left;font-weight:bold;">URL</div>
+			<div style="width:20%;float:left;font-weight:bold;">Last Modified</div>
+			<div style="width:10%;float:left;font-weight:bold;">Content Age</div>
+</div>
+
+<?php
+   if ($last_modified_count != 0){
+    foreach($last_modified as $last_modified) {
+					$modified_date = date_create($last_modified->post_modified);
+					$age = compare_dates($last_modified->post_modified);
+					if($age >= 2){
+					echo '<div class="modified-row page-older">';
+					} elseif($age >= 1) {
+					echo '<div class="modified-row page-old">';
+					} else {
+					echo '<div class="modified-row">';
+					}
+					
+					echo '<div style="width:20%;float:left;">' . $last_modified->post_title . '</div>';
+					echo '<div style="width:50%;float:left;"><a href="' . get_permalink($last_modified->ID) . '" target="_blank">' . get_permalink($last_modified->ID) . '</a></div>';
+					
+					echo '<div style="width:20%;float:left;">' . date_format($modified_date, "m/d/Y") . '</div>';
+					echo '<div style="width:10%;float:left;">' . $age . '</div>';
+					echo '</div>';
+					$count++;
+    }
+   }
+	
+	   // Switch back to root
+   restore_current_blog();
+   echo '</div>';
+		}
+			echo '<div style="margin: 40px 0 0 0;"><h3>Current number of published pages: ' . number_format($count, 0 , '', ',') . '</h3></div>';
+
+}
+
+function compare_dates($date1){
+	  $date_parts1 = explode("-", $date1);
+   $date_parts2 = date("Y");
+   return $date_parts2 - $date_parts1[0];
+}
+
+
+
 ?>
