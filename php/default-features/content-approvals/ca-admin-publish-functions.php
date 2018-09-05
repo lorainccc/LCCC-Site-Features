@@ -60,7 +60,7 @@ class lc_admin_publishfunctions{
 					
 					//Delete Draft Post, forcing delete since 2.9, no sending to trash_comment
 					wp_delete_post($current_post_id, true);
-
+		
 					// Send user to new edit page
 					wp_redirect(admin_url('post.php?action=edit&post=' . $_lc_publishedId));
 					exit();

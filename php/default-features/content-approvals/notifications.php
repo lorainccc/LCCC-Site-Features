@@ -29,6 +29,24 @@
 
 				wp_mail( $to, $subject, $body, $headers );
 			}
+		}elseif( ($old == 'pending' && $new == 'publish' ) ){
+			
+					$author_id = $post->post_author;
+
+					$author = get_user_by( 'id', $author_id );
+
+					$site_title = get_bloginfo( 'name' );
+
+					$to = $author->user_email;
+
+					$subject = '[' . $site_title . '] Page Approved';
+
+					$body = '<img src="http://www.lorainccc.edu/wp-content/themes/lorainccc/images/LCCC-Logo.png" style="width:285px; height:59px;"><br/><h1 style="font-size: 16pt;font-family:sans-serif;">Page Approval Notice</h1><p style="font-size: 12pt;font-family:sans-serif;">Your revision to, "' . $post->post_title . '", has been approved.</p>';
+
+					$headers = array('Content-Type: text/html; charset=UTF-8');
+
+					wp_mail( $to, $subject, $body, $headers );
+			
 		}
 	}
 
