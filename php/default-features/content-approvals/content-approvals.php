@@ -27,6 +27,7 @@
 				require_once( plugin_dir_path( __FILE__ ).'ca-admin-publish-functions.php' );
 			}
 			require_once( plugin_dir_path( __FILE__ ).'notifications.php');
+			require_once( plugin_dir_path( __FILE__ ).'ca-user-profile-field.php');
   }
  }
 

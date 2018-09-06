@@ -11,7 +11,10 @@
 			for ($i = 0; $i <=count($admins); $i++){
 			
 				$user = get_user_by( 'slug', $admins[$i]);
-										
+				$notify = get_user_meta( $user->ID, 'postnotice', true );
+				
+				if( $notify === 'yes' ){
+				
 				$site_title = get_bloginfo( 'name' );
 
 				$to = $user->user_email;
@@ -28,6 +31,7 @@
 				$headers = array('Content-Type: text/html; charset=UTF-8');
 
 				wp_mail( $to, $subject, $body, $headers );
+				}
 			}
 		}elseif( ($old == 'pending' && $new == 'publish' ) ){
 			
