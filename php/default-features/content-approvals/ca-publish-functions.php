@@ -50,15 +50,15 @@ class lc_publishfunctions{
    // Add Post Meta Field to indicate this is a draft of a live page
    update_post_meta($newId, '_lc_publishedId', $id);
 			
-//			if( ($_REQUEST['save'] == 'Save as Draft' || $_REQUEST['save'] == 'Save Draft') ) {
-			// Send user to newly published page in editor
-//   wp_redirect(admin_url('post.php?action=edit&post=' . $newId));
-//			exit();
-//			}else{
+			if( ($_REQUEST['save'] == 'Save as Draft' || $_REQUEST['save'] == 'Save Draft') ) {
+			// Send user to newly drafted page in editor
+   wp_redirect(admin_url('post.php?action=edit&post=' . $newId));
+			exit();
+			}else{
 			//Send user to list of posts or pages
 			wp_redirect(admin_url('edit.php?post_type=' . $_REQUEST['post_type'] ));
    exit();
-//			}
+			}
   }
 		
  }
