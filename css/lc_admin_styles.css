@@ -107,3 +107,21 @@ p.description{
 	color: #7f0000;
 	font-weight: 700;
 }
+
+.deleted-items, .deleted-items a{
+	background-color: #dcb2b2; 
+	color: 	#8B0000; 
+	font-weight:700; 
+	padding: 3px; 
+	margin: 3px;
+}
+
+.deleted-items-message{
+	background-color: #dcb2b2; 
+	color: #450000; 
+	font-weight:700; 
+	font-style:italic; 
+	font-size: 16px;
+	margin: 3px;
+	padding: 3px;
+}

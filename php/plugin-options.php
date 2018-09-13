@@ -373,14 +373,19 @@ function lc_media_files_list(){
 						$file_counter = 0;
 						
 						foreach($files as $file){
-							if( $file != '.' && $file != '..' ){
+							if( $file != '.' && $file != '..' && $file != 'index.php' ){
 								// Date Stamp
 								// | ' . date ( "n-j-Y g:i A", filemtime($media_dir . '/' . $year . '/' . $month . '/' . $file ) ) . ' 
 								
 								if($file_counter % 2 == 0){
-									
-								echo '<p style="padding:3px; margin: 2px;"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</p>';
 								
+									$media_name = trim ( strtolower( str_replace( ' ', '-', $file ) ) );
+									
+								if ( lc_get_attachment_by_name($media_name) != 'true' ){
+								echo '<p class="deleted-items"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</p>';
+								
+									echo '<span class="deleted-items-message">Deleted</span>';
+								}
 								}else{
 									
 								echo '<p style="background: #d3d3d3; padding:3px; margin: 2px;"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</p>';
@@ -405,15 +410,16 @@ if( ! ( function_exists( 'lc_get_attachment_by_name' ) ) ) {
             'posts_per_page' => 1,
             'post_type'      => 'attachment',
 												'post_status'				=> 'inherit',
-            'post_name'      => trim ( $post_name ),
+            'post_name'      => $post_name,
         );
         $get_attachment = new WP_Query( $args );
 
-        if ( $get_attachment->posts[0] )
-            return $get_attachment->posts[0];
-        else
+        if ( $get_attachment->posts[0] ) {
+									return true;
+								}else{
           return false;
-    }
+								}
+				}
 }
 
 //Site Featured Image Field
