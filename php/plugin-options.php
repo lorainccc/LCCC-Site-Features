@@ -341,7 +341,8 @@ function lc_media_files_list(){
 
  echo '<h1>Media Files in this site</h1>';
 	echo '<p>File sizes are shown in kilobytes (kb)</p>';
-
+	echo '<p>Files shaded in red are orphaned (deleted from WordPress, but not the filesystem on the web server.)</p>';
+	
  $upload_dir = wp_upload_dir();
 	
 	$media_dir = ( $upload_dir['basedir'] );
@@ -354,7 +355,7 @@ function lc_media_files_list(){
 	
 	foreach($years as $year){
 		$year_path = $media_dir . '/' . $year;
-	 if ($year != '.' && $year != '..' ){
+	 if ($year != '.' && $year != '..' && $year !='sites' && $year !='snapshots'){
 			if ( is_dir($year_path) ){
 				echo '<div style="width:100%; margin:10px 5px; clear:both;">';
 				echo '<h3>' . $year . '</h3>';
@@ -377,20 +378,25 @@ function lc_media_files_list(){
 								// Date Stamp
 								// | ' . date ( "n-j-Y g:i A", filemtime($media_dir . '/' . $year . '/' . $month . '/' . $file ) ) . ' 
 								
-								if($file_counter % 2 == 0){
+//								if($file_counter % 2 == 0){
 								
 									$media_name = trim ( strtolower( str_replace( ' ', '-', $file ) ) );
 									
 								if ( lc_get_attachment_by_name($media_name) != 'true' ){
-								echo '<p class="deleted-items"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</p>';
+								echo '<p class="deleted-items"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" style="word-break:break-all;" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</p>';
 								
 									echo '<span class="deleted-items-message">Deleted</span>';
-								}
 								}else{
-									
-								echo '<p style="background: #d3d3d3; padding:3px; margin: 2px;"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</p>';
-									
+									echo '<p style="padding:3px; margin: 2px;"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" style="word-break:break-all;" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</p>';
 								}
+/*								}else{
+									if ( lc_get_attachment_by_name($media_name) != 'true' ){
+								echo '<p class="deleted-items"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</p>';
+										echo '<span class="deleted-items-message">Deleted</span>';
+									}else{
+								echo '<p style="background: #d3d3d3; padding:3px; margin: 2px;"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</p>';
+									}
+								}*/
 								$file_counter++;
 							}
 						}
