@@ -13,9 +13,9 @@ class lc_publishfunctions{
   $current_user = wp_get_current_user();
   // If a post is previously published, but now an lccc editor or lccc advanced editor is looking to update it
   // we grab the post  and duplicate it and set it to pending.
+		
   if( ($_REQUEST['save'] == 'Save as Draft' || $_REQUEST['save'] == 'Save Draft') && $_REQUEST['post_status'] == 'publish' ) {
-			
-			
+				
    $lc_draftPost = array(
      'menu_order' => $_REQUEST['menu_order'],
      'comment_status' => ($_REQUEST['comment_status'] == 'open' ? 'open' : 'closed'),
@@ -30,12 +30,13 @@ class lc_publishfunctions{
 				 'post_title' => $_REQUEST['post_title'],
 				 'post_type' => $_REQUEST['post_type'],
 				 'tags_input' => (isset($_REQUEST['tax_input']['post_tag']) ? $_REQUEST['tax_input']['post_tag'] : ''),
-     'page_template' => $_REQUEST['page_template']    
+     'page_template' => $_REQUEST['page_template']
    );
    
    // Insert Post into Database (Creating a new draft post)
    $newId = wp_insert_post($lc_draftPost);
    
+		
    // Add Post Meta from REQUEST object
    if( isset($_REQUEST['meta']) ){
     foreach ( $_REQUEST['meta'] as $key => $value ){
@@ -46,7 +47,11 @@ class lc_publishfunctions{
      }
     }
    }
-   
+
+			if($_REQUEST['_thumbnail_id'] <> ''){
+				set_post_thumbnail( $newId, $_REQUEST['_thumbnail_id']);
+			}
+
    // Add Post Meta Field to indicate this is a draft of a live page
    update_post_meta($newId, '_lc_publishedId', $id);
 			
