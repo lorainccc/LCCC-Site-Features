@@ -24,13 +24,21 @@ function lc_add_wp_webtools_menu_page() {
   'lc-page-templates',                                                   // Menu Slug
   'lc_page_templates_list'                                               // Function
  );
-	add_submenu_page(
+/*	add_submenu_page(
 		'lccc-wp-webtools',																																																		  // Parent Slug (Page to nest under)
   __( 'Current Site List of Files in Upload Directory', 'lorainccc' ),   // Page Title
   'Media Files',                                                         // Menu Title
   'manage_options',                                                      // Capabilities
   'lc-media-files',                                                   			// Menu Slug
   'lc_media_files_list'                                                  // Function
+ );*/
+	add_submenu_page(
+		'lccc-wp-webtools',																																																		  // Parent Slug (Page to nest under)
+  __( 'Current List of PDF Files in Upload Directory', 'lorainccc' ),   	// Page Title
+  'PDF Files',                                                         		// Menu Title
+  'manage_options',                                                      // Capabilities
+  'lc-pdf-files',                                                   					// Menu Slug
+  'lc_pdf_files_list'                                                  		// Function
  );
 		add_submenu_page(
 		'lccc-wp-webtools',																																																		  // Parent Slug (Page to nest under)
@@ -102,8 +110,8 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
    'lc_wp_webtools_options',                                                  // Page
    'lc_webtools_settings_section'                                             // Section
   );
- /* 
-  add_settings_field(
+  
+/*  add_settings_field(
    'lc_enable_department_directories_field',                                  // Field ID
    __('Enable LCCC Department Directories:' , 'lorainccc'),                   // Title
    'lc_department_directory_display_render',                                  // Callback
@@ -150,7 +158,7 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
    'lc_wp_webtools_options',                                                  // Page
    'lc_webtools_settings_section'                                             // Section
   );
-  
+
  }
 
 
@@ -314,9 +322,9 @@ function lc_social_media_fields_render() {
   <div class="slider round"></div>
  </label>
  <p class="description" id="tagline-description">Enables Social Media Fields on the General Settings page.  Allows the site to have social media account links available for use in the theme.</p>
-  <?php
+		<?php
  }
- 
+
 // Render out Page Templates List
 
 function lc_page_templates_list(){
@@ -372,34 +380,79 @@ function lc_media_files_list(){
 						$files = scandir($month_path);
 						
 						$file_counter = 0;
+								echo '<ul class="lc-media-items">';
+						//echo count($files);
 						
-						foreach($files as $file){
+						//for ($i = 0; $i <= count($files); $i++){
+						foreach( $files as $file ){
+							//echo '<p>count: ' . $file_counter . '</p>';
 							if( $file != '.' && $file != '..' && $file != 'index.php' ){
 								// Date Stamp
 								// | ' . date ( "n-j-Y g:i A", filemtime($media_dir . '/' . $year . '/' . $month . '/' . $file ) ) . ' 
 								
-//								if($file_counter % 2 == 0){
+/*								if($file_counter % 2 == 0){
 								
 									$media_name = trim ( strtolower( str_replace( ' ', '-', $file ) ) );
-									
-								if ( lc_get_attachment_by_name($media_name) != 'true' ){
+									echo $media_name . ' | ' . lc_get_attachment_by_name($media_name);
+								if ( lc_get_attachment_by_name($media_name) != true ){
 								echo '<p class="deleted-items"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" style="word-break:break-all;" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</p>';
 								
 									echo '<span class="deleted-items-message">Deleted</span>';
 								}else{
 									echo '<p style="padding:3px; margin: 2px;"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" style="word-break:break-all;" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</p>';
 								}
-/*								}else{
-									if ( lc_get_attachment_by_name($media_name) != 'true' ){
+								}else{
+									echo $media_name . ' | ' . lc_get_attachment_by_name($media_name);
+									if ( lc_get_attachment_by_name($media_name) != true ){
 								echo '<p class="deleted-items"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</p>';
 										echo '<span class="deleted-items-message">Deleted</span>';
 									}else{
 								echo '<p style="background: #d3d3d3; padding:3px; margin: 2px;"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</p>';
 									}
 								}*/
+								$media_name = '';
+								$media_name = trim ( strtolower( str_replace( ' ', '-', $file ) ) );
+
+								$media_found = '';
+								$media_found = lc_get_attachment_by_name($media_name);
+
+								if ( $media_found != true ){
+									if(strpos($media_name, '-')){
+									$media_part = explode("-", $media_name);
+									$media_position = strrpos($media_name, '.');
+									$media_ext = substr($media_name, $media_position, 4);
+									//echo $media_part[0] . $media_ext;
+									$media_alt_name = $media_part[0] . $media_ext;
+									$media_name_found = lc_find_file($month_path, $media_alt_name);
+									if ( $media_name_found != false ) {
+										$media_alt_found = lc_get_attachment_by_name($media_alt_name);	
+										}
+									}									
+								}
+				
+								if ( $media_name_found != false && $media_alt_found != false ){
+									
+									echo '<li style="padding:3px; margin: 2px;"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" style="word-break:break-all;" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</li>';
+									
+								} else {
+								if ( $media_found !== true ){
+									
+										echo '<li class="deleted-items"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" style="word-break:break-all;" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</li>';								
+									echo '<span class="deleted-items-message">Deleted</span>';
+	
+								}else {							
+									
+									echo '<li style="padding:3px; margin: 2px;"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" style="word-break:break-all;" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</li>';
+								
+								}
+								
+							}
+								
+								
 								$file_counter++;
 							}
 						}
+						echo '</ul>';
 							echo '</div>';
 					}
 				}
@@ -410,8 +463,75 @@ function lc_media_files_list(){
 
 }
 
-if( ! ( function_exists( 'lc_get_attachment_by_name' ) ) ) {
+// Render out PDF Files List
+function lc_pdf_files_list() {
+	
+ echo '<h1>PDF Files in this site</h1>';
+	echo '<p>File sizes are shown in kilobytes (kb)</p>';
+	
+ $upload_dir = wp_upload_dir();
+	
+	$media_dir = ( $upload_dir['basedir'] );
+ 
+	$media_url = ( $upload_dir['baseurl'] );
+		
+	//echo  $media_dir;
+
+	$years = scandir($media_dir);
+	
+	foreach($years as $year){
+		$year_path = $media_dir . '/' . $year;
+	 if ($year != '.' && $year != '..' && $year !='sites' && $year !='snapshots'){
+			if ( is_dir($year_path) ){
+				echo '<div style="width:100%; margin:10px 5px; clear:both;">';
+				echo '<h3>' . $year . '</h3>';
+				echo '</div>';
+				
+				$months = scandir($year_path)	;
+				
+				foreach($months as $month){
+					if( $month != '.' && $month != '..' ){
+						echo '<div style="width:375px; margin: 10px 5px; float:left; border-right: solid 1px #000;">';
+						echo '<b>' . $month . '</b>';
+						$month_path = $year_path . '/' . $month;
+						
+						$files = scandir($month_path);
+						
+						$file_counter = 0;
+								echo '<ul class="lc-pdf-items">';
+						//echo count($files);
+						
+						//for ($i = 0; $i <= count($files); $i++){
+						foreach( $files as $file ){
+							//echo '<p>count: ' . $file_counter . '</p>';
+							if( $file != '.' && $file != '..' && $file != 'index.php' ){
+								if( strpos($file, '.pdf') !== false){
+									$file_found = lc_get_attachment_by_name($file);
+									if($file_found !== true ){
+										echo '<li style="margin: 8px 0; border-bottom: 1px solid #000;" class="deleted-items"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" style="word-break:break-all;" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb';
+										echo '<br/><span class="deleted-items-message">Not Found in Database</span>';
+										echo '</li>';
+									}else{
+										echo '<li style="margin: 8px 0; padding: 4px 0; border-bottom: 1px dashed #000;"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" style="word-break:break-all;" target="_blank">' . $file .  '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</li>';
+									}
+								}
+							}
+						}
+						echo '</ul>';
+							echo '</div>';
+					}
+				}
+						
+			}	
+		}
+	}
+
+}
+
+
     function lc_get_attachment_by_name( $post_name ) {
+					//echo '<b>' . $post_name . '</b>';
+					$post_name = strtolower($post_name);
         $args = array(
             'posts_per_page' => 1,
             'post_type'      => 'attachment',
@@ -419,13 +539,59 @@ if( ! ( function_exists( 'lc_get_attachment_by_name' ) ) ) {
             'post_name'      => $post_name,
         );
         $get_attachment = new WP_Query( $args );
+					
+/*							if ($post_name == '2017-holiday-greeting-slider-1024x341.jpg' ){
+							 echo '<pre>';
+								var_dump($get_attachment);
+								echo '</pre>';
+							}*/
+					
+							$found_post = strval( $get_attachment->posts[0]->post_name );
+							$post_looking_for = strval( $post_name );
+					
+							//echo $post_name . '<br/>';
+					
+							//echo strlen($post_looking_for);
+					
+							$post_looking_for = substr($post_looking_for, 0, strlen($post_looking_for)-4);
+							
+						
+							
+					
+							//echo strcmp($found_post, $post_looking_for);
+							$found = strpos($post_looking_for, $found_post );
 
-        if ( $get_attachment->posts[0] ) {
+							//echo '<p>' . $found . '</p>';
+					
+							if ( $found_post == $post_looking_for ){
 									return true;
-								}else{
-          return false;
-								}
+							} else {
+								return false;
+							}
+					
+/*        if ( $get_attachment->posts[0] ) {
+										return true;									
+									}else{
+         	return false;
+							}*/
 				}
+
+function lc_find_file($folder_path, $file_name){
+	
+		$files = scandir($folder_path);
+	
+		$found = false;
+	
+	
+		while($found){
+			foreach($files as $file){
+				if($file = $file_name){
+					$found = true;
+				}
+			}
+		}
+	
+	return true;
 }
 
 //Site Featured Image Field
@@ -464,7 +630,7 @@ function lc_site_featured_featured_field(){
 
 
 }	
-
+}
 add_action( 'admin_footer', 'media_selector_print_scripts' );
 
 function media_selector_print_scripts() {
@@ -532,7 +698,6 @@ function media_selector_print_scripts() {
 
 } 
 
-	}
 
 	//Site Content Age
 
