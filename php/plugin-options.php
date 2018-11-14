@@ -469,6 +469,7 @@ function lc_pdf_files_list() {
  echo '<h1>PDF Files in this site</h1>';
 	echo '<p>File sizes are shown in kilobytes (kb)</p>';
 	
+	
  $upload_dir = wp_upload_dir();
 	
 	$media_dir = ( $upload_dir['basedir'] );
@@ -480,8 +481,9 @@ function lc_pdf_files_list() {
 	$years = scandir($media_dir);
 	
 	foreach($years as $year){
+
 		$year_path = $media_dir . '/' . $year;
-	 if ($year != '.' && $year != '..' && $year !='sites' && $year !='snapshots'){
+	 if ($year != '.' && $year != '..' && $year !='sites' && $year !='snapshots' && $year !='gravity_forms' ){
 			if ( is_dir($year_path) ){
 				echo '<div style="width:100%; margin:10px 5px; clear:both;">';
 				echo '<h3>' . $year . '</h3>';
@@ -506,14 +508,18 @@ function lc_pdf_files_list() {
 							//echo '<p>count: ' . $file_counter . '</p>';
 							if( $file != '.' && $file != '..' && $file != 'index.php' ){
 								if( strpos($file, '.pdf') !== false){
-									$file_found = lc_get_attachment_by_name($file);
-									if($file_found !== true ){
-										echo '<li style="margin: 8px 0; border-bottom: 1px solid #000;" class="deleted-items"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" style="word-break:break-all;" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb';
-										echo '<br/><span class="deleted-items-message">Not Found in Database</span>';
-										echo '</li>';
-									}else{
+//									$file_found = lc_get_attachment_by_name($file);
+//									
+//									if($file_found !== true ){
+										
+//										echo '<li style="margin: 8px 0; border-bottom: 1px solid #000;" class="deleted-items"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" style="word-break:break-all;" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb';
+//										echo '<br/><span class="deleted-items-message">Not Found in Database</span>';
+//										echo '</li>';
+//									
+//									}else{
+
 										echo '<li style="margin: 8px 0; padding: 4px 0; border-bottom: 1px dashed #000;"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" style="word-break:break-all;" target="_blank">' . $file .  '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</li>';
-									}
+//									}
 								}
 							}
 						}
@@ -630,7 +636,7 @@ function lc_site_featured_featured_field(){
 
 
 }	
-}
+
 add_action( 'admin_footer', 'media_selector_print_scripts' );
 
 function media_selector_print_scripts() {
@@ -698,7 +704,7 @@ function media_selector_print_scripts() {
 
 } 
 
-
+	}
 	//Site Content Age
 
 function lc_site_content_age_list(){
