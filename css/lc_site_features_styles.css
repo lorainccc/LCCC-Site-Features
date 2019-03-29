@@ -43,7 +43,7 @@
 }
 .columns .icon{height: 70px;width: 100%;}
 .columns .badge-text{padding-right: 0; padding-left: 0.4rem;}
-.columns .badge-text p{font-size: 1rem;}
+.columns .badge-text p{font-size: 1.1rem;font-weight:600;color:#ffffff;}
 .badge-text h2{text-align: left;font-size: 1.4rem;margin-bottom: .15rem;color:#ffffff;font-weight: 700;}
 .trophy{
 		background: url(../images/icons/trophy.png);
