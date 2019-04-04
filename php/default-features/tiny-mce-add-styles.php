@@ -76,10 +76,20 @@ function lc_mce_add_styles_editor_settings( $settings ) {
          'classes' => 'bullet-arrow'
         ),
         array(
-            'title' => 'Blue Button',
-            'selector' => 'a',
-            'classes' => 'blue-button'
-           ),
+         'title' => 'Blue Button',
+         'selector' => 'a',
+         'classes' => 'blue-button'
+        ),
+        array(
+         'title' => 'Blue Button 250px',
+         'selector' => 'a',
+         'classes' => 'blue-button-250'
+        ),
+        array(
+         'title' => 'Blue Button 300px',
+         'selector' => 'a',
+         'classes' => 'blue-button-300'
+        ),
     );
 
  $settings['style_formats'] = json_encode( $style_formats );
