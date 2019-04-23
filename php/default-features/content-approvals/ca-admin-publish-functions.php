@@ -28,6 +28,7 @@ class lc_admin_publishfunctions{
 							'ping_status' => ($_REQUEST['ping_status'] == 'open' ? 'open' : 'closed'),
 							'post_author' => $_REQUEST['post_author'],
 							'post_category' => (isset($_REQUEST['post_category']) ? $_REQUEST['post_category'] : array()),
+							'tax_input'=> (isset($_REQUEST['tax_input']) ? $_REQUEST['tax_input'] : array()),
 							'post_content' => $_REQUEST['content'],
 							'post_excerpt' => $_REQUEST['excerpt'],
 							'post_parent' => $_REQUEST['parent_id'],
@@ -36,7 +37,8 @@ class lc_admin_publishfunctions{
 							'post_title' => $_REQUEST['post_title'],
 							'post_type' => $_REQUEST['post_type'],
 							'tags_input' => (isset($_REQUEST['tax_input']['post_tag']) ? $_REQUEST['tax_input']['post_tag'] : ''),
-							'page_template' => $_REQUEST['page_template']    
+     						'page_template' => $_REQUEST['page_template'],
+							'thumbnail' => $_REQUEST['thumbnail']   
 					);
 
 					// Insert Post into Database
@@ -71,5 +73,8 @@ class lc_admin_publishfunctions{
 	
 	}
 }
-	add_action('init', create_function('', 'global $lc_admin_publishfunctions; $lc_admin_publishfunctions = new lc_admin_publishfunctions();'));
+	add_action('init', function() {
+		global $lc_admin_publishfunctions; $lc_admin_publishfunctions = new lc_admin_publishfunctions();
+	});
+
 ?>

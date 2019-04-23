@@ -21,7 +21,8 @@ class lc_publishfunctions{
      'comment_status' => ($_REQUEST['comment_status'] == 'open' ? 'open' : 'closed'),
 				 'ping_status' => ($_REQUEST['ping_status'] == 'open' ? 'open' : 'closed'),
 				 'post_author' => $current_user->ID,
-				 'post_category' => (isset($_REQUEST['post_category']) ? $_REQUEST['post_category'] : array()),
+         'post_category' => (isset($_REQUEST['post_category']) ? $_REQUEST['post_category'] : array()),
+         'tax_input'=> (isset($_REQUEST['tax_input']) ? $_REQUEST['tax_input'] : array()),
 				 'post_content' => $_REQUEST['content'],
 				 'post_excerpt' => $_REQUEST['excerpt'],
 				 'post_parent' => $_REQUEST['parent_id'],
@@ -30,7 +31,7 @@ class lc_publishfunctions{
 				 'post_title' => $_REQUEST['post_title'],
 				 'post_type' => $_REQUEST['post_type'],
 				 'tags_input' => (isset($_REQUEST['tax_input']['post_tag']) ? $_REQUEST['tax_input']['post_tag'] : ''),
-     'page_template' => $_REQUEST['page_template']
+         'page_template' => $_REQUEST['page_template']
    );
    
    // Insert Post into Database (Creating a new draft post)
@@ -70,6 +71,8 @@ class lc_publishfunctions{
 	
 }
 
-add_action('init', create_function('', 'global $lc_publishfunctions; $lc_publishfunctions = new lc_publishfunctions();'));
+add_action('init', function() {
+  global $lc_publishfunctions; $lc_publishfunctions = new lc_publishfunctions();
+});
 
 ?>
