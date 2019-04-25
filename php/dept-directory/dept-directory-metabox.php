@@ -26,7 +26,7 @@ function lc_add_dept_directory_meta_box() {
   'lc_dept_directory_metabox',                                    // Unique ID (ID of Div Tag ** Note: DO NOT NAME same as field(s) below **)
   esc_html__( 'Department Directory Entry', 'lorainccc' ),        // Title & Text Domain
   'lc_show_dept_directory_meta_box',                              // Callback function
-  'faculty-staff-dir',                                            // Admin Page or Post Type
+  'faculty_staff_dir',                                            // Admin Page or Post Type
   'normal',                                                       // Context (Position)
   'default'                                                       // Priority
  );
@@ -36,7 +36,7 @@ function lc_add_dept_directory_meta_box() {
 function lc_show_dept_directory_meta_box( $object, $box ) { ?>
 
  <?php wp_nonce_field( basename( __FILE__ ), 'lc_dept_directory_post_nonce' ); ?>
-  <h2>Please enter your primary department details.</h2>
+  <h2>Please enter your details.</h2>
   <p>
    <label for="lc_fac_staff_dir_firstname_field">
     <?php _e( "First Name: ", "lorainccc" ); ?>
@@ -87,13 +87,13 @@ function lc_show_dept_directory_meta_box( $object, $box ) { ?>
    <input type="text" name="lc_fac_staff_dir_office_location_field" id="lc_fac_staff_dir_office_location_field" value="<?php echo esc_attr( get_post_meta ( $object->ID, 'lc_fac_staff_dir_office_location_field', true ) ); ?>" size="30" />
   </p>
 
-  <p>
+  <!-- <p>
    <label for="lc_fac_staff_dir_department_name_field">
     <?php _e( "Department: ", "lorainccc" ); ?>
    </label>
-   <select name="lc_fac_staff_dir_department_name_field" id="lc_fac_staff_dir_department_name_field">
+   <select name="lc_fac_staff_dir_department_name_field" id="lc_fac_staff_dir_department_name_field"> -->
    <?php
-     $departments = array('select..','Academic and Learner Services','Academic Support Center','Administrative Services','Allied Health and Nursing Division','Arts and Humanities Division','Athletics','Auxiliary Services','Blackstone Launchpad','Bookstore','Bursars Office','Campus Security','Center for LifeLong Learning','Center for Teaching Excellence','Childrens Learning Center','College Tech Prep Consortium','COMPASS Testing Lab','Controllers Office','Digital Media Communications','Dining Services','Disability Services','Early College High School','eLearning','Engineering Business and Information Technologies Division','Enrollment Financial and Career Services','Entrepreneurship Innovation Institute','Faculty Senate Office','GLIDE','Human Resources Office','Information Systems and Services','InnovatEd','Institutional Effectiveness and Planning','International Initiatives','LCCC ABLE Consortium','LCCC Foundation Development Office','LCCC Lorain Learning Center','Learner Completion','Library and eLearning','Marketing and Outreach Initiatives','Midpoint Campus Center','Payroll Office','Physical Plant Operations','Presidents Office','Public Services Institute and Joint Center for Policy Research','Purchasing Facility Planning Office','REACHigher','Science and Mathematics Division','Small Business Development Center','SMART Commercialization Center for Microsystems','Social Sciences and Human Services Division','Spitzer Conference Center','Stocker Humanities and Fine Arts Center','Strategic and Institutional Development','Student Life','University Partnership','University Partnership Ridge Campus','USO Talent Development Network Resource Center','Weld-Ed','Wellington Center','Womens Link','Workforce Institute');
+     /* $departments = array('select..','Academic and Learner Services','Academic Support Center','Administrative Services','Allied Health and Nursing Division','Arts and Humanities Division','Athletics','Auxiliary Services','Blackstone Launchpad','Bookstore','Bursars Office','Campus Security','Center for LifeLong Learning','Center for Teaching Excellence','Childrens Learning Center','College Tech Prep Consortium','COMPASS Testing Lab','Controllers Office','Digital Media Communications','Dining Services','Disability Services','Early College High School','eLearning','Engineering Business and Information Technologies Division','Enrollment Financial and Career Services','Entrepreneurship Innovation Institute','Faculty Senate Office','GLIDE','Human Resources Office','Information Systems and Services','InnovatEd','Institutional Effectiveness and Planning','International Initiatives','LCCC ABLE Consortium','LCCC Foundation Development Office','LCCC Lorain Learning Center','Learner Completion','Library and eLearning','Marketing and Outreach Initiatives','Midpoint Campus Center','Payroll Office','Physical Plant Operations','Presidents Office','Public Services Institute and Joint Center for Policy Research','Purchasing Facility Planning Office','REACHigher','Science and Mathematics Division','Small Business Development Center','SMART Commercialization Center for Microsystems','Social Sciences and Human Services Division','Spitzer Conference Center','Stocker Humanities and Fine Arts Center','Strategic and Institutional Development','Student Life','University Partnership','University Partnership Ridge Campus','USO Talent Development Network Resource Center','Weld-Ed','Wellington Center','Womens Link','Workforce Institute');
 
      foreach ( $departments as $department ) {
       $departmentslug = strtolower(str_replace(' ', '-', $department));
@@ -143,10 +143,10 @@ function lc_show_dept_directory_meta_box( $object, $box ) { ?>
       $selectedDepartment = esc_attr( get_post_meta ( $object->ID, 'lc_fac_staff_dir_department_name_field', true ) );
       echo '<option value="' . $departmentslug .'" id="' . $departmentslug . '"', $selectedDepartment == $departmentslug ? 'selected="selected"' : '', '>', $department, '</option>';
      }
-
+ */
     ?>
-    </select>
-  </p>
+    <!-- </select>
+  </p> -->
 
   <p>
    <label for="lc_fac_staff_dir_job_class_field">
@@ -163,7 +163,7 @@ function lc_show_dept_directory_meta_box( $object, $box ) { ?>
    ?>
    </select>
   </p>
-
+<!--
   <p>
    <label for="lc_fac_staff_dir_position_type_field">
     <?php _e( "Position Type / Teaching Discipline: ", "lorainccc" ); ?>
@@ -189,14 +189,14 @@ function lc_show_dept_directory_meta_box( $object, $box ) { ?>
    </label>
    <input type="text" name="lc_fac_staff_dir_position_title_field" id="lc_fac_staff_dir_position_title_field" value="<?php echo esc_attr( get_post_meta ( $object->ID, 'lc_fac_staff_dir_position_title_field', true ) ); ?>" size="50" />
   </p>
-
+    -->
   <p>
    <label for="lc_fac_staff_dir_advisor_schedule_field">
     <?php _e( "Advisor Schedule Link: ", "lorainccc" ); ?>
    </label>
    <input type="text" name="lc_fac_staff_dir_advisor_schedule_field" id="lc_fac_staff_dir_advisor_schedule_field" value="<?php echo esc_attr( get_post_meta ( $object->ID, 'lc_fac_staff_dir_advisor_schedule_field', true ) ); ?>" size="70" />
   </p>
-
+<!--
   <hr/>
   <p><b>If you are located in two departments, please fill out your secondary department information below.</b></p>
 
@@ -265,7 +265,7 @@ foreach ( $departments as $department ) {
    </label>
    <input type="text" name="lc_fac_staff_dir_second_position_title_field" id="lc_fac_staff_dir_second_position_title_field" value="<?php echo esc_attr( get_post_meta ( $object->ID, 'lc_fac_staff_dir_second_position_title_field', true ) ); ?>" size="50" />
   </p>
-
+    -->
   <?php
 }
 
@@ -463,6 +463,17 @@ function lc_dept_directory_save_info( $post_id, $post ) {
  elseif ( '' == $new_meta_value && $meta_value )
   delete_post_meta( $post_id, $meta_key, $meta_value );
 
+}
+
+function lc_deptdir_get_meta_field( $value ) {
+  global $post;
+
+  $field = get_post_meta( $post->ID, $value, true );
+  if ( ! empty( $field ) ) {
+    return is_array( $field ) ? stripslashes_deep( $field ) : stripslashes( wp_kses_decode_entities( $field ) );
+  } else {
+    return false;
+  }
 }
 
 ?>

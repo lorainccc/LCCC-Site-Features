@@ -111,14 +111,14 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
    'lc_webtools_settings_section'                                             // Section
   );
   
-/*  add_settings_field(
+  add_settings_field(
    'lc_enable_department_directories_field',                                  // Field ID
    __('Enable LCCC Department Directories:' , 'lorainccc'),                   // Title
    'lc_department_directory_display_render',                                  // Callback
    'lc_wp_webtools_options',                                                  // Page
    'lc_webtools_settings_section'                                             // Section
   );
-
+/*
   add_settings_field(
    'lc_enable_department_directories_display_field',                          // Field ID
    __('Enable LCCC Department Directories Display Options:' , 'lorainccc'),   // Title
@@ -713,11 +713,11 @@ function lc_site_content_age_list(){
 	
 	$last_modified = get_posts(
     array(
-     'post_status' 			=> 'publish',
-     'post_type'  			 => 'page',
-					'posts_per_page' => -1,
-					'orderby'								=> 'modified',
-					'order'										=>	'ASC',
+     'post_status'		=> 'publish',
+     'post_type'			=> 'page',
+		 'posts_per_page'	=> -1,
+		 'orderby'				=> 'modified',
+		 'order'					=>	'ASC',
     )
    );
 	
@@ -726,24 +726,23 @@ function lc_site_content_age_list(){
 
 		<div class="modified-row">
 			<div style="width:20%;float:left;font-weight:bold;">Page Title</div>
-			<div style="width:60%;float:left;font-weight:bold;">URL</div>
-			<div style="width:20%;float:left;font-weight:bold;">Last Modified</div>	
-</div>
+			<div style="width:45%;float:left;font-weight:bold;">URL</div>
+			<div style="width:10%;float:left;font-weight:bold;">Last Modified</div>
+			<div style="width:25%;float:left;font-weight:bold;">Last Modified By</div>
+		</div>
 
 <?php
    if ($last_modified_count != 0){
     foreach($last_modified as $last_modified) {
 					echo '<div class="modified-row">';
 					echo '<div style="width:20%;float:left;">' . $last_modified->post_title . '</div>';
-					echo '<div style="width:60%;float:left;">' . get_permalink($last_modified->ID) . ' - <a href="' . admin_url() . 'post.php?post=' . $last_modified->ID . '&action=edit" target="_blank">Edit</a></div>';
+					echo '<div style="width:45%;float:left;">' . get_permalink($last_modified->ID) . ' - <a href="' . admin_url() . 'post.php?post=' . $last_modified->ID . '&action=edit" target="_blank">Edit</a></div>';
 					$modified_date = date_create($last_modified->post_modified);
-					echo '<div style="width:20%;float:left;">' . date_format($modified_date, "m/d/Y") . '</div>';
+					echo '<div style="width:10%;float:left;">' . date_format($modified_date, "m/d/Y") . '</div>';
+					$modified_author = get_user_by('ID', $last_modified->_edit_last);
+					echo '<div style="width:25%;float:left;">' . $modified_author->user_nicename . ' | <a href="mailto:' . $modified_author->user_email . '?subject=Stale Content Warning">' . $modified_author->user_email .  '</a></div>';
 					echo '</div>';
     }
    }
-	
-	
 }
-
-?>
-
+require_once( plugin_dir_path( __FILE__ ).'dashboard/lc-admin-widget.php' );

@@ -246,5 +246,9 @@ echo '<option value="' . $option . '" id="' . $option . '"', $badgeorientation =
 	} // end deactivate
 	
 } // end class
-add_action( 'widgets_init', create_function( '', 'register_widget("Badge_Widget");' ) );
+function lc_badge_widget_register(){
+	register_widget("Badge_Widget");
+}
+
+add_action( 'widgets_init', 'lc_badge_widget_register' );
 ?>

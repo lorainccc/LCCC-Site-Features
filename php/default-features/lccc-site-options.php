@@ -40,6 +40,11 @@ class new_lccc_base_path_setting {
   add_settings_field( 'lccc_footer_phone', '<label for="lccc_footer_phone">'.__('Phone Number:' , 'lccc_footer_phone').'</label>', array(&$this, 'lccc_footer_phone_field_html') , 'general', 'lccc-footer-settings' );
   add_settings_field( 'lccc_footer_email', '<label for="lccc_footer_email">'.__('Email Address:' , 'lccc_footer_email').'</label>', array(&$this, 'lccc_footer_email_field_html') , 'general', 'lccc-footer-settings' );
 
+  register_setting( 'general', 'lccc_dept_directory_display', 'esc_attr' );
+  add_settings_section( 'lccc-dept-directory-display-settings', 'Faculty/Staff Directory Settings', '__return_false', 'general' );
+  
+  add_settings_field( 'lccc_fac_staff_directory_display', '<label for="lccc_fac_staff_directory_display">'.__('Directory Display Type:' , 'lccc_fac_staff_directory_display').'</label>', array(&$this, 'lccc_fac_staff_directory_display_field_html') , 'general', 'lccc-dept-directory-display-settings' );
+
  }
 
  function lccc_fields_html() {
@@ -64,5 +69,32 @@ class new_lccc_base_path_setting {
   $value = get_option( 'lccc_footer_email', '' );
   echo '<input type="text" id="lccc_footer_email" name="lccc_footer_email" value="' . $value . '" size="75" />';
  }
+
+ function lccc_fac_staff_directory_display_field_html() {
+   $value = get_option( 'lccc_dept_directory_display', '' );
+    switch ($value) {
+    case 'Photo':
+    echo '<input type="radio" name="lccc_dept_directory_display" id="lccc_dept_directory_display_0" value="Photo" checked>';
+    echo '<label for="lccc_dept_directory_display_0">Photo Grid</label> &nbsp; | &nbsp;';
+    echo '<input type="radio" name="lccc_dept_directory_display" id="lccc_dept_directory_display_1" value="List">';
+    echo '<label for="lccc_dept_directory_display_1">List</label>';
+    break;
+
+    case 'List':
+    echo '<input type="radio" name="lccc_dept_directory_display" id="lccc_dept_directory_display_0" value="Photo">';
+    echo '<label for="lccc_dept_directory_display_0">Photo Grid</label> &nbsp; | &nbsp;';
+    echo '<input type="radio" name="lccc_dept_directory_display" id="lccc_dept_directory_display_1" value="List" checked>';
+    echo '<label for="lccc_dept_directory_display_1">List</label>';
+    break;
+
+    default:
+    echo '<input type="radio" name="lccc_dept_directory_display" id="lccc_dept_directory_display_0" value="Photo">';
+    echo '<label for="lccc_dept_directory_display_0">Photo Grid</label> &nbsp; | &nbsp;';
+    echo '<input type="radio" name="lccc_dept_directory_display" id="lccc_dept_directory_display_1" value="List">';
+    echo '<label for="lccc_dept_directory_display_1">List</label>';
+   }
+
+}
+
 }
 ?>

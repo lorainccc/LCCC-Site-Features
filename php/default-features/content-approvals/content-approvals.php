@@ -31,9 +31,6 @@
   }
  }
 
-	
-
-
 $lc_check_user_plugin = new lc_check_user();
 
 ?>

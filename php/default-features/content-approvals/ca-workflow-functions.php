@@ -46,9 +46,20 @@
   var_dump($data);
   echo "\n\n";
    }*/
+		
+		echo "------ Postarr -------\n\n";
+		echo "<pre>";
+   var_dump($postarr);
+		echo "</pre>";
+  echo "\n\n";
+  echo "------ data -------\n\n";
+		echo "<pre>";
+   var_dump($data);
+	 echo "</pre>";
+  echo "\n\n";
  }
 
- //add_action('wp_insert_post_data', 'lc_dup_wp_insert_post', 15, 2);
+//add_action('wp_insert_post_data', 'lc_dup_wp_insert_post', 15, 2);
 
  
 
@@ -57,7 +68,8 @@
 
   global $pagenow;
 		global $post;
-  if ( $pagenow == 'post-new.php' ){
+		
+		if ( $pagenow == 'post-new.php' ){
 
    echo '<div class="notice notice-info">';
    echo '  <p>Click save draft to continue working on this page.  Clicking Submit for Review will notify the Admins to review the page and approve it.</p>';
@@ -94,5 +106,7 @@
  }
 
 add_action( 'admin_notices', 'lc_newpage_admin_notice' );
+
+
 
 ?>
