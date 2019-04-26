@@ -40,7 +40,7 @@ function lc_department_directory() {
 		'description'           => __( 'LCCC Department Directory', 'text_domain' ),
 		'labels'                => $labels,
 		//'supports'              => array( 'title', 'editor', 'thumbnail' ),
-		'supports'              => array( 'title', 'editor', 'thumbnail' ),
+		'supports'              => array( 'title', 'thumbnail' ),
 		'taxonomies'            => array( ),
 		'hierarchical'          => false,
 		'public'                => true,
