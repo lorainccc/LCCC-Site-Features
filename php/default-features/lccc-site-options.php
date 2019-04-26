@@ -103,9 +103,9 @@ class new_lccc_base_path_setting {
 function lccc_fac_staff_directory_department_field_html(){
   $value = get_option( 'lccc_dept_directory_department', '' );
 
-  $domain = 'https://' . $_SERVER['HTTP_HOST'];
+  $domain = 'http://' . $_SERVER['HTTP_HOST'];
   $request = wp_remote_get( $domain . '/mylccc/wp-json/wp/v2/lcdeptdir_deptartments?per_page=100');
-
+    echo $domain . '/mylccc/wp-json/wp/v2/lcdeptdir_deptartments?per_page=100';
   if( is_wp_error( $request ) ){
     return false;
   }
