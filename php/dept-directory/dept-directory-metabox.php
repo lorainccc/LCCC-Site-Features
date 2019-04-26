@@ -302,6 +302,9 @@ function lc_dept_directory_save_info( $post_id, $post ) {
 
  update_post_meta( $post_id, $meta_key, $new_meta_value, $meta_value );
 
+  $position = wp_get_post_terms($post_id, 'lcdeptdir_positiontype', 'names');
+  update_post_meta( $post_id, 'lc_fac_staff_dir_position_field', esc_attr( $position[0]->name ) );
+
  /* Middle Initial Field */
  /* Get the posted data and sanitize it for use as a date value. */
  $new_meta_value = ( isset( $_POST['lc_fac_staff_dir_minitial_field'] ) ? sanitize_text_field($_POST['lc_fac_staff_dir_minitial_field'] ) : '' );
@@ -339,18 +342,6 @@ function lc_dept_directory_save_info( $post_id, $post ) {
 
  update_post_meta( $post_id, $meta_key, $new_meta_value, $meta_value );
  
- /* Department Field */
- /* Get the posted data and sanitize it for use as a date value. */
- $new_meta_value = ( isset( $_POST['lc_fac_staff_dir_department_name_field'] ) ? sanitize_text_field($_POST['lc_fac_staff_dir_department_name_field'] ) : '' );
-
- /* Get the meta key. */
- $meta_key = 'lc_fac_staff_dir_department_name_field';
-
-  /* Get the meta value of the custom field key. */
- $meta_value = get_post_meta ($post_id, $meta_key, true );
-
- update_post_meta( $post_id, $meta_key, $new_meta_value, $meta_value );
-
  /* Phone Field */
  /* Get the posted data and sanitize it for use as a date value. */
  $new_meta_value = ( isset( $_POST['lc_fac_staff_dir_phone_field'] ) ? sanitize_text_field($_POST['lc_fac_staff_dir_phone_field'] ) : '' );
@@ -398,49 +389,13 @@ function lc_dept_directory_save_info( $post_id, $post ) {
  $meta_value = get_post_meta ($post_id, $meta_key, true );
 
  update_post_meta( $post_id, $meta_key, $new_meta_value, $meta_value );
- 
- /* Position Title Field */
- /* Get the posted data and sanitize it for use as a date value. */
- $new_meta_value = ( isset( $_POST['lc_fac_staff_dir_position_title_field'] ) ? sanitize_text_field($_POST['lc_fac_staff_dir_position_title_field'] ) : '' );
 
- /* Get the meta key. */
- $meta_key = 'lc_fac_staff_dir_position_title_field';
-
-  /* Get the meta value of the custom field key. */
- $meta_value = get_post_meta ($post_id, $meta_key, true );
-
- update_post_meta( $post_id, $meta_key, $new_meta_value, $meta_value );
- 
  /* Advisor Schedule Link Field */
  /* Get the posted data and sanitize it for use as a date value. */
  $new_meta_value = ( isset( $_POST[' lc_fac_staff_dir_advisor_schedule_field'] ) ? sanitize_text_field($_POST[' lc_fac_staff_dir_advisor_schedule_field'] ) : '' );
 
  /* Get the meta key. */
  $meta_key = ' lc_fac_staff_dir_advisor_schedule_field';
-
-  /* Get the meta value of the custom field key. */
- $meta_value = get_post_meta ($post_id, $meta_key, true );
-
- update_post_meta( $post_id, $meta_key, $new_meta_value, $meta_value );
- 
- /* Secondary Department Field */
- /* Get the posted data and sanitize it for use as a date value. */
- $new_meta_value = ( isset( $_POST['lc_fac_staff_dir_second_department_name_field'] ) ? sanitize_text_field($_POST['lc_fac_staff_dir_second_department_name_field'] ) : '' );
-
- /* Get the meta key. */
- $meta_key = 'lc_fac_staff_dir_second_department_name_field';
-
-  /* Get the meta value of the custom field key. */
- $meta_value = get_post_meta ($post_id, $meta_key, true );
-
- update_post_meta( $post_id, $meta_key, $new_meta_value, $meta_value );
- 
- /* Secondary Position Title Field */
- /* Get the posted data and sanitize it for use as a date value. */
- $new_meta_value = ( isset( $_POST[' lc_fac_staff_dir_second_position_title_field'] ) ? sanitize_text_field($_POST[' lc_fac_staff_dir_second_position_title_field'] ) : '' );
-
- /* Get the meta key. */
- $meta_key = ' lc_fac_staff_dir_second_position_title_field';
 
   /* Get the meta value of the custom field key. */
  $meta_value = get_post_meta ($post_id, $meta_key, true );

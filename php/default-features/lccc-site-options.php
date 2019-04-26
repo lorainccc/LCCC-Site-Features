@@ -41,9 +41,13 @@ class new_lccc_base_path_setting {
   add_settings_field( 'lccc_footer_email', '<label for="lccc_footer_email">'.__('Email Address:' , 'lccc_footer_email').'</label>', array(&$this, 'lccc_footer_email_field_html') , 'general', 'lccc-footer-settings' );
 
   register_setting( 'general', 'lccc_dept_directory_display', 'esc_attr' );
+  register_setting( 'general', 'lccc_dept_directory_department', 'esc_attr' );
+
   add_settings_section( 'lccc-dept-directory-display-settings', 'Faculty/Staff Directory Settings', '__return_false', 'general' );
   
   add_settings_field( 'lccc_fac_staff_directory_display', '<label for="lccc_fac_staff_directory_display">'.__('Directory Display Type:' , 'lccc_fac_staff_directory_display').'</label>', array(&$this, 'lccc_fac_staff_directory_display_field_html') , 'general', 'lccc-dept-directory-display-settings' );
+  add_settings_field( 'lccc_fac_staff_directory_department', '<label for="lccc_fac_staff_directory_department">'.__('Department Name:' , 'lccc_fac_staff_directory_department').'</label>', array(&$this, 'lccc_fac_staff_directory_department_field_html') , 'general', 'lccc-dept-directory-display-settings' );
+
 
  }
 
@@ -96,5 +100,34 @@ class new_lccc_base_path_setting {
 
 }
 
+function lccc_fac_staff_directory_department_field_html(){
+  $value = get_option( 'lccc_dept_directory_department', '' );
+
+  $domain = 'http://' . $_SERVER['HTTP_HOST'];
+  $request = wp_remote_get( $domain . '/mylccc/wp-json/wp/v2/lcdeptdir_deptartments?per_page=100');
+
+  if( is_wp_error( $request ) ){
+    return false;
+  }
+
+  $body = wp_remote_retrieve_body( $request );
+
+  $data = json_decode( $body );
+
+  if(! empty( $data ) ) {
+    echo '<select name="lccc_dept_directory_department" id="lccc_dept_directory_department">';
+    echo ' <option value="null" id="0">Please select a Department</option>';
+    foreach( $data as $terms ){
+      $bol_selected = '';
+      if($terms->id == $value){
+        $bol_selected = 'selected';
+      }
+    echo " <option value='" . $terms->id . "' id='" . $terms->slug . "' " . $bol_selected .  " >" . $terms->name . "</option>";
+    }
+    echo '</select>';
+  }
 }
+}
+
+
 ?>

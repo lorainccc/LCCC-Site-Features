@@ -4,9 +4,7 @@
   *  LCCC Department Directory Post Type
   */
 
-// Register Custom Post Type
-
-// Register Custom Post Type
+// Register LCCC Department Directory Custom Post Type
 function lc_department_directory() {
 
 	$labels = array(
@@ -42,7 +40,7 @@ function lc_department_directory() {
 		'description'           => __( 'LCCC Department Directory', 'text_domain' ),
 		'labels'                => $labels,
 		//'supports'              => array( 'title', 'editor', 'thumbnail' ),
-		'supports'              => array( 'title', 'thumbnail' ),
+		'supports'              => array( 'title', 'editor', 'thumbnail' ),
 		'taxonomies'            => array( ),
 		'hierarchical'          => false,
 		'public'                => true,
@@ -82,7 +80,7 @@ function lc_faculty_staff_dir_change_title_text( $title ){
 add_filter( 'enter_title_here', 'lc_faculty_staff_dir_change_title_text' );
 
 
-// Register Custom Taxonomy
+// Register Departments Taxonomy
 function lcdeptdir_departments() {
 
 	$labels = array(
@@ -123,7 +121,7 @@ function lcdeptdir_departments() {
 add_action( 'init', 'lcdeptdir_departments', 0 );
 
 
-// Register Custom Taxonomy
+// Register Position Types Taxonomy
 function lcdeptdir_positiontype() {
 
 	$labels = array(
@@ -153,7 +151,7 @@ function lcdeptdir_positiontype() {
 		'hierarchical'               => false,
 		'public'                     => true,
 		'show_ui'                    => true,
-		'show_admin_column'          => false,
+		'show_admin_column'          => true,
 		'show_in_nav_menus'          => false,
 		'show_tagcloud'              => false,
 		'show_in_rest'               => true,
@@ -163,7 +161,7 @@ function lcdeptdir_positiontype() {
 }
 add_action( 'init', 'lcdeptdir_positiontype', 0 );
 
-// Add new taxonomy, NOT hierarchical (like tags)
+// Register Alphabet Taxonomy (Hidden Taxonomy used for A-Z Index links)
 function lcdeptdir_alphabet(){
 
 		$labels = array(
@@ -192,7 +190,7 @@ function lcdeptdir_alphabet(){
 			'labels'                     => $labels,
 			'hierarchical'               => false,
 			'public'                     => true,
-			'show_ui'                    => true,
+			'show_ui'                    => false,
 			'show_admin_column'          => false,
 			'show_in_nav_menus'          => false,
 			'show_tagcloud'              => false,
@@ -203,6 +201,84 @@ function lcdeptdir_alphabet(){
 }
 add_action( 'init', 'lcdeptdir_alphabet', 0 );
 
+// Register Academic Focus/Team Taxonomy
+function lcdeptdir_acadfocus_teams() {
+
+	$labels = array(
+		'name'                       => _x( 'Academic Focus/Teams', 'Taxonomy General Name', 'lorainccc' ),
+		'singular_name'              => _x( 'Academic Focus/Team', 'Taxonomy Singular Name', 'lorainccc' ),
+		'menu_name'                  => __( 'Academic Focus/Team', 'lorainccc' ),
+		'all_items'                  => __( 'All Academic Focus/Teams', 'lorainccc' ),
+		'parent_item'                => __( 'Parent Academic Focus/Team', 'lorainccc' ),
+		'parent_item_colon'          => __( 'Parent Academic Focus/Team:', 'lorainccc' ),
+		'new_item_name'              => __( 'New Academic Focus/Team', 'lorainccc' ),
+		'add_new_item'               => __( 'Add New Academic Focus/Team', 'lorainccc' ),
+		'edit_item'                  => __( 'Edit Academic Focus/Team', 'lorainccc' ),
+		'update_item'                => __( 'Update Academic Focus/Team', 'lorainccc' ),
+		'view_item'                  => __( 'View Academic Focus/Team', 'lorainccc' ),
+		'separate_items_with_commas' => __( 'Separate items with commas', 'lorainccc' ),
+		'add_or_remove_items'        => __( 'Add or remove items', 'lorainccc' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'lorainccc' ),
+		'popular_items'              => __( 'Popular Items', 'lorainccc' ),
+		'search_items'               => __( 'Search Items', 'lorainccc' ),
+		'not_found'                  => __( 'Not Found', 'lorainccc' ),
+		'no_terms'                   => __( 'No items', 'lorainccc' ),
+		'items_list'                 => __( 'Items list', 'lorainccc' ),
+		'items_list_navigation'      => __( 'Items list navigation', 'lorainccc' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => false,
+		'show_tagcloud'              => false,
+		'show_in_rest'               => true,
+	);
+	register_taxonomy( 'lcdeptdir_acadfocus', array( 'faculty_staff_dir' ), $args );
+
+}
+add_action( 'init', 'lcdeptdir_acadfocus_teams', 0 );
+
+/* Add Post Admin Filtering */
+
+function remove_date_drop(){
+
+	$screen = get_current_screen();
+	
+		if ( 'faculty_staff_dir' == $screen->post_type ){
+			add_filter('months_dropdown_results', '__return_empty_array');
+		}
+	}
+	
+	add_action('admin_head', 'remove_date_drop');
+
+function lc_deptdir_add_taxonomy_filters() {
+	global $typenow;
+ 
+	// an array of all the taxonomyies you want to display. Use the taxonomy name or slug
+	$taxonomies = array('lcdeptdir_alphabet','lcdeptdir_deptartments','lcdeptdir_positiontype','lcdeptdir_acadfocus');
+ 
+	// must set this to the post type you want the filter(s) displayed on
+	if( $typenow == 'faculty_staff_dir' ){
+ 
+		foreach ($taxonomies as $tax_slug) {
+			$tax_obj = get_taxonomy($tax_slug);
+			$tax_name = $tax_obj->labels->name;
+			$terms = get_terms($tax_slug);
+			if(count($terms) > 0) {
+				echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
+				echo "<option value=''>Show All $tax_name</option>";
+				foreach ($terms as $term) { 
+					echo '<option value='. $term->slug, $_GET[$tax_slug] == $term->slug ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>'; 
+				}
+				echo "</select>";
+			}
+		}
+	}
+}
+add_action( 'restrict_manage_posts', 'lc_deptdir_add_taxonomy_filters' );
 
 
 ?>

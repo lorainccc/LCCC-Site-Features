@@ -65,38 +65,11 @@ function lc_dept_directory_register_fields() {
 			'schema'			=> null
 		)
 	);
-	// Add Department Name Field
-	register_api_field( 'faculty_staff_dir',
-		'lc_fac_staff_dir_department_name_field',
-		array(
-			'get_callback'		=> 'lc_get_fac_staff_dir_department_name_field',
-			'update_callback'	=> null,
-			'schema'			=> null
-		)
-	);
 	// Add Job Class Field
 	register_api_field( 'faculty_staff_dir',
 		'lc_fac_staff_dir_job_class_field',
 		array(
 			'get_callback'		=> 'lc_get_fac_staff_dir_job_class_field',
-			'update_callback'	=> null,
-			'schema'			=> null
-		)
-	);
-	// Add Position Type Field
-	register_api_field( 'faculty_staff_dir',
-		'lc_fac_staff_dir_position_type_field',
-		array(
-			'get_callback'		=> 'lc_get_fac_staff_dir_position_type_field',
-			'update_callback'	=> null,
-			'schema'			=> null
-		)
-	);
-	// Add Position Title Field
-		register_api_field( 'faculty_staff_dir',
-		'lc_fac_staff_dir_position_title_field',
-		array(
-			'get_callback'		=> 'lc_get_fac_staff_dir_position_title_field',
 			'update_callback'	=> null,
 			'schema'			=> null
 		)
@@ -110,20 +83,11 @@ function lc_dept_directory_register_fields() {
 			'schema'			=> null
 		)
 	);
-	// Add Second Department Field
+	// Add Advisor Schedule Field
 		register_api_field( 'faculty_staff_dir',
-		'lc_fac_staff_dir_second_department_name_field',
+		'lc_fac_staff_dir_position_field',
 		array(
-			'get_callback'		=> 'lc_get_fac_staff_dir_second_department_name_field',
-			'update_callback'	=> null,
-			'schema'			=> null
-		)
-	);
-	// Add Second Position Title Field
-		register_api_field( 'faculty_staff_dir',
-		'lc_fac_staff_dir_second_position_title_field',
-		array(
-			'get_callback'		=> 'lc_get_fac_staff_dir_second_position_title_field',
+			'get_callback'		=> 'lc_get_fac_staff_dir_position_field',
 			'update_callback'	=> null,
 			'schema'			=> null
 		)
@@ -158,32 +122,16 @@ function lc_get_fac_staff_dir_office_location_field( $object, $field_name, $requ
 	return lc_deptdir_get_meta_field('lc_fac_staff_dir_office_location_field');
 }
 
-function lc_get_fac_staff_dir_department_name_field( $object, $field_name, $request ) {
-	return lc_deptdir_get_meta_field('lc_fac_staff_dir_department_name_field');
-}
-
 function lc_get_fac_staff_dir_job_class_field( $object, $field_name, $request ) {
 	return lc_deptdir_get_meta_field('lc_fac_staff_dir_job_class_field');
-}
-
-function lc_get_fac_staff_dir_position_type_field( $object, $field_name, $request ) {
-	return lc_deptdir_get_meta_field('lc_fac_staff_dir_position_type_field');
-}
-
-function lc_get_fac_staff_dir_position_title_field( $object, $field_name, $request ) {
-	return lc_deptdir_get_meta_field('lc_fac_staff_dir_position_title_field');
 }
 
 function lc_get_fac_staff_dir_advisor_schedule_field( $object, $field_name, $request ) {
 	return lc_deptdir_get_meta_field('lc_fac_staff_dir_advisor_schedule_field');
 }
 
-function lc_get_fac_staff_dir_second_department_name_field( $object, $field_name, $request ) {
-	return lc_deptdir_get_meta_field('lc_fac_staff_dir_second_department_name_field');
-}
-
-function lc_get_fac_staff_dir_second_position_title_field( $object, $field_name, $request ) {
-	return lc_deptdir_get_meta_field('lc_fac_staff_dir_second_position_title_field');
+function lc_get_fac_staff_dir_position_field( $object, $field_name, $request ) {
+	return lc_deptdir_get_meta_field('lc_fac_staff_dir_position_field');
 }
 
 add_action( 'rest_api_init', 'lc_dept_directory_register_fields');
