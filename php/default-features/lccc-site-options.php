@@ -105,7 +105,7 @@ function lccc_fac_staff_directory_department_field_html(){
 
   $domain = 'http://' . $_SERVER['HTTP_HOST'];
   $request = wp_remote_get( $domain . '/mylccc/wp-json/wp/v2/lcdeptdir_deptartments?per_page=100');
-    echo $domain . '/mylccc/wp-json/wp/v2/lcdeptdir_deptartments?per_page=100';
+
   if( is_wp_error( $request ) ){
     return false;
   }
