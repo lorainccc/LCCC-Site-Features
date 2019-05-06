@@ -746,4 +746,3 @@ function lc_site_content_age_list(){
 }
 
 ?>
-

@@ -80,16 +80,16 @@ class LCCC_Success_Story_Widget extends WP_Widget {
   // Check values
 if( $instance) {
      $lcsite = esc_attr($instance['lcsite']);
-					$storyslug = esc_attr($instance['storyslug']);
-					$lcstorytitle = esc_attr($instance['lcstorytitle']);
+	 $storyslug = esc_attr($instance['storyslug']);
+	 $lcstorytitle = esc_attr($instance['lcstorytitle']);
 } else {
      $lcsite = '';
-					$storyslug = '';
-					$lc_story_title = '';
+	 $storyslug = '';
+	 $lc_story_title = '';
 }
 ?>
 
-  <label for="<?php echo $this->get_field_id('lcstorytitle');?>">Site URL: </label>
+  <label for="<?php echo $this->get_field_id('lcstorytitle');?>">Story Title: </label>
   <input type="text" name="<?php echo $this->get_field_name('lcstorytitle');?>" id="<?php echo $this->get_field_id('lcstorytitle');?>" value="<?php echo $lcstorytitle;?>" size="40" />
 
   <label for="<?php echo $this->get_field_id('lcsite');?>">Site URL: </label>
@@ -111,9 +111,9 @@ if( $instance) {
 		// processes widget options to be saved
 		       $instance = $old_instance;
       // Fields
-     		$instance['lcsite'] = strip_tags($new_instance['lcsite']);
+       $instance['lcsite'] = strip_tags($new_instance['lcsite']);
        $instance['storyslug'] = strip_tags($new_instance['storyslug']);
-							$instance['lcstorytitle'] = strip_tags($new_instance['lcstorytitle']);
+	   $instance['lcstorytitle'] = strip_tags($new_instance['lcstorytitle']);
   
 		return $instance;
 	}
@@ -122,4 +122,4 @@ if( $instance) {
 add_action( 'widgets_init', function(){
 	register_widget( 'LCCC_Success_Story_Widget' );
 });
-?>
+?> 
