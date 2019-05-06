@@ -2,7 +2,16 @@
 
 // Add various fields to the JSON output
 function lc_success_story_api_register_fields() {
-	// Add Start Date
+	// Add Story URL Field
+	register_api_field( 'lc_success_story',
+		'lc_success_story_url_field',
+		array(
+			'get_callback'		=> 'lccc_get_success_story_field',
+			'update_callback'	=> null,
+			'schema'			=> null
+		)
+	);
+	// Add Story Label Field
 	register_api_field( 'lc_success_story',
 		'lc_success_story_url_label_field',
 		array(
@@ -11,7 +20,11 @@ function lc_success_story_api_register_fields() {
 			'schema'			=> null
 		)
 	);
-} 
+}
+
+function lccc_get_success_story_field( $object, $field_name, $request ) {
+	return event_meta_box_get_meta('lc_success_story_url_field');
+}
 
 function lccc_get_success_story_label_field( $object, $field_name, $request ) {
 	return event_meta_box_get_meta('lc_success_story_url_label_field');
