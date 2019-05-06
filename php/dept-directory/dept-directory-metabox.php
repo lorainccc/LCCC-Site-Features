@@ -289,6 +289,13 @@ function lc_dept_directory_save_info( $post_id, $post ) {
  $first_name = $name[0];
  $last_name = $name[1];
 
+ /* Begin Assigning Last Initial to Taxonomy to enable Alpha index */
+
+ $taxonomy = lcdeptdir_alphabet;
+ wp_set_post_terms( $post_id, strtoupper(substr($last_name, 0, 1)), $taxonomy, true );
+
+/* End Assigning Last Initial to Taxonomy to enable Alpha index */
+
  /* First Name Field */
  /* Get the posted data and sanitize it for use as a date value. */
  //$new_meta_value = ( isset( $_POST['lc_fac_staff_dir_firstname_field'] ) ? sanitize_text_field($_POST['lc_fac_staff_dir_firstname_field'] ) : '' );
