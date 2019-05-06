@@ -61,7 +61,7 @@ class LCCC_Success_Story_Widget extends WP_Widget {
 				echo '      <div class="small-12 columns">';
 	   echo '			      <h3 class="success-story">' . $content[0]->title->rendered . '</h3>';	
 				echo $content[0]->excerpt->rendered;
-	   echo '         <p><span class="wp-svg-arrow-right-3 arrow-right-3"></span> <a href="' . $content[0]->link . '">' . $content[0]->lc_success_story_url_label_field . '</a></p>';	
+	   echo '         <p><span class="wp-svg-arrow-right-3 arrow-right-3"></span> <a href="' . $content[0]->lc_success_story_url_field . '">' . $content[0]->lc_success_story_url_label_field . '</a></p>';	
 		  echo '      </div>';
 		  echo '    </div>';
 		  echo '  </div>';

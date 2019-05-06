@@ -39,7 +39,7 @@ function lc_show_success_story_meta_box( $object, $box ) { ?>
 
  <p>
    <label for="lc_success_story_url_field">
-    <?php _e( "Read More Descriptive Label: ", "lorainccc" ); ?>
+    <?php _e( "Story Link: ", "lorainccc" ); ?>
    </label>
    <input type="text" name="lc_success_story_url_field" id="lc_success_story_url_field" value="<?php echo esc_attr( get_post_meta ( $object->ID, 'lc_success_story_url_field', true ) ); ?>" size="90" />
   </p>
