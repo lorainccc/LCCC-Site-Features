@@ -56,14 +56,14 @@ function lc_add_wp_webtools_menu_page() {
   'lc-site-content-age',                                              		// Menu Slug
   'lc_site_content_age_list'                                     					// Function
  );
- add_submenu_page(
+/*  add_submenu_page(
 	'lccc-wp-webtools',																											// Parent Slug (Page to nest under)
 	__( 'Theme Options', 'lorainccc' ),   																	// Page Title
 	'LCCC Theme Options',                                                 	// Menu Title
 	'manage_options',                                                      	// Capabilities
 	'lc-theme-settings-options',                                            // Menu Slug
 	'lc_theme_options'                                     									// Function
-);
+); */
 }
 
 require_once( plugin_dir_path( __FILE__ ).'lc-theme-options.php');
