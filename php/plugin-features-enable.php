@@ -110,6 +110,7 @@
  require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-capabilities.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/network-pending-items.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/lc-search-widget.php' );
+ require_once( plugin_dir_path( __FILE__ ).'default-features/lc-disable-xmlrpc.php' );
 
 // Content Approval Custom Workflow
 require_once( plugin_dir_path( __FILE__ ).'default-features/content-approvals/content-approvals.php' );
