@@ -1,0 +1,63 @@
+body{
+    font-family: 'Open Sans';
+}
+
+/* Clipboard Bullets */
+
+ul.bullet-clipboard{
+ list-style-type:none;
+}
+
+ul.bullet-clipboard link{
+ text-indent: -1.4em;
+}
+
+ul.bullet-clipboard li:before{
+ font-family: "Genericons";
+ content: "\f425";
+ color: #606060;
+ float: left;
+ width: 1.4em;
+}
+
+/* Arrow Bullets */
+
+ul.bullet-arrow{
+ list-style-type:none;
+}
+
+ul.bullet-arrow link{
+ text-indent: -1.4em;
+}
+
+ul.bullet-arrow li:before{
+ font-family: "Genericons";
+ content: "\f429";
+ color: #606060;
+ float: left;
+ width: 1.4em;
+}
+
+/* Link Buttons */
+
+a.blue-button{background:-webkit-gradient(linear,left top,left bottom,from(#1790e0),color-stop(50%,#1583cc),color-stop(51%,#147cc2),to(#1376b8));background:linear-gradient(to bottom,#1790e0 0,#1583cc 50%,#147cc2 51%,#1376b8 100%);font-weight:500;line-height:1.5;letter-spacing:.05em;border-radius:.25em;padding:10px;color:#fff;display:inline-block;text-align:center}
+a.blue-button-250{background:-webkit-gradient(linear,left top,left bottom,from(#1790e0),color-stop(50%,#1583cc),color-stop(51%,#147cc2),to(#1376b8));background:linear-gradient(to bottom,#1790e0 0,#1583cc 50%,#147cc2 51%,#1376b8 100%);font-weight:500;line-height:1.5;letter-spacing:.05em;border-radius:.25em;padding:10px;color:#fff;display:inline-block;min-width:250px;max-width:250px;text-align:center;font-weight:700;}
+a.blue-button-300{background:-webkit-gradient(linear,left top,left bottom,from(#1790e0),color-stop(50%,#1583cc),color-stop(51%,#147cc2),to(#1376b8));background:linear-gradient(to bottom,#1790e0 0,#1583cc 50%,#147cc2 51%,#1376b8 100%);font-weight:500;line-height:1.5;letter-spacing:.05em;border-radius:.25em;padding:10px;color:#fff;display:inline-block;min-width:300px;max-width:300px;text-align:center;font-weight:700;}
+
+a.teal-button 
+{
+background:-webkit-gradient(linear,left top,left bottom,from(#16cce1),color-stop(50%,#11a0b1),color-stop(51%,#0f9bab),to(#0D8896));
+background:linear-gradient(to bottom,#16cce1 0,#11a0b1 50%,#0f9bab 51%,#0D8896 100%);
+}
+
+a.dark-red-button  
+{
+background:-webkit-gradient(linear,left top,left bottom,from(#ee2f23),color-stop(50%,#b7231a),color-stop(51%,#b22219),to(#9e1e16));
+background:linear-gradient(to bottom,#ee2f23 0,#b7231a 50%,#b22219 51%,#9e1e16 100%);
+color: #fff;
+}
+
+a.teal-button:hover, a.teal-button:focus, a.dark-red-button :hover, a.dark-red-button :focus{ 
+	color: #fff;
+}
+

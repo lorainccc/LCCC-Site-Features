@@ -20,10 +20,10 @@ function lc_mce_editor_style($url) {
     // Retrieves the plugin directory URL and adds editor stylesheet
     // Change the path here if using different directories
 
-    //$url .= trailingslashit( plugin_dir_url(__FILE__) ) . '/css/editor-styles.css';
+    $url .= '//' . $_SERVER['SERVER_NAME'] . '/wp-content/plugins/lccc-site-features/css/editor-style.css';
 
     // Change URL for CSS to theme
-    $url .= '//' . $_SERVER['SERVER_NAME'] . '/wp-content/themes/lorainccc-subsite/css/editor-styles.css';
+    //$url .= '//' . $_SERVER['SERVER_NAME'] . '/wp-content/themes/lorainccc/css/editor-style.css';
 
     return $url;
 }
@@ -64,6 +64,8 @@ add_filter('tiny_mce_before_init', 'lc_mce_add_styles_editor_settings');
 
 function lc_mce_add_styles_editor_settings( $settings ) {
 
+$siteUrl = get_blog_details()->path;
+
     $style_formats = array(
         array(
          'title' => 'Clipboard Bullets',
@@ -91,6 +93,52 @@ function lc_mce_add_styles_editor_settings( $settings ) {
          'classes' => 'blue-button-300'
         ),
     );
+
+    $lc_theme_options = get_option( 'lc_theme_settings' );
+    
+    if($lc_theme_options['lc_enable_teal_buttons_field'] == '1'){
+        $style_format = array(
+            array(
+                'title' => 'Teal Button',
+                'selector' => 'a',
+                'classes' => 'blue-button teal-button'
+               ),
+            array(
+                'title' => 'Teal Button 250px',
+                'selector' => 'a',
+                'classes' => 'blue-button-250 teal-button'
+               ),
+            array(
+                'title' => 'Teal Button 300px',
+                'selector' => 'a',
+                'classes' => 'blue-button-300 teal-button'
+            ),
+        );
+        $style_formats = array_merge( $style_formats, $style_format);
+    }
+
+    if($lc_theme_options['lc_enable_drkred_buttons_field'] == '1'){
+        $style_format = array(
+            array(
+                'title' => 'Dark Red Button',
+                'selector' => 'a',
+                'classes' => 'blue-button dark-red-button'
+               ),
+            array(
+                'title' => 'Dark Red Button 250px',
+                'selector' => 'a',
+                'classes' => 'blue-button-250 dark-red-button'
+               ),
+            array(
+                'title' => 'Dark Red Button 300px',
+                'selector' => 'a',
+                'classes' => 'blue-button-300 dark-red-button'
+            ),
+        );
+        $style_formats = array_merge( $style_formats, $style_format);
+    }
+
+
 
  $settings['style_formats'] = json_encode( $style_formats );
 

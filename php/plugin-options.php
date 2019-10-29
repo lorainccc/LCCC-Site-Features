@@ -8,55 +8,65 @@
 
 function lc_add_wp_webtools_menu_page() {
  add_menu_page(
-  __( 'LCCC Site Features', 'lorainccc' ),                              // Page Title
-  'Site Features',                                                    // Menu Title
-  'manage_options',                                                   // Capabilities
-  'lccc-wp-webtools',                                                 // Menu Slug
-  'lc_wp_webtools_options_page',                                      // Function
-  plugins_url( 'lccc-site-features/assets/images/lccc-block.png' ),     // Icon URL
-  2                                                                   // Position (2 = Dashboard)
+  __( 'LCCC Site Features', 'lorainccc' ),                              	// Page Title
+  'Site Features',                                                    		// Menu Title
+  'manage_options',                                                   		// Capabilities
+  'lccc-wp-webtools',                                                 		// Menu Slug
+  'lc_wp_webtools_options_page',                                      		// Function
+  plugins_url( 'lccc-site-features/assets/images/lccc-block.png' ),     	// Icon URL
+  2                                                                   		// Position (2 = Dashboard)
  );
 	 add_submenu_page(
-		'lccc-wp-webtools',																																																		  // Parent Slug (Page to nest under)
-  __( 'Current Site Page Templates', 'lorainccc' ),                      // Page Title
-  'Page Templates',                                                      // Menu Title
-  'manage_options',                                                      // Capabilities
-  'lc-page-templates',                                                   // Menu Slug
-  'lc_page_templates_list'                                               // Function
+		'lccc-wp-webtools',																										// Parent Slug (Page to nest under)
+  __( 'Current Site Page Templates', 'lorainccc' ),                      	// Page Title
+  'Page Templates',                                                      	// Menu Title
+  'manage_options',                                                      	// Capabilities
+  'lc-page-templates',                                                   	// Menu Slug
+  'lc_page_templates_list'                                               	// Function
  );
 /*	add_submenu_page(
-		'lccc-wp-webtools',																																																		  // Parent Slug (Page to nest under)
-  __( 'Current Site List of Files in Upload Directory', 'lorainccc' ),   // Page Title
-  'Media Files',                                                         // Menu Title
-  'manage_options',                                                      // Capabilities
-  'lc-media-files',                                                   			// Menu Slug
-  'lc_media_files_list'                                                  // Function
+		'lccc-wp-webtools',																									 	// Parent Slug (Page to nest under)
+  __( 'Current Site List of Files in Upload Directory', 'lorainccc' ),   	// Page Title
+  'Media Files',                                                         	// Menu Title
+  'manage_options',                                                      	// Capabilities
+  'lc-media-files',                                                   		// Menu Slug
+  'lc_media_files_list'                                                  	// Function
  );*/
 	add_submenu_page(
-		'lccc-wp-webtools',																																																		  // Parent Slug (Page to nest under)
+		'lccc-wp-webtools',																										// Parent Slug (Page to nest under)
   __( 'Current List of PDF Files in Upload Directory', 'lorainccc' ),   	// Page Title
   'PDF Files',                                                         		// Menu Title
-  'manage_options',                                                      // Capabilities
-  'lc-pdf-files',                                                   					// Menu Slug
+  'manage_options',                                                      	// Capabilities
+  'lc-pdf-files',                                                   			// Menu Slug
   'lc_pdf_files_list'                                                  		// Function
  );
-		add_submenu_page(
-		'lccc-wp-webtools',																																																		  // Parent Slug (Page to nest under)
-  __( 'Site Featured Image', 'lorainccc' ),   																											// Page Title
-  'Site Featured Image',                                                 // Menu Title
-  'manage_options',                                                      // Capabilities
-  'lc-site-featured-image',                                              // Menu Slug
-  'lc_site_featured_featured_field'                                      // Function
+	add_submenu_page(
+	'lccc-wp-webtools',																											// Parent Slug (Page to nest under)
+  __( 'Site Featured Image', 'lorainccc' ),   														// Page Title
+  'Site Featured Image',                                                 	// Menu Title
+  'manage_options',                                                      	// Capabilities
+  'lc-site-featured-image',                                              	// Menu Slug
+  'lc_site_featured_featured_field'                                      	// Function
  );
-	 add_submenu_page(
-		'lccc-wp-webtools',																																																		  // Parent Slug (Page to nest under)
-  __( 'Content Age', 'lorainccc' ),   																																			// Page Title
-  'Site Content Age',                                                 			// Menu Title
-  'manage_options',                                                      // Capabilities
-  'lc-site-content-age',                                              			// Menu Slug
-  'lc_site_content_age_list'                                     							 // Function
+	add_submenu_page(
+	'lccc-wp-webtools',																											// Parent Slug (Page to nest under)
+  __( 'Content Age', 'lorainccc' ),   																		// Page Title
+  'Site Content Age',                                                 		// Menu Title
+  'manage_options',                                                      	// Capabilities
+  'lc-site-content-age',                                              		// Menu Slug
+  'lc_site_content_age_list'                                     					// Function
  );
+ add_submenu_page(
+	'lccc-wp-webtools',																											// Parent Slug (Page to nest under)
+	__( 'Theme Options', 'lorainccc' ),   																	// Page Title
+	'LCCC Theme Options',                                                 	// Menu Title
+	'manage_options',                                                      	// Capabilities
+	'lc-theme-settings-options',                                            // Menu Slug
+	'lc_theme_options'                                     									// Function
+);
 }
+
+require_once( plugin_dir_path( __FILE__ ).'lc-theme-options.php');
 
 add_action( 'admin_menu', 'lc_add_wp_webtools_menu_page' );
 add_action( 'admin_init', 'lc_webtools_settings_init' );
@@ -65,10 +75,10 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
   register_setting( 'lc_wp_webtools_options', 'lc_webtools_settings' );
 
   add_settings_section(
-   'lc_webtools_settings_section',
-   __( 'Choose Features to Enable', 'lorainccc' ),
-   'lc_webtools_settings_section_callback',
-   'lc_wp_webtools_options'
+   'lc_webtools_settings_section',																						// Section ID
+   __( 'Choose Features to Enable', 'lorainccc' ),														// Title
+	 'lc_webtools_settings_section_callback',																		// Callback
+   'lc_wp_webtools_options'																										// Page
   );
 
   add_settings_field(
@@ -158,6 +168,14 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
    'lc_wp_webtools_options',                                                  // Page
    'lc_webtools_settings_section'                                             // Section
   );
+
+  add_settings_field(
+	'lc_enable_podcast_post_type',                                             // Field ID
+	__('Enable Podcast Repository:' , 'lorainccc'),                           // Title
+	'lc_podcast_post_type_render',                                             // Callback
+	'lc_wp_webtools_options',                                                  // Page
+	'lc_webtools_settings_section'                                             // Section
+   );
 
  }
 
@@ -324,6 +342,18 @@ function lc_social_media_fields_render() {
  <p class="description" id="tagline-description">Enables Social Media Fields on the General Settings page.  Allows the site to have social media account links available for use in the theme.</p>
 		<?php
  }
+
+ function lc_podcast_post_type_render() {
+	$options = get_option( 'lc_webtools_settings' );
+	$shared = isset($options['lc_enable_podcast_post_type']) ? $options['lc_enable_podcast_post_type'] : '';
+	?>
+   <label class="switch">
+	<input type="checkbox" name='lc_webtools_settings[lc_enable_podcast_post_type]' <?php checked( $shared, 1); ?> value='1' style="display:none;">
+	<div class="slider round"></div>
+   </label>
+   <p class="description" id="tagline-description">Enables Podcast Custom Post Type.  Used to generate a list of Podcast episodes and unique URLs for each episode.</p>
+		  <?php
+   }
 
 // Render out Page Templates List
 
@@ -745,4 +775,7 @@ function lc_site_content_age_list(){
     }
    }
 }
+
 require_once( plugin_dir_path( __FILE__ ).'dashboard/lc-admin-widget.php' );
+
+?>

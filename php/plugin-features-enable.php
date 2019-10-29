@@ -93,10 +93,19 @@
  }
 
  $socialmedia = isset($webtools['lc_enable_social_media_fields']) ? $webtools['lc_enable_social_media_fields'] : '';
-  // Check for Social Media Link Fields Feature
+
+  // Check for Social Media Fields Feature
+
  if ($socialmedia == 1) {
   require_once( plugin_dir_path( __FILE__ ).'social-media/lc-social-media-links.php' );
  }
+
+ $podcast = isset($webtools['lc_enable_podcast_post_type']) ? $webtools['lc_enable_podcast_post_type'] : '';
+ // Check for Podcast Custom Post Type Feature
+if ($podcast == 1) {
+ require_once( plugin_dir_path( __FILE__ ).'podcasts/lc-podcasts-cpt.php' );
+ require_once( plugin_dir_path( __FILE__ ).'podcasts/lc-podcasts-metabox.php' );
+}
 
  // Default features that are always loaded when the webtools plugin is activated.
  require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-site-options.php' );
