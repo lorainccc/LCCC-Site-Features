@@ -2,7 +2,7 @@
 
 class lc_admin_publishfunctions{
 	
-	function lc_admin_publishfunctions() {
+	function __construct() {
 	
 		//Post Update Functions	
 		add_action( 'save_post', array($this, 'lc_post_update'), 10 );

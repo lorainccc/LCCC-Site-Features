@@ -97,3 +97,8 @@ add_action( 'admin_enqueue_scripts', 'lorainccc_site_features_wp_admin_scripts' 
 
 require_once( plugin_dir_path( __FILE__ ).'php/plugin-options.php');
 require_once( plugin_dir_path( __FILE__ ).'php/plugin-features-enable.php');
+
+/* function lc_delete_post_type(){
+    unregister_post_type( 'lccc_podcasts' );
+}
+add_action('init','lc_delete_post_type'); */

@@ -1,5 +1,4 @@
 <?php
-
 add_action( 'admin_init', 'lc_theme_options_init' );
 
 function lc_theme_options_init() {
@@ -70,5 +69,3 @@ function lc_drkred_buttons_render() {
   <p class="description" id="tagline-description">Provides dark red button color options under the format menu in editor.</p>
 <?php
 }
-  
-?>

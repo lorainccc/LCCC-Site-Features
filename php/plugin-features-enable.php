@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Check the plugin settings to see which features to enable
  *
@@ -101,9 +100,9 @@
  $podcast = isset($webtools['lc_enable_podcast_post_type']) ? $webtools['lc_enable_podcast_post_type'] : '';
  // Check for Podcast Custom Post Type Feature
 if ($podcast == 1) {
- require_once( plugin_dir_path( __FILE__ ).'podcasts/lc-podcasts-cpt.php' );
- require_once( plugin_dir_path( __FILE__ ).'podcasts/lc-podcasts-metabox.php' );
+ require_once( plugin_dir_path( __FILE__ ).'podcasts/lc-podcasting.php' );
 }
+
 
  // Default features that are always loaded when the webtools plugin is activated.
  require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-site-options.php' );
@@ -119,4 +118,3 @@ if ($podcast == 1) {
 
 // Content Approval Custom Workflow
 require_once( plugin_dir_path( __FILE__ ).'default-features/content-approvals/content-approvals.php' );
-?>

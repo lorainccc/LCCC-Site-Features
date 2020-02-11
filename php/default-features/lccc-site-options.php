@@ -14,7 +14,7 @@
  $lccc_base_site_path = new new_lccc_base_path_setting();
 
 class new_lccc_base_path_setting {
- function new_lccc_base_path_setting() {
+ function __construct() {
   add_filter( 'admin_init', array( &$this , 'lccc_register_fields' ) );
  }
 
