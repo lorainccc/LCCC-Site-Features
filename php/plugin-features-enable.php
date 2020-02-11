@@ -100,7 +100,7 @@
  $podcast = isset($webtools['lc_enable_podcast_post_type']) ? $webtools['lc_enable_podcast_post_type'] : '';
  // Check for Podcast Custom Post Type Feature
 if ($podcast == 1) {
- require_once( plugin_dir_path( __FILE__ ).'podcasts/lc-podcasting.php' );
+ require_once( plugin_dir_path( __FILE__ ).'podcasting/lc-podcasting.php' );
 }
 
 
