@@ -134,7 +134,18 @@
             if ( empty( $explicit ) ) {
                 echo 'no';
             } else {
-                echo esc_html( $explicit );
+                $explicit_code = esc_html( $explicit );
+                switch( $explicit_code ) {
+                    case "0":
+                        echo 'no';
+                    break;
+                    case "1":
+                        echo 'yes' ;
+                    break;
+                    case "2":
+                        echo 'clean';
+                    break;
+                }
             }
 
             echo "</itunes:explicit>\n";
@@ -142,7 +153,7 @@
             $image = get_term_meta( $term->term_id, 'lc_podcasting_image', true );
 
             if ( ! empty( $image ) ) {
-                echo "<itunes:image href='" . esc_url( wp_get_attachment_url( $image ) ) . "' />\n";
+                echo "<itunes:image href='" . str_replace( 'https://', 'http://', esc_url( wp_get_attachment_url( $image ) ) ) . "' />\n";
             }
 
             $keywords = get_term_meta( $term->term_id, 'lc_podcasting_keywords', true );
@@ -202,7 +213,7 @@
                     if ( is_array( $image ) ) {
                         $image = $image[0];
                     }
-                    echo "<itunes:image href='" . esc_url( $image ) . "' />\n";
+                    echo "<itunes:image href='" . str_replace( 'https://', 'http://', esc_url( $image ) ) . "' />\n";
                 }
             }
 
@@ -316,28 +327,37 @@
             }
         }
 
-        /**
-         * Ensure the excerpt is actually used for the excerpt.
-         *
-         * @param  string $output The excerpt.
-         *
-         * @return string         The filtered excerpt.
-         */
-        function lc_empty_rss_excerpt( $output ) {
-            $excerpt = get_the_excerpt();
+    /**
+     * Ensure the excerpt is actually used for the excerpt.
+     *
+     * @param  string $output The excerpt.
+     *
+     * @return string         The filtered excerpt.
+     */
+    function lc_empty_rss_excerpt( $output ) {
+        $excerpt = get_the_excerpt();
 
-            if ( empty( $excerpt ) ) {
-                return '';
-            }
-
-            return $output;
+        if ( empty( $excerpt ) ) {
+            return '';
         }
-        // Run it super late after any other filters may have inserted something.
-        add_filter( 'the_excerpt_rss', 'lc_empty_rss_excerpt', 1000 );
 
-        function lc_strip_shortcodes( $content ){
-            $content = strip_shortcodes($content);
+        return $output;
+    }
+    // Run it super late after any other filters may have inserted something.
+    add_filter( 'the_excerpt_rss', 'lc_empty_rss_excerpt', 1000 );
+
+    function lc_feed_item_content( $content )
+    {
+        global $post;
+
+        if ( ! is_feed() )
             return $content;
-        }
 
-        add_filter('the_content_rss', 'lc_strip_shortcodes');
+        // Remove all shortcodes
+        $content = strip_shortcodes( $post->post_content );
+
+    return $content;
+    }
+
+    add_filter('the_excerpt_rss', 'lc_feed_item_content', 99);
+    add_filter('the_content', 'lc_feed_item_content', 99);

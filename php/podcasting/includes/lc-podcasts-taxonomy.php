@@ -209,6 +209,7 @@ function lc_add_podcasting_taxonomy_help_message() {
 	echo '<div class="notice notice-info"><p>';
 	esc_html_e( 'Once at least one podcast exists, you can add episodes by creating a post, assigning it to the appropriate podcast, and inserting an audio player or podcast block into the content of the post.  You can then submit the feed URL to podcast directories.  For more information please contact Lori Martin or Joe Querin.', 'lorainccc' );
 	echo '</p></div>';
+
 }
 add_action( 'after-lcpodcasts-table', 'lc_add_podcasting_taxonomy_help_message' );
 
