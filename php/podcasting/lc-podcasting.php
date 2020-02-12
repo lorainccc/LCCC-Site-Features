@@ -4,7 +4,7 @@
  * It was customized to work with a Custom Post Type verses using the Posts Post Type in WordPress.
 */
 
-define( 'LC_PODCAST_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'LC_PODCAST_PLUGIN_URL', str_replace( '/php/podcasting', '', plugin_dir_url( __FILE__ ) ) );
 
 require_once( plugin_dir_path( __FILE__ ).'includes/lc-podcasts-helpers.php' );
 require_once( plugin_dir_path( __FILE__ ).'includes/lc-podcasts-cpt.php' );
@@ -23,11 +23,11 @@ function lc_podcasting_admin_enqueues( $hook_suffix ){
 	}
 
 	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-		$css_file = 'assets/css/podcasting-edit-term.css';
-		$js_file  = 'assets/js/podcasting-edit-term.js';
+		$css_file = 'css/lc_podcasting-edit-term.css';
+		$js_file  = 'js/lc_podcasting-edit-term.js';
 	} else {
-		$css_file = 'dist/css/podcasting-edit-term.min.css';
-		$js_file  = 'dist/js/podcasting-edit-term.min.js';
+		$css_file = 'css/lc_podcasting-edit-term.min.css';
+		$js_file  = 'js/lc_podcasting-edit-term.min.js';
 	}
 
     wp_enqueue_script('lc_podcasting_edit_term_script', LC_PODCAST_PLUGIN_URL . $js_file, array( 'jquery' ) );
@@ -53,9 +53,9 @@ function lc_edit_post_enqueues( $hook_suffix ) {
 	}
 
 	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-		$js_file = 'assets/js/podcasting-edit-post.js';
+		$js_file = 'js/lc_podcasting-edit-post.js';
 	} else {
-		$js_file = 'dist/js/podcasting-edit-post.min.js';
+		$js_file = 'js/lc_podcasting-edit-post.min.js';
 	}
 
 	wp_enqueue_script( 'lc_podcasting_edit_post_screen', LC_PODCAST_PLUGIN_URL . $js_file, array( 'jquery' ), '20200204', true );
