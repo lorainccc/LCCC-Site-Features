@@ -5,7 +5,7 @@
          * Add an itunes podcasting header.
          */
         function lc_xmlns() {
-            echo "\n\t" . 'xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"' . "\n";
+            echo "\n" . 'xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"' . "\n";
         }
         add_action( 'rss2_ns', 'lc_xmlns' );
 
@@ -218,6 +218,8 @@
                 $excerpt = get_term_meta( $term->term_id, 'lc_podcasting_summary', true );
             }
             $excerpt = apply_filters( 'the_excerpt_rss', $excerpt );
+
+            $excerpt = strip_shortcodes( $excerpt );
 
             echo '<itunes:summary>' . esc_html( wp_strip_all_tags( $excerpt ) ) . "</itunes:summary>\n";
 

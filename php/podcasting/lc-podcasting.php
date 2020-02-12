@@ -86,7 +86,7 @@ function lc_custom_feed() {
 				return HOUR_IN_SECONDS;
 			}
         );
-        require_once( plugin_dir_path( __FILE__ ).'includes/lc-podcasts-feed.php' );
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/lc-podcasts-feed.php' );
 	}
 }
 add_action( 'wp', 'lc_custom_feed' );
