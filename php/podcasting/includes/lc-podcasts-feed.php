@@ -219,8 +219,6 @@
             }
             $excerpt = apply_filters( 'the_excerpt_rss', $excerpt );
 
-            $excerpt = strip_shortcodes( $excerpt );
-
             echo '<itunes:summary>' . esc_html( wp_strip_all_tags( $excerpt ) ) . "</itunes:summary>\n";
 
             $subtitle = wp_trim_words( $excerpt, 10, '&#8230;' );
@@ -336,3 +334,10 @@
         }
         // Run it super late after any other filters may have inserted something.
         add_filter( 'the_excerpt_rss', 'lc_empty_rss_excerpt', 1000 );
+
+        function lc_strip_shortcodes( $content ){
+            $content = strip_shortcodes($content);
+            return $content;
+        }
+
+        add_filter('the_content_rss', 'lc_strip_shortcodes');
