@@ -5,7 +5,10 @@
          * Add an itunes podcasting header.
          */
         function lc_xmlns() {
+            //echo "\n" . 'xmlns:media="http://www.itunes.com/dtds/podcast-1.0.dtd"' . "\n";
             echo "\n" . 'xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"' . "\n";
+            //echo "\n" . 'xmlns:dcterms="https://purl.org/dc/terms/"' . "\n";
+            //echo "\n" . 'xmlns:spotify="https://www.spotify.com/ns/rss"' . "\n";
         }
         add_action( 'rss2_ns', 'lc_xmlns' );
 
@@ -99,7 +102,7 @@
             }
 
             if ( ! empty( $summary ) ) {
-                echo '<itunes:summary>' . esc_html( wp_strip_all_tags( $summary ) ) . "</itunes:summary>\n";
+                echo '<itunes:summary>' . esc_html( str_replace("&nbsp;", "", wp_strip_all_tags( $summary ) ) ) . "</itunes:summary>\n";
             }
 
             $author = get_term_meta( $term->term_id, 'lc_podcasting_talent_name', true );
@@ -230,7 +233,7 @@
             }
             $excerpt = apply_filters( 'the_excerpt_rss', $excerpt );
 
-            echo '<itunes:summary>' . esc_html( wp_strip_all_tags( $excerpt ) ) . "</itunes:summary>\n";
+            echo '<itunes:summary>' . esc_html( str_replace("&nbsp;", "", wp_strip_all_tags( $excerpt ) ) ) . "</itunes:summary>\n";
 
             $subtitle = wp_trim_words( $excerpt, 10, '&#8230;' );
 

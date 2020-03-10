@@ -76,6 +76,12 @@ run_lccc_wp_webtools();
 
 function lorainccc_site_features_styles() {
  wp_enqueue_style('lc_site_features_styles', plugin_dir_url( __FILE__ ) . 'css/lc_site_features_styles.css', 20);
+
+ //Enables Campus Status to show on subsite pages.
+ wp_enqueue_script('angular-resources', '//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-resource.js', array('jquery', 'angular-core'), '20170216', false);
+ wp_enqueue_script('firebase-core', '//www.gstatic.com/firebasejs/3.6.9/firebase.js', array('jquery', 'angular-core'), '20170216', false);
+ wp_enqueue_script('angularfire', '//cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js', array('jquery', 'angular-core', 'firebase-core'), '20170216', false);
+ wp_enqueue_script('firebase-init', plugin_dir_url( __FILE__ ) . 'js/firebase-init.js', array( 'firebase-core', 'angularfire' ), '20170216', false );
 }
 
 add_action( 'wp_enqueue_scripts', 'lorainccc_site_features_styles' );
