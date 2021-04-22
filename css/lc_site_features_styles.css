@@ -199,3 +199,11 @@ color: #fff;
 a.teal-button:hover, a.teal-button:focus, a.dark-red-button:hover, a.dark-red-button:focus, a.blue-button:focus, a.blue-button-250:focus, a.blue-button-300:focus, a.blue-button:hover, a.blue-button-250:hover, a.blue-button-300:hover { 
 	color: #fff;
 }
+
+.lc-callout{
+	box-shadow: 0px 0px 20px 10px #e3e3e3;
+	margin: 20px 0;
+	border: 1px solid #8f8f8f; 
+	/*border-radius: 25px;*/
+	padding: 10px;	
+}

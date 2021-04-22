@@ -22,13 +22,13 @@ function lc_podcasting_admin_enqueues( $hook_suffix ){
 		return;
 	}
 
-	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-		$css_file = 'css/lc_podcasting-edit-term.css';
-		$js_file  = 'js/lc_podcasting-edit-term.js';
-	} else {
+	// if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+	// 	$css_file = 'css/lc_podcasting-edit-term.css';
+	// 	$js_file  = 'js/lc_podcasting-edit-term.js';
+	// } else {
 		$css_file = 'css/lc_podcasting-edit-term.min.css';
 		$js_file  = 'js/lc_podcasting-edit-term.min.js';
-	}
+	//}
 
     wp_enqueue_script('lc_podcasting_edit_term_script', LC_PODCAST_PLUGIN_URL . $js_file, array( 'jquery' ) );
 	wp_enqueue_style('lc_podcasting_edit_term_styles', LC_PODCAST_PLUGIN_URL . $css_file, 40);
@@ -52,11 +52,11 @@ function lc_edit_post_enqueues( $hook_suffix ) {
 		return;
 	}
 
-	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-		$js_file = 'js/lc_podcasting-edit-post.js';
-	} else {
-		$js_file = 'js/lc_podcasting-edit-post.min.js';
-	}
+	// if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+	//	$js_file = 'js/lc_podcasting-edit-post.js';
+	// } else {
+	 	$js_file = 'js/lc_podcasting-edit-post.min.js';
+	// }
 
 	wp_enqueue_script( 'lc_podcasting_edit_post_screen', LC_PODCAST_PLUGIN_URL . $js_file, array( 'jquery' ), '20200204', true );
 }

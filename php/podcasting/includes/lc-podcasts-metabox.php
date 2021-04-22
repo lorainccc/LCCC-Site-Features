@@ -141,7 +141,7 @@ function lc_show_podcasts_meta_box( $object, $box ) { ?>
        <label for="podcasting-enclosure-url"><?php esc_html_e( 'Podcast Audio', 'lorainccc' ); ?></label>
        <input type="text" id="podcasting-enclosure-url" name="podcast_enclosure_url" value="<?php echo esc_url( $lc_podcast_url ); ?>" size="35" />
        <input type="button" id="podcasting-enclosure-button" value="<?php esc_attr_e( 'Choose File', 'lorainccc' ); ?>" class="button"data-modal-title="<?php esc_attr_e( 'Podcast Audio File', 'lorainccc' ); ?>" data-modal-button="<?php esc_attr_e( 'Select this file' ); ?>" />
-     </p>
+     </p> 
 
     <?php
 
@@ -195,11 +195,13 @@ function lc_podcasts_save_info( $post_id, $post ) {
 
     $_post = wp_unslash( $_POST );
 
+
     if ( isset( $_post['podcast_enclosure_url'] ) && ! empty( $_post['podcast_enclosure_url'] ) ) {
       $url = sanitize_text_field( $_post['podcast_enclosure_url'] );
     } else {
       // Search for an audio shortcode to determine the audio enclosure url.
       $pattern = get_shortcode_regex();
+      $post = get_post( $post_id );
 
       if (
         preg_match_all( '/' . $pattern . '/s', $post->post_content, $matches )
@@ -219,7 +221,10 @@ function lc_podcasts_save_info( $post_id, $post ) {
 	 * @todo only retrieve enclosure metadata when a podcasting term id is selected and the url has changed.
 	 */
 	if ( $url ) {
+   
 		$lc_podcast_meta = lc_get_podcast_meta_from_url( $url );
+
+    //exit( var_dump( $lc_podcast_meta ) );
 
 		if ( ! empty( $lc_podcast_meta ) ) {
 
@@ -285,6 +290,7 @@ function lc_podcasts_save_info( $post_id, $post ) {
       $meta_value = get_post_meta($post_id, $meta_key, true );
 
       update_post_meta( $post_id, $meta_key, $new_meta_value, $meta_value );
+
 		}
   }
     // Save Podcast Explicit Setting
@@ -312,6 +318,7 @@ function lc_podcasts_save_info( $post_id, $post ) {
     $meta_value = get_post_meta($post_id, $meta_key, true );
 
     update_post_meta( $post_id, $meta_key, $new_meta_value, $meta_value );
+
   }
    
    

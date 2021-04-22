@@ -12,6 +12,8 @@
  */
 function lc_get_podcast_meta_from_url( $url ) {
 
+	
+
 	// Is the required when calling this from outside of the admin.
 	if ( ! is_admin() ) {
 		require_once ABSPATH . 'wp-admin/includes/file.php';
@@ -20,6 +22,11 @@ function lc_get_podcast_meta_from_url( $url ) {
 	// Modeled after WordPress do_enclose()
 	$podcast_meta = array();
 	$headers      = wp_get_http_headers( $url );
+	
+	//Used to find out why the file was not saving.
+	//$temp_headers = wp_safe_remote_head( $url );
+	//exit( var_dump( $temp_headers ) );
+	
 	if ( $headers ) {
 		if ( ! empty( $headers['location'] ) ) {
 			$headers = wp_get_http_headers( $headers['location'] );

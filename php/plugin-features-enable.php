@@ -7,19 +7,10 @@
 
  $webtools = get_option( 'lc_webtools_settings' );
 
- // Check for Gateway Menu Feature
-
-  // check if field is set to true or false.  Removes undefined index warning.
-  $gateway = isset($webtools['lc_enable_gateway_menu_field']) ? $webtools['lc_enable_gateway_menu_field'] : '';
-
- if ($gateway == 1) {
-  require_once( plugin_dir_path( __FILE__ ).'gateway/widget-gateway-cpt.php');
-  require_once( plugin_dir_path( __FILE__ ).'gateway/widget-gateway-menu.php');
- }
+ // Check for Badge Feature
 
   $badge = isset($webtools['lc_enable_badge_field']) ? $webtools['lc_enable_badge_field'] : '';
   
- // Check for Badge Feature
  if ($badge == 1) {
   require_once( plugin_dir_path( __FILE__ ).'badges/badge-metabox.php');
   require_once( plugin_dir_path( __FILE__ ).'badges/badge-widget.php');
@@ -34,75 +25,102 @@
   require_once( plugin_dir_path( __FILE__ ).'dept-contact/dept-contact-metabox.php' );
  }
 */
+ // Check for Program Path Feature
+
   $programpath = isset($webtools['lc_enable_program_pathways_field']) ? $webtools['lc_enable_program_pathways_field'] : '';
 
- // Check for Program Path Feature
  if ($programpath == 1) {
   require_once( plugin_dir_path( __FILE__ ).'program-paths/programpath-cpt.php' );
   require_once( plugin_dir_path( __FILE__ ).'program-paths/programpath-metabox.php' );
  }
 
+ // Check for Program Path Chart Feature
+
  $programpathchart = isset($webtools['lc_enable_program_pathway_chart_field']) ? $webtools['lc_enable_program_pathway_chart_field'] : '';
 
- // Check for Program Path Feature
  if ($programpathchart == 1) {
   require_once( plugin_dir_path( __FILE__ ).'program-path-charts/program-chart-cpt.php' );
   require_once( plugin_dir_path( __FILE__ ).'program-path-charts/program-chart-metabox.php' );
   require_once( plugin_dir_path( __FILE__ ).'program-path-charts/program-chart-widget.php' );
  }
 
-//  $department_directories = isset($webtools['lc_enable_department_directories_field']) ? $webtools['lc_enable_department_directories_field'] : '';
-
+/*
  // Check for Department Directory Feature
-/* if ($department_directories == 1) {
+
+  $department_directories = isset($webtools['lc_enable_department_directories_field']) ? $webtools['lc_enable_department_directories_field'] : '';
+
+  if ($department_directories == 1) {
   require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-cpt.php' );
   require_once( plugin_dir_path( __FILE__ ).'dept-directory/dept-directory-metabox.php' );
   require_once( plugin_dir_path( __FILE__ ).'dept-directory/lc-dept-directory-restapi-fields.php' );
  }
 
-  $department_dir_display = isset($webtools['lc_enable_department_directories_display_field']) ? $webtools['lc_enable_department_directories_display_field'] : '';*/
+  $department_dir_display = isset($webtools['lc_enable_department_directories_display_field']) ? $webtools['lc_enable_department_directories_display_field'] : '';
 
  // Check for Department Directory Display Feature
-/* if ($department_dir_display == 1) {
+ if ($department_dir_display == 1) {
   require_once( plugin_dir_path( __FILE__ ).'dept-directory/programpath-cpt.php' );
   require_once( plugin_dir_path( __FILE__ ).'dept-directory/programpath-metabox.php' );
- }*/
+ }
+*/
+
+ // Check for Shared Content Feature
 
   $sharedcontent = isset($webtools['lc_enable_shared_content_display_field']) ? $webtools['lc_enable_shared_content_display_field'] : '';
 
- // Check for Shared Content Feature
  if ($sharedcontent == 1) {
   require_once( plugin_dir_path( __FILE__ ).'shared-content/lc-shared-content-metabox.php' );
   require_once( plugin_dir_path( __FILE__ ).'shared-content/lc-rest-api-fetch.php' );
  }
 
+ // Check for Success Story Feature
+
   $successstories = isset($webtools['lc_enable_success_story_field']) ? $webtools['lc_enable_success_story_field'] : '';
 
- // Check for Success Story Feature
  if ($successstories == 1) {
   require_once( plugin_dir_path( __FILE__ ).'success-stories/lc-success-story-cpt.php' );
   require_once( plugin_dir_path( __FILE__ ).'success-stories/lc-success-story-metabox.php' );
   require_once( plugin_dir_path( __FILE__ ).'success-stories/lc-success-restapi-fields.php' );
  }
 
+ // Check for Success Story Widget Feature
+
  $successwidget = isset($webtools['lc_enable_success_story_widget']) ? $webtools['lc_enable_success_story_widget'] : '';
-  // Check for Success Story Widget Feature
- if ($successstories == 1) {
+
+ if ($successwidget == 1) {
   require_once( plugin_dir_path( __FILE__ ).'success-stories/lc-success-story-widget.php' );
  }
 
+ // Check for Social Media Fields Feature
+
  $socialmedia = isset($webtools['lc_enable_social_media_fields']) ? $webtools['lc_enable_social_media_fields'] : '';
-  // Check for Social Media Fields Feature
+
  if ($socialmedia == 1) {
   require_once( plugin_dir_path( __FILE__ ).'social-media/lc-social-media-links.php' );
  }
 
- $podcast = isset($webtools['lc_enable_podcast_post_type']) ? $webtools['lc_enable_podcast_post_type'] : '';
  // Check for Podcast Custom Post Type Feature
-if ($podcast == 1) {
+
+ $podcast = isset($webtools['lc_enable_podcast_post_type']) ? $webtools['lc_enable_podcast_post_type'] : '';
+
+ if ($podcast == 1) {
  require_once( plugin_dir_path( __FILE__ ).'podcasting/lc-podcasting.php' );
 }
 
+/* $content_tiles = isset($webtools['lc_enable_content_tile_post_type']) ? $webtools['lc_enable_content_tile_post_type'] : '';
+// Check for Podcast Custom Post Type Feature
+if ($content_tiles == 1) {
+  require_once( plugin_dir_path( __FILE__ ).'content-tiles/lc-tile-content-cpt.php' );
+  require_once( plugin_dir_path( __FILE__ ).'content-tiles/lc-tile-content-widget.php' );
+} */
+
+// Check for Microsite Features
+
+$microsite = isset($webtools['lc_enable_microsite_features']) ? $webtools['lc_enable_microsite_features'] : '';
+
+if ($microsite == 1) {
+require_once( plugin_dir_path( __FILE__ ).'microsite-features/lc-microsite-enable.php' );
+}
 
  // Default features that are always loaded when the webtools plugin is activated.
  require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-site-options.php' );
@@ -115,6 +133,8 @@ if ($podcast == 1) {
  require_once( plugin_dir_path( __FILE__ ).'default-features/lccc-capabilities.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/network-pending-items.php' );
  require_once( plugin_dir_path( __FILE__ ).'default-features/lc-search-widget.php' );
+ require_once( plugin_dir_path( __FILE__ ).'default-features/lc-tracking-code.php' );
+ require_once( plugin_dir_path( __FILE__ ).'default-features/lc-content-callout-shortcode.php' );
 
 // Content Approval Custom Workflow
 require_once( plugin_dir_path( __FILE__ ).'default-features/content-approvals/content-approvals.php' );

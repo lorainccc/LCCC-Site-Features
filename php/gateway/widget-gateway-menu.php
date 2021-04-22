@@ -174,5 +174,7 @@ class Gateway_Menu_Widget extends WP_Widget {
 } // end class
 
 // TODO: Remember to change 'Gateway_Menu_Widget' to match the class name definition
-add_action( 'widgets_init', create_function( '', 'register_widget("Gateway_Menu_Widget");' ) );
+add_action( 'widgets_init', function(){
+	register_widget( 'Gateway_Menu_Widget' );
+});
 ?>

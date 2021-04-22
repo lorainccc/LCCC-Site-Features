@@ -17,7 +17,7 @@ function lc_add_wp_webtools_menu_page() {
   2                                                                   		// Position (2 = Dashboard)
  );
 	 add_submenu_page(
-		'lccc-wp-webtools',																										// Parent Slug (Page to nest under)
+		'lccc-wp-webtools',													// Parent Slug (Page to nest under)
   __( 'Current Site Page Templates', 'lorainccc' ),                      	// Page Title
   'Page Templates',                                                      	// Menu Title
   'manage_options',                                                      	// Capabilities
@@ -25,7 +25,7 @@ function lc_add_wp_webtools_menu_page() {
   'lc_page_templates_list'                                               	// Function
  );
 /*	add_submenu_page(
-		'lccc-wp-webtools',																									 	// Parent Slug (Page to nest under)
+		'lccc-wp-webtools',													// Parent Slug (Page to nest under)
   __( 'Current Site List of Files in Upload Directory', 'lorainccc' ),   	// Page Title
   'Media Files',                                                         	// Menu Title
   'manage_options',                                                      	// Capabilities
@@ -33,37 +33,38 @@ function lc_add_wp_webtools_menu_page() {
   'lc_media_files_list'                                                  	// Function
  );*/
 	add_submenu_page(
-		'lccc-wp-webtools',																										// Parent Slug (Page to nest under)
+		'lccc-wp-webtools',													// Parent Slug (Page to nest under)
   __( 'Current List of PDF Files in Upload Directory', 'lorainccc' ),   	// Page Title
   'PDF Files',                                                         		// Menu Title
   'manage_options',                                                      	// Capabilities
-  'lc-pdf-files',                                                   			// Menu Slug
+  'lc-pdf-files',                                                   		// Menu Slug
   'lc_pdf_files_list'                                                  		// Function
  );
 	add_submenu_page(
-	'lccc-wp-webtools',																											// Parent Slug (Page to nest under)
-  __( 'Site Featured Image', 'lorainccc' ),   														// Page Title
+	'lccc-wp-webtools',														// Parent Slug (Page to nest under)
+  __( 'Site Featured Image', 'lorainccc' ),   								// Page Title
   'Site Featured Image',                                                 	// Menu Title
   'manage_options',                                                      	// Capabilities
   'lc-site-featured-image',                                              	// Menu Slug
   'lc_site_featured_featured_field'                                      	// Function
  );
 	add_submenu_page(
-	'lccc-wp-webtools',																											// Parent Slug (Page to nest under)
-  __( 'Content Age', 'lorainccc' ),   																		// Page Title
+	'lccc-wp-webtools',														// Parent Slug (Page to nest under)
+  __( 'Content Age', 'lorainccc' ),   										// Page Title
   'Site Content Age',                                                 		// Menu Title
   'manage_options',                                                      	// Capabilities
   'lc-site-content-age',                                              		// Menu Slug
-  'lc_site_content_age_list'                                     					// Function
+  'lc_site_content_age_list'                                     			// Function
  );
  add_submenu_page(
-	'lccc-wp-webtools',																											// Parent Slug (Page to nest under)
-	__( 'Theme Options', 'lorainccc' ),   																	// Page Title
+	'lccc-wp-webtools',														// Parent Slug (Page to nest under)
+	__( 'Theme Options', 'lorainccc' ),   									// Page Title
 	'LCCC Theme Options',                                                 	// Menu Title
 	'manage_options',                                                      	// Capabilities
 	'lc-theme-settings-options',                                            // Menu Slug
-	'lc_theme_options'                                     									// Function
-);
+	'lc_theme_options'                                     					// Function
+ );
+
 }
 
 require_once( plugin_dir_path( __FILE__ ).'lc-theme-options.php');
@@ -74,19 +75,19 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
  function lc_webtools_settings_init() {
   register_setting( 'lc_wp_webtools_options', 'lc_webtools_settings' );
 
-  add_settings_section(
-   'lc_webtools_settings_section',																						// Section ID
-   __( 'Choose Features to Enable', 'lorainccc' ),														// Title
-	 'lc_webtools_settings_section_callback',																		// Callback
-   'lc_wp_webtools_options'																										// Page
-  );
-
   add_settings_field(
-   'lc_enable_gateway_menu_field',                                            // Field ID
-   __('Enable LCCC Gateway Menus:' , 'lorainccc'),                            // Title
-   'lc_gateway_menu_render',                                                  // Callback
-   'lc_wp_webtools_options',                                                  // Page
-   'lc_webtools_settings_section'                                             // Section
+	'lc_enable_microsite_features',                                        	   // Field ID
+	__('Enable Microsite Features:' , 'lorainccc'),                            // Title
+	'lc_microsite_features_render',                                            // Callback
+	'lc_wp_webtools_options',                                                  // Page
+	'lc_webtools_settings_section'                                             // Section
+   );
+
+  add_settings_section(
+   'lc_webtools_settings_section',											  // Section ID
+   __( 'Choose Features to Enable', 'lorainccc' ),							  // Title
+	 'lc_webtools_settings_section_callback',							      // Callback
+   'lc_wp_webtools_options'													  // Page
   );
 
   add_settings_field(
@@ -121,7 +122,7 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
    'lc_webtools_settings_section'                                             // Section
   );
   
-/*  add_settings_field(
+  add_settings_field(
    'lc_enable_department_directories_field',                                  // Field ID
    __('Enable LCCC Department Directories:' , 'lorainccc'),                   // Title
    'lc_department_directory_display_render',                                  // Callback
@@ -135,7 +136,7 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
    'lc_department_directory_display_options_render',                          // Callback
    'lc_wp_webtools_options',                                                  // Page
    'lc_webtools_settings_section'                                             // Section
-  );*/
+  );
 
   add_settings_field(
    'lc_enable_shared_content_display_field',                                  // Field ID
@@ -171,8 +172,16 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
 
   add_settings_field(
 	'lc_enable_podcast_post_type',                                             // Field ID
-	__('Enable Podcast Repository:' , 'lorainccc'),                           // Title
+	__('Enable Podcast Repository:' , 'lorainccc'),                            // Title
 	'lc_podcast_post_type_render',                                             // Callback
+	'lc_wp_webtools_options',                                                  // Page
+	'lc_webtools_settings_section'                                             // Section
+   );
+
+   add_settings_field(
+	'lc_enable_content_tile_post_type',                                        // Field ID
+	__('Enable Content Tiles:' , 'lorainccc'),                           	   // Title
+	'lc_content_tiles_post_type_render',                                       // Callback
 	'lc_wp_webtools_options',                                                  // Page
 	'lc_webtools_settings_section'                                             // Section
    );
@@ -200,18 +209,16 @@ add_action( 'admin_init', 'lc_webtools_settings_init' );
   //echo __( 'LCCC Webtools Options', 'lorainccc' );
  }
 
-
- function lc_gateway_menu_render() {
-  $options = get_option( 'lc_webtools_settings' );
-  $gateway = isset($options['lc_enable_gateway_menu_field']) ? $options['lc_enable_gateway_menu_field'] : '';
-?>
-
- <label class="switch">
-  <input type="checkbox" name='lc_webtools_settings[lc_enable_gateway_menu_field]' <?php checked( $gateway, 1); ?> value='1' style="display:none;">
-  <div class="slider round"></div>
- </label>
- <p class="description" id="tagline-description">Provides a thumbnail and list of links for a site section.</p>
-  <?php
+ function lc_microsite_features_render() {
+	$options = get_option( 'lc_webtools_settings' );
+	$microsite = isset($options['lc_enable_microsite_features']) ? $options['lc_enable_microsite_features'] : '';
+	?>
+   <label class="switch">
+	<input type="checkbox" name='lc_webtools_settings[lc_enable_microsite_features]' <?php checked( $microsite, 1); ?> value='1' style="display:none;">
+	<div class="slider round"></div>
+   </label>
+   <p class="description" id="tagline-description">Enables Microsite Features. Includes Content Grouping Template, Content Grouping Custom Post Type and Template Display Options</p>
+		  <?php
  }
 
 function lc_badges_render() {
@@ -307,11 +314,11 @@ function lc_shared_content_render() {
 
 function lc_success_story_render() {
   $options = get_option( 'lc_webtools_settings' );
-  $shared = isset($options['lc_enable_success_story_field']) ? $options['lc_enable_success_story_field'] : '';
+  $successrepo = isset($options['lc_enable_success_story_field']) ? $options['lc_enable_success_story_field'] : '';
   ?>
 
  <label class="switch">
-  <input type="checkbox" name='lc_webtools_settings[lc_enable_success_story_field]' <?php checked( $shared, 1); ?> value='1' style="display:none;">
+  <input type="checkbox" name='lc_webtools_settings[lc_enable_success_story_field]' <?php checked( $successrepo, 1); ?> value='1' style="display:none;">
   <div class="slider round"></div>
  </label>
  <p class="description" id="tagline-description">Enables Student Success Story Repository.  Creates Custom Post Type that allows a list of stories to be generated.</p>
@@ -320,11 +327,11 @@ function lc_success_story_render() {
 
 function lc_success_story_widget_render() {
   $options = get_option( 'lc_webtools_settings' );
-  $shared = isset($options['lc_enable_success_story_widget']) ? $options['lc_enable_success_story_widget'] : '';
+  $successwidget = isset($options['lc_enable_success_story_widget']) ? $options['lc_enable_success_story_widget'] : '';
   ?>
 
  <label class="switch">
-  <input type="checkbox" name='lc_webtools_settings[lc_enable_success_story_widget]' <?php checked( $shared, 1); ?> value='1' style="display:none;">
+  <input type="checkbox" name='lc_webtools_settings[lc_enable_success_story_widget]' <?php checked( $successwidget, 1); ?> value='1' style="display:none;">
   <div class="slider round"></div>
  </label>
  <p class="description" id="tagline-description">Enables Student Success Story Widget.  Allows selected success story to be displayed from other site.</p>
@@ -333,27 +340,40 @@ function lc_success_story_widget_render() {
 
 function lc_social_media_fields_render() {
   $options = get_option( 'lc_webtools_settings' );
-  $shared = isset($options['lc_enable_social_media_fields']) ? $options['lc_enable_social_media_fields'] : '';
+  $socialmedia = isset($options['lc_enable_social_media_fields']) ? $options['lc_enable_social_media_fields'] : '';
   ?>
  <label class="switch">
-  <input type="checkbox" name='lc_webtools_settings[lc_enable_social_media_fields]' <?php checked( $shared, 1); ?> value='1' style="display:none;">
+  <input type="checkbox" name='lc_webtools_settings[lc_enable_social_media_fields]' <?php checked( $socialmedia, 1); ?> value='1' style="display:none;">
   <div class="slider round"></div>
  </label>
  <p class="description" id="tagline-description">Enables Social Media Fields on the General Settings page.  Allows the site to have social media account links available for use in the theme.</p>
 		<?php
  }
 
- function lc_podcast_post_type_render() {
+function lc_podcast_post_type_render() {
 	$options = get_option( 'lc_webtools_settings' );
-	$shared = isset($options['lc_enable_podcast_post_type']) ? $options['lc_enable_podcast_post_type'] : '';
+	$podcast = isset($options['lc_enable_podcast_post_type']) ? $options['lc_enable_podcast_post_type'] : '';
 	?>
    <label class="switch">
-	<input type="checkbox" name='lc_webtools_settings[lc_enable_podcast_post_type]' <?php checked( $shared, 1); ?> value='1' style="display:none;">
+	<input type="checkbox" name='lc_webtools_settings[lc_enable_podcast_post_type]' <?php checked( $podcast, 1); ?> value='1' style="display:none;">
 	<div class="slider round"></div>
    </label>
    <p class="description" id="tagline-description">Enables Podcast Custom Post Type.  Used to generate a list of Podcast episodes and unique URLs for each episode.</p>
 		  <?php
-   }
+ }
+
+function lc_content_tiles_post_type_render() {
+	$options = get_option( 'lc_webtools_settings' );
+	$contenttiles = isset($options['lc_enable_content_tile_post_type']) ? $options['lc_enable_content_tile_post_type'] : '';
+	?>
+   <label class="switch">
+	<input type="checkbox" name='lc_webtools_settings[lc_enable_content_tile_post_type]' <?php checked( $contenttiles, 1); ?> value='1' style="display:none;">
+	<div class="slider round"></div>
+   </label>
+   <p class="description" id="tagline-description">Enables Content Tiles Custom Post Type.</p>
+		  <?php
+ }
+
 
 // Render out Page Templates List
 

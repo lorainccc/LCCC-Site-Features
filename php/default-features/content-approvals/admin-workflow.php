@@ -3,7 +3,9 @@
 function lc_editor_admin_notice(){
 	 global $pagenow;
 		global $post;
-	
+
+		if ( $pagenow == 'post.php' ){
+
 				$published_post = get_post_meta($post->ID, '_lc_publishedId', true);
 
 //	echo 'Published Post ID: ' . $published_post;
@@ -37,6 +39,7 @@ function lc_editor_admin_notice(){
 				
 			}			
 		}
+	}
 	
 }
 
