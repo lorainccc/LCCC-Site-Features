@@ -3,16 +3,16 @@
 function lc_editor_admin_notice(){
 	 global $pagenow;
 		global $post;
-
-		if ( $pagenow == 'post.php' ){
-
-				$published_post = get_post_meta($post->ID, '_lc_publishedId', true);
+	
 
 //	echo 'Published Post ID: ' . $published_post;
 //	echo '<br/>';
 //	echo 'Currenty Post ID: ' . $post->ID;
 	
 	 if ( $pagenow == 'post.php' ){
+		 
+		$published_post = get_post_meta($post->ID, '_lc_publishedId', true);
+
 			if (get_post_status($post->ID) == 'draft' ){
 
 				if ( $published_post != '' ){
@@ -39,7 +39,6 @@ function lc_editor_admin_notice(){
 				
 			}			
 		}
-	}
 	
 }
 
