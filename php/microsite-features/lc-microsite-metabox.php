@@ -90,6 +90,7 @@ function lc_show_microsite_features_meta_box( $object, $box ) { ?>
 
         ?>
 
+    </select>
 
     <p class="description" id="tagline-description">Category of Content Items allows a grouping of content to be displayed as a list in the template.</p>
     
