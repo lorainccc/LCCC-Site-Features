@@ -37,7 +37,7 @@ function lc_show_microsite_features_meta_box( $object, $box ) { ?>
 
 <?php wp_nonce_field( basename( __FILE__ ), 'lc_microsite_features_nonce' ); ?>
 
-<p>Currently these features only work with the Gateway Template or Grouped Content Template</p>
+<p>Currently these features only work with the Grouped Content and Sub Page Top Button Nav Templates</p>
 
 <label for="lc_microsite_enable_badges"><?php _e( 'Enable Badges: ', 'lorainccc' ); ?></label><br>
 <?php 

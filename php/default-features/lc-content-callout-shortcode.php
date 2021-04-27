@@ -12,6 +12,7 @@
 function lc_content_callout( $atts ) {
 
 	// Attributes
+    // if no post_slug attribute is passed, display the "Hello World" sample post.
 	extract(shortcode_atts(array(
         'post_slug' => 'hello-world',
      ), $atts));
