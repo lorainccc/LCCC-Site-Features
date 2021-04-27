@@ -75,8 +75,19 @@ function lc_show_microsite_features_meta_box( $object, $box ) { ?>
     </label>
     <p class="description" id="tagline-description">Enables Secondary Top Menu Display.</p>
  
+    <?php 
+
+    $lcEnableContentGroupDisplay = get_post_meta( $object->ID, 'lc_microsite_enable_content_group_display' , true);
+
+    ?>
+    <label class="switch">
+        <input type="checkbox" name='lc_microsite_enable_content_group_display' <?php checked( $lcEnableContentGroupDisplay, 1); ?> value='1' style="display:none;">
+        <div class="slider round"></div>
+    </label>
+    <p class="description" id="tagline-description">Enables Content Group Display Area.</p>
+
     <label for="lc_microsite_grouping_category"><?php _e( 'Category of Content Items: ', 'lorainccc' ); ?></label><br>
-    <select id="lc_podcast_explicit_content" name="lc_podcast_explicit_content">
+    <select id="lc_microsite_grouping_category" name="lc_microsite_grouping_category">
           
     <?php 
 
@@ -143,6 +154,18 @@ function lc_microsite_features_save_info( $post_id, $post ) {
    
     /* Get the meta key. */
     $meta_key = 'lc_microsite_enable_secondary_top_menu';
+   
+     /* Get the meta value of the custom field key. */
+    $meta_value = get_post_meta ($post_id, $meta_key, true );
+   
+    update_post_meta( $post_id, $meta_key, $new_meta_value, $meta_value );
+
+    /* Enable Content Group Display Option */
+    /* Get the posted data and sanitize it for use as a date value. */
+    $new_meta_value = ( isset( $_POST['lc_microsite_enable_content_group_display'] ) ? sanitize_text_field($_POST['lc_microsite_enable_content_group_display'] ) : '' );
+   
+    /* Get the meta key. */
+    $meta_key = 'lc_microsite_enable_content_group_display';
    
      /* Get the meta value of the custom field key. */
     $meta_value = get_post_meta ($post_id, $meta_key, true );
