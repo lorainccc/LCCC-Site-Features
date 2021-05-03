@@ -11,7 +11,6 @@
 // Add Shortcode for displaying all posts
 
 function lc_content_group( $atts ) {
-
 	/* 
     * -- Attributes --
     * If no post_count attribute is passed, display 3 posts.
@@ -71,18 +70,18 @@ function lc_single_content_group( $atts ) {
      ), $atts));
 
     $lc_singlecontentargs=array(
-        'post_slug'     => $post_slug,
+        'name'          => $post_slug,
+        'post_count'    => 1,
         'post_type'     => 'content_group',
-        'post_status'   => 'publish',
         );	
-    
+
     $lc_singlecontent = new WP_Query($lc_singlecontentargs); 
-    
-    if ($lc_contentgroup->have_posts()) :
-        while ($lc_contentgroup->have_posts()) : $lc_contentgroup->the_post();
+
+    if ($lc_singlecontent->have_posts()) :
+        while ($lc_singlecontent->have_posts()) : $lc_singlecontent->the_post();
         ?>
     
-        <section class="row gateway-links">
+        <section class="row single-content-group">
             <div class="small-12 medium-3 large-3 columns">
                 <?php the_post_thumbnail(); ?>		
             </div>
@@ -100,9 +99,9 @@ function lc_single_content_group( $atts ) {
     return $lc_return_string;
 }
 
-function lc_register_shortcodes(){
+function lc_cntgroup_register_shortcodes(){
     add_shortcode( 'lc_contentgroup', 'lc_content_group' );
-    add_shortcode( 'lc_singlecontent', 'lc_single_content_group');
+    add_shortcode( 'lc_singlecontent', 'lc_single_content_group' );
 }
 
-add_action( 'init', 'lc_register_shortcodes');
+add_action( 'init', 'lc_cntgroup_register_shortcodes');

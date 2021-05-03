@@ -51,7 +51,7 @@ function lc_show_microsite_features_meta_box( $object, $box ) { ?>
     </label>
     <p class="description" id="tagline-description">Enables Badge Sidebar Display. Badges will show at the bottom of the page template, above the footer.</p>
 
-    <label for="lc_microsite_enable_top_button_menu"><?php _e( 'Enable Top Button Menu: ', 'lorainccc' ); ?></label><br>
+<label for="lc_microsite_enable_top_button_menu"><?php _e( 'Enable Top Button Menu: ', 'lorainccc' ); ?></label><br>
 <?php 
 
     $lcEnableTopButtonMenu = get_post_meta( $object->ID, 'lc_microsite_enable_top_button_menu' , true);
@@ -63,7 +63,7 @@ function lc_show_microsite_features_meta_box( $object, $box ) { ?>
     </label>
     <p class="description" id="tagline-description">Enables Top Button Menu Display.</p>
 
-    <label for="lc_microsite_enable_secondary_top_menu"><?php _e( 'Enable Secondary Top Menu: ', 'lorainccc' ); ?></label><br>
+<label for="lc_microsite_enable_secondary_top_menu"><?php _e( 'Enable Secondary Top Menu: ', 'lorainccc' ); ?></label><br>
 <?php 
 
     $lcEnableSecondaryTopMenu = get_post_meta( $object->ID, 'lc_microsite_enable_secondary_top_menu' , true);
@@ -75,6 +75,7 @@ function lc_show_microsite_features_meta_box( $object, $box ) { ?>
     </label>
     <p class="description" id="tagline-description">Enables Secondary Top Menu Display.</p>
  
+<label for="lc_microsite_enable_secondary_top_menu"><?php _e( 'Enable Content Group Area: ', 'lorainccc' ); ?></label><br>
     <?php 
 
     $lcEnableContentGroupDisplay = get_post_meta( $object->ID, 'lc_microsite_enable_content_group_display' , true);
