@@ -363,7 +363,7 @@ function lc_podcast_post_type_render() {
  }
 
 function lc_content_tiles_post_type_render() {
-	$options = get_option( 'lc_webtools_settings' );
+/* 	$options = get_option( 'lc_webtools_settings' );
 	$contenttiles = isset($options['lc_enable_content_tile_post_type']) ? $options['lc_enable_content_tile_post_type'] : '';
 	?>
    <label class="switch">
@@ -371,7 +371,7 @@ function lc_content_tiles_post_type_render() {
 	<div class="slider round"></div>
    </label>
    <p class="description" id="tagline-description">Enables Content Tiles Custom Post Type.</p>
-		  <?php
+		  <?php */
  }
 
 
@@ -496,8 +496,7 @@ function lc_media_files_list(){
 								
 								}
 								
-							}
-								
+							}							
 								
 								$file_counter++;
 							}
@@ -505,12 +504,10 @@ function lc_media_files_list(){
 						echo '</ul>';
 							echo '</div>';
 					}
-				}
-						
+				}						
 			}	
 		}
 	}
-
 }
 
 // Render out PDF Files List
@@ -528,12 +525,14 @@ function lc_pdf_files_list() {
 		
 	//echo  $media_dir;
 
+	$list_of_files_not_found = '';
+
 	$years = scandir($media_dir);
 	
 	foreach($years as $year){
 
 		$year_path = $media_dir . '/' . $year;
-	 if ($year != '.' && $year != '..' && $year !='sites' && $year !='snapshots' && $year !='gravity_forms' ){
+	 if ($year != '.' && $year != '..' && $year !='sites' && $year !='snapshots' && $year !='gravity_forms' && $year !='importwp' ){
 			if ( is_dir($year_path) ){
 				echo '<div style="width:100%; margin:10px 5px; clear:both;">';
 				echo '<h3>' . $year . '</h3>';
@@ -557,19 +556,23 @@ function lc_pdf_files_list() {
 						foreach( $files as $file ){
 							//echo '<p>count: ' . $file_counter . '</p>';
 							if( $file != '.' && $file != '..' && $file != 'index.php' ){
+								
 								if( strpos($file, '.pdf') !== false){
-//									$file_found = lc_get_attachment_by_name($file);
-//									
-//									if($file_found !== true ){
-										
-//										echo '<li style="margin: 8px 0; border-bottom: 1px solid #000;" class="deleted-items"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" style="word-break:break-all;" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb';
-//										echo '<br/><span class="deleted-items-message">Not Found in Database</span>';
-//										echo '</li>';
-//									
-//									}else{
+									$file_found = '';
+									$file_found = lc_get_attachment_by_name($file);
 
+									if( $file_found === false ){
+										
+										echo '<li style="margin: 8px 0; border-bottom: 1px solid #000;" class="deleted-items"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" style="word-break:break-all;" target="_blank">' . $file . '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb';
+										echo '<br/><span class="deleted-items-message">Not Found in Database</span>';
+										echo '</li>';
+										
+										$list_of_files_not_found = $list_of_files_not_found . "\r\n" . $media_url . '/' . $year . '/' . $month . '/' . $file;
+										
+									}else{
 										echo '<li style="margin: 8px 0; padding: 4px 0; border-bottom: 1px dashed #000;"><a href="' . $media_url . '/' . $year . '/' . $month . '/' . $file . '" style="word-break:break-all;" target="_blank">' . $file .  '</a> | ' . number_format( filesize( $media_dir . '/' . $year . '/' . $month . '/' . $file )/1024, 2 ) . ' kb</li>';
-//									}
+										
+									}
 								}
 							}
 						}
@@ -577,60 +580,51 @@ function lc_pdf_files_list() {
 							echo '</div>';
 					}
 				}
-						
 			}	
 		}
 	}
-
+	if( $list_of_files_not_found !== '' ) {
+		$files = explode( "\r\n", trim($list_of_files_not_found ));
+		echo '<div style="display: block;width: 100%; clear:both;">&nbsp;</div>';
+		echo '<div style="display: block;width: 100%; clear:both;">';
+		echo '<h2>Files not Found</h2>';
+		if( is_array($files) ){
+			for( $i = 0; $i < count( $files ); $i++ ) {
+				echo '<div><b>' . $files[$i] . '</b></div>';
+			}
+		}else{
+			echo '<div><b>' . $files . '</b></div>';
+		}
+		echo '</div>';
+	} 
 }
 
 
     function lc_get_attachment_by_name( $post_name ) {
-					//echo '<b>' . $post_name . '</b>';
-					$post_name = strtolower($post_name);
+		//echo '<b>' . $post_name . '</b>';
+		$post_name = strtolower($post_name);
+		$post_name = str_replace( '.pdf', '', $post_name );
+
         $args = array(
             'posts_per_page' => 1,
             'post_type'      => 'attachment',
-												'post_status'				=> 'inherit',
-            'post_name'      => $post_name,
+			'post_status'	 => 'inherit',
+            'name'      => $post_name,
         );
-        $get_attachment = new WP_Query( $args );
-					
-/*							if ($post_name == '2017-holiday-greeting-slider-1024x341.jpg' ){
-							 echo '<pre>';
-								var_dump($get_attachment);
-								echo '</pre>';
-							}*/
-					
-							$found_post = strval( $get_attachment->posts[0]->post_name );
-							$post_looking_for = strval( $post_name );
-					
-							//echo $post_name . '<br/>';
-					
-							//echo strlen($post_looking_for);
-					
-							$post_looking_for = substr($post_looking_for, 0, strlen($post_looking_for)-4);
-							
-						
-							
-					
-							//echo strcmp($found_post, $post_looking_for);
-							$found = strpos($post_looking_for, $found_post );
 
-							//echo '<p>' . $found . '</p>';
-					
-							if ( $found_post == $post_looking_for ){
-									return true;
-							} else {
-								return false;
-							}
-					
-/*        if ( $get_attachment->posts[0] ) {
-										return true;									
-									}else{
-         	return false;
-							}*/
-				}
+        $get_attachment = new WP_Query( $args );
+		
+
+	$found_post = strval( $get_attachment->posts[0]->post_name );
+
+	$post_looking_for = strval( $post_name );
+
+	if ( $found_post == $post_looking_for ){
+			return true;
+	} else {
+		return false;
+	}
+	}				
 
 function lc_find_file($folder_path, $file_name){
 	
