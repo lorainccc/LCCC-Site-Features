@@ -28,7 +28,11 @@ if ( ! empty( $attributes['lcHandshakeFeedUrl'] ) ){
 
     $lc_item_output = simplexml_load_string($lc_item_output);
 
-    $lc_item_count = count($lc_item_output->channel->item);
+    if( is_countable( $lc_item_output->channel->item ) && count($lc_item_output->channel->item) > 0 ) {
+		$lc_item_count = count($lc_item_output->channel->item);
+	} else {
+		$lc_item_count = 0;
+	}
 
 }
 
@@ -39,7 +43,7 @@ if($lc_item_count > 0){
 		for( $i=0; $i<=$lc_num_of_posts; $i++)
 			{
 				$lc_item_title = $lc_item_output->channel->item[$i]->title;
-				$lc_item_descr = $lc_item_output->channel->item[$i]->description;
+				$lc_item_descr = nl2br($lc_item_output->channel->item[$i]->description);
 				$lc_item_link = $lc_item_output->channel->item[$i]->link;
 
 				$lc_item_descr = str_replace("When:", "<b>When:</b>", $lc_item_descr);

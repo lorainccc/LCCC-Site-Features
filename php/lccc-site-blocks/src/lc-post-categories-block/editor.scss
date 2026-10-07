@@ -1,0 +1,10 @@
+/**
+ * The following styles get applied inside the editor only.
+ */
+
+.wp-block-lc-post-categories {
+	a {
+		pointer-events: none;
+		cursor: default;
+	}
+}

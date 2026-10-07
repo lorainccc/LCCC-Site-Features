@@ -1,0 +1,176 @@
+li#toplevel_page_lccc-wp-webtools, li#toplevel_page_lccc-pending-items{
+ background-color: #0C3B78;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 28px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #3d3d3d;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 6px;
+  bottom: 6px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #0085BA;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #0085BA;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(16px);
+  -ms-transform: translateX(16px);
+  transform: translateX(16px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+#lc_dept_directory_metabox .inside label{
+ display: block;
+ width: 150px;
+ float: left;
+}
+
+p.description{
+ color: #636363;
+ font-style:italic;
+}
+
+#lc_dept_directory_metabox div.inside > h2{
+ font-size: 1.3rem;
+ padding: 5px 0;
+}
+
+.modified-row{
+  width: 1100px;
+  display: inline-block;
+  padding: 4px 0;
+  margin: 0 0 -4px 0;
+  border-top: 1px dashed #7a7a7a;
+  }
+
+.modified-row div{
+	margin:0;
+	padding:0;
+}
+
+.modified-row:nth-child(even){
+	background: #f4f4f4;
+}
+
+.modified-row:nth-child(odd){
+	background: #e0e0e0;
+}
+
+.page-old, .page-old a{
+	color: #aa6000;
+	font-weight: 500;
+}
+
+.page-older, .page-older a{
+	color: #7f0000;
+	font-weight: 700;
+}
+
+.page-very-old, .page-very-old a{
+	color: #58007f;
+	font-weight: 700;
+}
+
+ul.lc-media-items{
+	list-style: none;
+	margin: 0;
+}
+
+.deleted-items, .deleted-items a{
+	background-color: #dcb2b2; 
+	color: 	#8B0000; 
+	font-weight:700; 
+	padding: 3px; 
+	margin: 3px;
+}
+
+.deleted-items-message{
+	color: #450000; 
+	font-weight:700; 
+	font-style:italic; 
+	font-size: 16px;
+	padding: 3px;
+}
+
+ul.lc-network-tools-page-menu{
+  list-style-type: disc;
+  margin: 20px 15px;
+}
+
+.lc-network-tools-page-menu li{
+  font-size: 1.1rem;
+  line-height: 1.8rem;
+  margin: 6px 10px;
+}
+
+.lc-sched-jobs-tile{
+  width: 350px;
+  max-width: 350px;
+  min-height: 300px;
+  float:left;
+  margin: 10px;
+  padding: 6px 4px;
+  border: #7a7a7a 1px dashed;
+}
+
+.lc-post-status{
+  text-transform: capitalize;
+}
+
+.lc-post-publish-btn{
+  background-color: #006BA1;
+  color: #fff;
+  padding: 10px;
+  width: 20%;
+  margin: 5px auto;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.lc-post-publish-btn:hover{
+  background-color: #006ba1;
+  color: #fff;
+}

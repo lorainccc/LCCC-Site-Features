@@ -22,12 +22,7 @@ export default function save( { attributes } ) {
 	
     return (
         <div { ...blockProps }>
-            <h3>Inspector Control Fields</h3>
-            <ul>
-                <li>HandShake Feed Url: { lcHandshakeFeedUrl }</li>
-                <li>Number Of Posts: { lcNumberOfItems }</li>
-                <li>HandShake Feed Name: { lcHandshakeFeedName }</li>
-            </ul>
+
 		</div>
     );
 }
